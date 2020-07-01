@@ -1,26 +1,26 @@
 {{if data.active}}
-	{{:helper.link('Back to Menu', null, {'clear' : 1})}}<br>
+	{{:helper.link('Назад в меню', null, {'clear' : 1})}}<br>
 		<div class="item">
 			<div class="itemLabel">
-				Core Integrity:
+				Целостность ядра:
 			</div>
 			<div class="itemContent">
 				{{:helper.displayBar(data.SM_integrity, 0, 100, (data.SM_integrity == 100) ? 'good' : (data.SM_integrity >= 50) ? 'average' : 'bad')}} {{:data.SM_integrity}}%
 			</div>
 			<div class="itemLabel">
-				Relative EER:
+				Относительный EER:
 			</div>
 			<div class="itemContent">
 				{{if data.SM_power > 300}}
-					<span class='bad'>{{:data.SM_power}} MeV/cm3</span>
+					<span class='bad'>{{:data.SM_power}} МэВ/см3</span>
 				{{else data.SM_power > 150}}
-					<span class='average'>{{:data.SM_power}} MeV/cm3</span>
+					<span class='average'>{{:data.SM_power}} МэВ/см3</span>
 				{{else}}
-					<span class='good'>{{:data.SM_power}} MeV/cm3</span>
+					<span class='good'>{{:data.SM_power}} МэВ/см3</span>
 				{{/if}}
 			</div>
 			<div class="itemLabel">
-				Temperature:
+				Температура:
 			</div>
 			<div class="itemContent">
 				{{if data.SM_ambienttemp > 5000}}
@@ -30,24 +30,24 @@
 				{{else}}
 					<span class='good'>{{:data.SM_ambienttemp}} K</span>
 				{{/if}}
-			</div>		
+			</div>
 			<div class="itemLabel">
-				Pressure:
+				Давление:
 			</div>
 			<div class="itemContent">
 				{{if data.SM_ambientpressure > 10000}}
-					<span class='bad'>{{:data.SM_ambientpressure}} kPa</span>
+					<span class='bad'>{{:data.SM_ambientpressure}} кПа</span>
 				{{else data.SM_ambientpressure > 5000}}
-					<span class='average'>{{:data.SM_ambientpressure}} kPa</span>
+					<span class='average'>{{:data.SM_ambientpressure}} кПа</span>
 				{{else}}
-					<span class='good'>{{:data.SM_ambientpressure}} kPa</span>
+					<span class='good'>{{:data.SM_ambientpressure}} кПа</span>
 				{{/if}}
-			</div>		
+			</div>
 		</div>
 		<hr><br
 		<div class="item">
 			<div class="itemLabel">
-				Gas Composition:
+				Состав газа:
 			</div>
 			<div class="itemContent">
 				<div class="item">
@@ -56,7 +56,7 @@
 					</div>
 					<div class="itemContent">
 						{{:data.SM_gas_O2}} %
-					</div>	
+					</div>
 					<div class="itemLabel">
 						CO2:
 					</div>
@@ -76,36 +76,36 @@
 						{{:data.SM_gas_PL}} %
 					</div>
 					<div class="itemLabel">
-						OTHER:
+						ДРУГИЕ:
 					</div>
 					<div class="itemContent">
 						{{:data.SM_gas_OTHER}} %
 					</div>
 				</div>
-			</div>			
+			</div>
 		</div>
 {{else}}
-	{{:helper.link('Refresh', null, {'refresh' : 1})}}<br>
+	{{:helper.link('Обновить', null, {'refresh' : 1})}}<br>
 	{{for data.supermatters}}
 		<div class="item">
 			<div class="itemLabel">
-				Area:
+				Зона:
 			</div>
 			<div class="itemContent">
 				{{:value.area_name}}
 			</div>
 			<div class="itemLabel">
-				Integrity:
+				Целостность:
 			</div>
 			<div class="itemContent">
 				{{:value.integrity}} %
 			</div>
 			<div class="itemLabel">
-				Options:
+				Опции:
 			</div>
 			<div class="itemContent">
-				{{:helper.link('View Details', null, {'set' : value.uid})}}
-			</div>			
-		</div>	
+				{{:helper.link('Посмотреть детали', null, {'set' : value.uid})}}
+			</div>
+		</div>
 	{{/for}}
 {{/if}}

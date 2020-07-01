@@ -1,5 +1,5 @@
 <script>
-	{{var tooltiptext = function(req_text, catalyst_text, tool_text) { var text = ""; if(req_text){text += "REQUIREMENTS: " + req_text + " ";} if(catalyst_text){text += "CATALYSTS: " + catalyst_text + " ";} if(tool_text){text += "TOOLS: " + tool_text;}return text;};}}
+	{{var tooltiptext = function(req_text, catalyst_text, tool_text) { var text = ""; if(req_text){text += "ТРЕБУЕТСЯ: " + req_text + " ";} if(catalyst_text){text += "КАТАЛИЗАТОРЫ: " + catalyst_text + " ";} if(tool_text){text += "ИНСТРУМЕНТЫ: " + tool_text;}return text;};}}
 </script>
 
 
@@ -10,11 +10,11 @@
 			{{:helper.link(data.prev_cat, 'arrow-left', {'backwardCat': 1})}}
 			{{:helper.link(data.next_cat, 'arrow-right', {'forwardCat': 1})}}
 			{{if data.display_craftable_only}}
-				{{:helper.link('Showing Craftable Recipes', 'lock', {'toggle_recipes': 1})}}
+				{{:helper.link('Показать доступные рецепты', 'lock', {'toggle_recipes': 1})}}
 			{{else}}
-				{{:helper.link('Showing All Recipes', 'unlock', {'toggle_recipes': 1})}}
+				{{:helper.link('Показать ВСЕ рецепты', 'unlock', {'toggle_recipes': 1})}}
 			{{/if}}
-			{{:helper.link('Compact', data.display_compact ? 'check-square-o' : 'square-o', {'toggle_compact': 1})}}
+			{{:helper.link('Компактный', data.display_compact ? 'check-square-o' : 'square-o', {'toggle_compact': 1})}}
 		</div>
 		{{if data.subcategory}}
 			<div class='item'>
@@ -30,7 +30,7 @@
 							<tr>
 								<td><div class='itemLabelWidest'>{{:value.name}}:</div></td>
 								<td><div class='floatLeft tooltipRight' data-tooltip='{{:tooltiptext(value.req_text, value.catalyst_text, value.tool_text)}}'>
-									{{:helper.link('Craft', 'gears', {'make': value.ref})}}
+									{{:helper.link('Собрать', 'gears', {'make': value.ref})}}
 								</div></td>
 							</tr>
 						{{/for}}
@@ -39,7 +39,7 @@
 								<tr>
 									<td><div class='itemLabelWidest'>{{:value.name}}:</div></td>
 									<td><div class='floatLeft tooltipRight' data-tooltip='{{:tooltiptext(value.req_text, value.catalyst_text, value.tool_text)}}'>
-										{{:helper.link('Craft', 'gears', {'make': value.ref}, 'disabled')}}
+										{{:helper.link('Собрать', 'gears', {'make': value.ref}, 'disabled')}}
 									</div></td>
 								</tr>
 							{{/for}}
@@ -54,24 +54,24 @@
 					<article>
 						{{if value.req_text}}
 							<div class='item'>
-								<div class='itemLabel'>Requirements:</div>
+								<div class='itemLabel'>Требуется:</div>
 								<div class='itemContent'>{{:value.req_text}}</div>
 							</div>
 						{{/if}}
 						{{if value.catalyst_text}}
 							<div class='item'>
-								<div class='itemLabel'>Catalysts:</div>
+								<div class='itemLabel'>Катализаторы:</div>
 								<div class='itemContent'>{{:value.catalyst_text}}</div>
 							</div>
 						{{/if}}
 						{{if value.tool_text}}
 							<div class='item'>
-								<div class='itemLabel'>Tools:</div>
+								<div class='itemLabel'>Инструменты:</div>
 								<div class='itemContent'>{{:value.tool_text}}</div>
 							</div>
 						{{/if}}
 						<div class='item'>
-							{{:helper.link('Craft', 'gears', {'make': value.ref})}}
+							{{:helper.link('Собрать', 'gears', {'make': value.ref})}}
 						</div>
 					</article>
 				</div>
@@ -83,19 +83,19 @@
 						<article>
 							{{if value.req_text}}
 								<div class='item'>
-									<div class='itemLabel'>Requirements:</div>
+									<div class='itemLabel'>Требуется:</div>
 									<div class='itemContent'>{{:value.req_text}}</div>
 								</div>
 							{{/if}}
 							{{if value.catalyst_text}}
 								<div class='item'>
-									<div class='itemLabel'>Catalysts:</div>
+									<div class='itemLabel'>Катализаторы:</div>
 									<div class='itemContent'>{{:value.catalyst_text}}</div>
 								</div>
 							{{/if}}
 							{{if value.tool_text}}
 								<div class='item'>
-									<div class='itemLabel'>Tools:</div>
+									<div class='itemLabel'>Инструменты:</div>
 									<div class='itemContent'>{{:value.tool_text}}</div>
 								</div>
 							{{/if}}
@@ -110,7 +110,7 @@
 {{if data.busy}}
 	<div class="mask">
 		<div class="maskContent">
-			<h1>Crafting...</h1>
+			<h1>Сборка...</h1>
 		</div>
 	</div>
 {{/if}}

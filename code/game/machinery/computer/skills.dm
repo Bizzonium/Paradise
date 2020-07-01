@@ -41,7 +41,7 @@
 	if(..())
 		return
 	if(is_away_level(z))
-		to_chat(user, "<span class='danger'>Unable to establish a connection</span>: You're too far away from the station!")
+		to_chat(user, "<span class='danger'>Не удаётся установить подключение</span>: Вы слишком далеко от станции!")
 		return
 	add_fingerprint(user)
 	ui_interact(user)
@@ -70,14 +70,14 @@
 				if(istype(active1, /datum/data/record) && GLOB.data_core.general.Find(active1))
 					var/list/fields = list()
 					general["fields"] = fields
-					fields[++fields.len] = list("field" = "Name:", "value" = active1.fields["name"], "name" = "name")
+					fields[++fields.len] = list("field" = "Имя:", "value" = active1.fields["name"], "name" = "name")
 					fields[++fields.len] = list("field" = "ID:", "value" = active1.fields["id"], "name" = "id")
-					fields[++fields.len] = list("field" = "Sex:", "value" = active1.fields["sex"], "name" = "sex")
-					fields[++fields.len] = list("field" = "Age:", "value" = active1.fields["age"], "name" = "age")
-					fields[++fields.len] = list("field" = "Rank:", "value" = active1.fields["rank"], "name" = "rank")
-					fields[++fields.len] = list("field" = "Fingerprint:", "value" = active1.fields["fingerprint"], "name" = "fingerprint")
-					fields[++fields.len] = list("field" = "Physical Status:", "value" = active1.fields["p_stat"])
-					fields[++fields.len] = list("field" = "Mental Status:", "value" = active1.fields["m_stat"])
+					fields[++fields.len] = list("field" = "Пол:", "value" = active1.fields["sex"], "name" = "sex")
+					fields[++fields.len] = list("field" = "Возраст:", "value" = active1.fields["age"], "name" = "age")
+					fields[++fields.len] = list("field" = "Ранг:", "value" = active1.fields["rank"], "name" = "rank")
+					fields[++fields.len] = list("field" = "Отпечаток:", "value" = active1.fields["fingerprint"], "name" = "fingerprint")
+					fields[++fields.len] = list("field" = "Физический статус:", "value" = active1.fields["p_stat"])
+					fields[++fields.len] = list("field" = "Ментальный статус:", "value" = active1.fields["m_stat"])
 					general["notes"] = active1.fields["notes"]
 					var/list/photos = list()
 					general["photos"] = photos
@@ -107,7 +107,7 @@
 					GLOB.PDA_Manifest.Cut()
 				for(var/datum/data/record/R in GLOB.data_core.security)
 					qdel(R)
-				setTemp("<h3>All employment records deleted.</h3>")
+				setTemp("<h3>Все записи трудоустройвт удалены.</h3>")
 			if("del_rg2")
 				if(active1)
 					if(GLOB.PDA_Manifest && GLOB.PDA_Manifest.len)
@@ -183,37 +183,37 @@
 		else if(href_list["d_rec"])
 			var/datum/data/record/R = locate(href_list["d_rec"])
 			if(!GLOB.data_core.general.Find(R))
-				setTemp("<h3><span class='bad'>Record not found!</span></h3>")
+				setTemp("<h3><span class='bad'>Запись не найдена!</span></h3>")
 				return 1
 			active1 = R
 			screen = SKILL_DATA_RECORD
 
 		else if(href_list["del_all"])
 			var/list/buttons = list()
-			buttons[++buttons.len] = list("name" = "Yes", "icon" = "check", "val" = "del_all2=1", "status" = null)
-			buttons[++buttons.len] = list("name" = "No", "icon" = "times", "val" = null, "status" = null)
-			setTemp("<h3>Are you sure you wish to delete all employment records?</h3>", buttons)
+			buttons[++buttons.len] = list("name" = "Да", "icon" = "check", "val" = "del_all2=1", "status" = null)
+			buttons[++buttons.len] = list("name" = "Нет", "icon" = "times", "val" = null, "status" = null)
+			setTemp("<h3>Вы уверены, что хотите удалить ВСЕ записи?</h3>", buttons)
 
 		else if(href_list["del_rg"])
 			if(active1)
 				var/list/buttons = list()
 				buttons[++buttons.len] = list("name" = "Yes", "icon" = "check", "val" = "del_rg2=1", "status" = null)
 				buttons[++buttons.len] = list("name" = "No", "icon" = "times", "val" = null, "status" = null)
-				setTemp("<h3>Are you sure you wish to delete the record (ALL)?</h3>", buttons)
+				setTemp("<h3>Вы уверены, что хотите удалить запись (ВСЁ)?</h3>", buttons)
 
 		else if(href_list["new_g"])
 			if(GLOB.PDA_Manifest.len)
 				GLOB.PDA_Manifest.Cut()
 			var/datum/data/record/G = new /datum/data/record()
-			G.fields["name"] = "New Record"
+			G.fields["name"] = "Новая запись"
 			G.fields["id"] = "[add_zero(num2hex(rand(1, 1.6777215E7)), 6)]"
-			G.fields["rank"] = "Unassigned"
-			G.fields["real_rank"] = "Unassigned"
+			G.fields["rank"] = "Нераспределённый"
+			G.fields["real_rank"] = "Нераспределённый"
 			G.fields["sex"] = "Male"
-			G.fields["age"] = "Unknown"
-			G.fields["fingerprint"] = "Unknown"
-			G.fields["p_stat"] = "Active"
-			G.fields["m_stat"] = "Stable"
+			G.fields["age"] = "Неизвестно"
+			G.fields["fingerprint"] = "Неизвестно"
+			G.fields["p_stat"] = "Активный"
+			G.fields["m_stat"] = "Стабильный"
 			G.fields["species"] = "Human"
 			GLOB.data_core.general += G
 			active1 = G
@@ -224,19 +224,19 @@
 				playsound(loc, "sound/goonstation/machines/printer_dotmatrix.ogg", 50, 1)
 				sleep(50)
 				var/obj/item/paper/P = new /obj/item/paper(loc)
-				P.info = "<CENTER><B>Employment Record</B></CENTER><BR>"
+				P.info = "<CENTER><B>Запись трудоустройства</B></CENTER><BR>"
 				if(istype(active1, /datum/data/record) && GLOB.data_core.general.Find(active1))
-					P.info += {"Name: [active1.fields["name"]] ID: [active1.fields["id"]]
-							<BR>\nSex: [active1.fields["sex"]]
-							<BR>\nAge: [active1.fields["age"]]
-							<BR>\nFingerprint: [active1.fields["fingerprint"]]
-							<BR>\nPhysical Status: [active1.fields["p_stat"]]
-							<BR>\nMental Status: [active1.fields["m_stat"]]
-							<BR>\nEmployment/Skills Summary:[active1.fields["notes"]]<BR>"}
+					P.info += {"Имя: [active1.fields["name"]] ID: [active1.fields["id"]]
+							<BR>\nПол: [active1.fields["sex"]]
+							<BR>\nВозраст: [active1.fields["age"]]
+							<BR>\nОтпечаток: [active1.fields["fingerprint"]]
+							<BR>\nФизический статус: [active1.fields["p_stat"]]
+							<BR>\nМентальный статус: [active1.fields["m_stat"]]
+							<BR>\nПрофессии/Навыки:[active1.fields["notes"]]<BR>"}
 				else
-					P.info += "<B>General Record Lost!</B><BR>"
+					P.info += "<B>Общая запись потеряна!</B><BR>"
 				P.info += "</TT>"
-				P.name = "paper - 'Employment Record: [active1.fields["name"]]'"
+				P.name = "лист - 'Запись трудоустройства: [active1.fields["name"]]'"
 				printing = 0
 
 		if(href_list["field"])
@@ -246,19 +246,19 @@
 			switch(href_list["field"])
 				if("name")
 					if(istype(active1, /datum/data/record))
-						var/t1 = reject_bad_name(clean_input("Please input name:", "Secure. records", active1.fields["name"], null))
+						var/t1 = reject_bad_name(clean_input("Пожалуйста, введите имя:", "Secure. records", active1.fields["name"], null))
 						if(!t1 || !length(trim(t1)) || incapable || active1 != a1)
 							return 1
 						active1.fields["name"] = t1
 				if("id")
 					if(istype(active1, /datum/data/record))
-						var/t1 = copytext(trim(sanitize(input("Please input id:", "Secure. records", active1.fields["id"], null) as text)), 1, MAX_MESSAGE_LEN)
+						var/t1 = copytext(trim(sanitize(input("Пожалуйста, введите ID:", "Secure. records", active1.fields["id"], null) as text)), 1, MAX_MESSAGE_LEN)
 						if(!t1 || incapable || active1 != a1)
 							return 1
 						active1.fields["id"] = t1
 				if("fingerprint")
 					if(istype(active1, /datum/data/record))
-						var/t1 = copytext(trim(sanitize(input("Please input fingerprint hash:", "Secure. records", active1.fields["fingerprint"], null) as text)), 1, MAX_MESSAGE_LEN)
+						var/t1 = copytext(trim(sanitize(input("Пожалуйста, введите хеш отпечатка:", "Secure. records", active1.fields["fingerprint"], null) as text)), 1, MAX_MESSAGE_LEN)
 						if(!t1 || incapable || active1 != a1)
 							return 1
 						active1.fields["fingerprint"] = t1
@@ -270,7 +270,7 @@
 							active1.fields["sex"] = "Male"
 				if("age")
 					if(istype(active1, /datum/data/record))
-						var/t1 = input("Please input age:", "Secure. records", active1.fields["age"], null) as num
+						var/t1 = input("Пожалуйста, введите возраст:", "Secure. records", active1.fields["age"], null) as num
 						if(!t1 || incapable || active1 != a1)
 							return 1
 						active1.fields["age"] = t1
@@ -283,10 +283,10 @@
 							buttons[++buttons.len] = list("name" = rank, "icon" = null, "val" = "rank=[rank]", "status" = (active1.fields["rank"] == rank ? "selected" : null))
 						setTemp("<h3>Rank</h3>", buttons)
 					else
-						setTemp("<span class='bad'>You do not have the required rank to do this!</span>")
+						setTemp("<span class='bad'>YДля выполнения этого вы не имеете требуемого ранга!</span>")
 				if("species")
 					if(istype(active1, /datum/data/record))
-						var/t1 = copytext(trim(sanitize(input("Please enter race:", "General records", active1.fields["species"], null) as message)), 1, MAX_MESSAGE_LEN)
+						var/t1 = copytext(trim(sanitize(input("Пожалуйста, введите расу:", "General records", active1.fields["species"], null) as message)), 1, MAX_MESSAGE_LEN)
 						if(!t1 || incapable || active1 != a1)
 							return 1
 						active1.fields["species"] = t1
@@ -312,9 +312,9 @@
 				if(4)
 					R.fields["criminal"] = pick(SEC_RECORD_STATUS_NONE, SEC_RECORD_STATUS_ARREST, SEC_RECORD_STATUS_INCARCERATED, SEC_RECORD_STATUS_PAROLLED, SEC_RECORD_STATUS_RELEASED)
 				if(5)
-					R.fields["p_stat"] = pick("*Unconcious*", "Active", "Physically Unfit")
+					R.fields["p_stat"] = pick("*КРС*", "Активный", "Физически непригодный")
 				if(6)
-					R.fields["m_stat"] = pick("*Insane*", "*Unstable*", "*Watch*", "Stable")
+					R.fields["m_stat"] = pick("*Душевнобольной*", "*Неуравновешенный*", "*Наблюдение*", "Стабильный")
 			continue
 
 		else if(prob(1))

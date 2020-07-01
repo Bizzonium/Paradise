@@ -10,23 +10,23 @@
 /datum/wires/apc/GetWireName(index)
 	switch(index)
 		if(APC_WIRE_IDSCAN)
-			return "ID Scan"
+			return "Проверка ID"
 
 		if(APC_WIRE_MAIN_POWER1)
-			return "Primary Power"
+			return "Основное питание"
 
 		if(APC_WIRE_MAIN_POWER2)
-			return "Secondary Power"
+			return "Резервное питание"
 
 		if(APC_WIRE_AI_CONTROL)
-			return "AI Control"
+			return "Управление ИИ"
 
 /datum/wires/apc/get_status()
 	. = ..()
 	var/obj/machinery/power/apc/A = holder
-	. += "The APC is [A.locked ? "" : "un"]locked."
-	. += A.shorted ? "The APCs power has been shorted." : "The APC is working properly!"
-	. += "The 'AI control allowed' light is [A.aidisabled ? "off" : "on"]."
+	. += "APC [A.locked ? "за" : "раз"]блокирован."
+	. += A.shorted ? "Питание APC было закоротило." : "APC работает должным образом!"
+	. += "Индикаторы 'Управление ИИ разрешено' [A.aidisabled ? "отключены" : "включены"]."
 
 
 /datum/wires/apc/CanUse(mob/living/L)

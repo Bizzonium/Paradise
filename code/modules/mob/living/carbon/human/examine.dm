@@ -361,9 +361,9 @@
 								commentLatest = "No entries." //If present but without entries (=target is recognized crew)
 
 			var/criminal_status = hasHUD(user, "read_only_security") ? "\[[criminal]\]" : "<a href='?src=[UID()];criminal=1'>\[[criminal]\]</a>"
-			msg += "<span class = 'deptradio'>Criminal status:</span> [criminal_status]\n"
-			msg += "<span class = 'deptradio'>Security records:</span> <a href='?src=[UID()];secrecordComment=`'>\[View comment log\]</a> <a href='?src=[UID()];secrecordadd=`'>\[Add comment\]</a>\n"
-			msg += "<span class = 'deptradio'>Latest entry:</span> [commentLatest]\n"
+			msg += "<span class = 'deptradio'>Преступный статус:</span> [criminal_status]\n"
+			msg += "<span class = 'deptradio'>Записи Службы Безопасности:</span> <a href='?src=[UID()];secrecordComment=`'>\[Посмотреть комментарии\]</a> <a href='?src=[UID()];secrecordadd=`'>\[Добавить комментарий\]</a>\n"
+			msg += "<span class = 'deptradio'>Последний комментарий:</span> [commentLatest]\n"
 
 	if(hasHUD(user,"medical"))
 		var/perpname = get_visible_name(TRUE)
@@ -375,8 +375,8 @@
 					if(R.fields["id"] == E.fields["id"])
 						medical = R.fields["p_stat"]
 
-		msg += "<span class = 'deptradio'>Physical status:</span> <a href='?src=[UID()];medical=1'>\[[medical]\]</a>\n"
-		msg += "<span class = 'deptradio'>Medical records:</span> <a href='?src=[UID()];medrecord=`'>\[View\]</a> <a href='?src=[UID()];medrecordadd=`'>\[Add comment\]</a>\n"
+		msg += "<span class = 'deptradio'>Физический статус:</span> <a href='?src=[UID()];medical=1'>\[[medical]\]</a>\n"
+		msg += "<span class = 'deptradio'>Медицинские записи:</span> <a href='?src=[UID()];medrecord=`'>\[Посмотреть\]</a> <a href='?src=[UID()];medrecordadd=`'>\[Добавить комментарий\]</a>\n"
 
 
 	if(print_flavor_text() && !skipface)

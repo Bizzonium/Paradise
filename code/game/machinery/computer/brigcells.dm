@@ -1,6 +1,6 @@
 /obj/machinery/computer/brigcells
-    name = "cell management computer"
-    desc = "Used to manage prison cells."
+    name = "Компьютер управления камерами"
+    desc = "Используется для управления тюремными камерами."
     icon_keyboard = "security_key"
     icon_screen = "cell_monitor"
     use_power = IDLE_POWER_USE
@@ -19,14 +19,14 @@
     if(stat & (BROKEN|NOPOWER))
         return
     if(!allowed(user))
-        to_chat(user, "<span class='warning'>Access denied.</span>")
+        to_chat(user, "<span class='warning'>Доступ запрещён.</span>")
         return
     ui_interact(user)
 
 /obj/machinery/computer/brigcells/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
     ui = SSnanoui.try_update_ui(user, src, ui_key, ui, force_open)
     if(!ui)
-        ui = new(user, src, ui_key, "brig_cells.tmpl", "Brig Cell Management", 1000, 400)
+        ui = new(user, src, ui_key, "brig_cells.tmpl", "Управление камерами брига", 1000, 400)
         ui.open()
         ui.set_auto_update(1)
 
@@ -55,4 +55,4 @@
     if(href_list["release"])
         var/obj/machinery/door_timer/T = locate(href_list["release"])
         T.timer_end()
-        T.Radio.autosay("Timer stopped manually from a cell management console.", T.name, "Security", list(z))
+        T.Radio.autosay("Таймер был остановлен вручную через консоль управления камерами.", T.name, "Security", list(z))

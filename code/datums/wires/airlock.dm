@@ -23,34 +23,34 @@
 /datum/wires/airlock/GetWireName(index)
 	switch(index)
 		if(AIRLOCK_WIRE_IDSCAN)
-			return "ID Scan"
+			return "Проверка ID"
 
 		if(AIRLOCK_WIRE_MAIN_POWER1)
-			return "Primary Power"
+			return "Основное питание"
 
 		if(AIRLOCK_WIRE_DOOR_BOLTS)
-			return "Door Bolts"
+			return "Болты двери"
 
 		if(AIRLOCK_WIRE_BACKUP_POWER1)
-			return "Primary Backup Power"
+			return "Резервное питание"
 
 		if(AIRLOCK_WIRE_OPEN_DOOR)
-			return "Door State"
+			return "Состояние двери"
 
 		if(AIRLOCK_WIRE_AI_CONTROL)
 			return "AI Control"
 
 		if(AIRLOCK_WIRE_ELECTRIFY)
-			return "Electrification"
+			return "Электрификация"
 
 		if(AIRLOCK_WIRE_ELECTRIFY)
-			return "Door Safeties"
+			return "Предохранители двери"
 
 		if(AIRLOCK_WIRE_ELECTRIFY)
-			return "Door Timing"
+			return "Тайминг двери"
 
 		if(AIRLOCK_WIRE_ELECTRIFY)
-			return "Bolt Lights"
+			return "Индикаторы болтов"
 
 /datum/wires/airlock/CanUse(mob/living/L)
 	var/obj/machinery/door/airlock/A = holder
@@ -68,13 +68,13 @@
 	var/obj/machinery/door/airlock/A = holder
 	var/haspower = A.arePowerSystemsOn()
 
-	. += "The door bolts [A.locked ? "have fallen!" : "look up."]"
-	. += "The door bolt lights are [(A.lights && haspower) ? "on." : "off!"]"
-	. +=  "The test light is [haspower ? "on." : "off!"]"
-	. += "The 'AI control allowed' light is [(A.aiControlDisabled == 0 && !A.emagged && haspower) ? "on" : "off"]."
-	. += "The 'Check Wiring' light is [(A.safe == 0 && haspower) ? "on" : "off"]."
-	. += "The 'Check Timing Mechanism' light is [(A.normalspeed == 0 && haspower) ? "on" : "off"]."
-	. += "The emergency lights are [(A.emergency && haspower) ? "on" : "off"]."
+	. += "Болты двери [A.locked ? "опущены!" : "подняты."]"
+	. += "Индикаторы болтов [(A.lights && haspower) ? "включены." : "отключены!"]"
+	. += "Тестовые индикаторы [haspower ? "включены." : "отключены!"]"
+	. += "Индикаторы 'Управление ИИ разрешено' [(A.aiControlDisabled == 0 && !A.emagged && haspower) ? "включены" : "отключены"]."
+	. += "Индикаторы 'Проверка проводки' [(A.safe == 0 && haspower) ? "включены" : "отключены"]."
+	. += "Индикаторы 'Проверка тайминг механизма' [(A.normalspeed == 0 && haspower) ? "включены" : "отключены"]."
+	. += "Аварийные индикаторы [(A.emergency && haspower) ? "включены" : "отключены"]."
 
 /datum/wires/airlock/UpdateCut(index, mended)
 
@@ -166,9 +166,9 @@
 			//raises them if they are down (only if power's on)
 			if(!A.locked)
 				if(A.lock())
-					A.audible_message("<span class='italics'>You hear a click from the bottom of the door.</span>", hearing_distance =  1)
+					A.audible_message("<span class='italics'>Вы слышите щелчок из под двери.</span>", hearing_distance =  1)
 			else if(A.unlock())
-				A.audible_message("<span class='italics'>You hear a click from the bottom of the door.</span>", hearing_distance =  1)
+				A.audible_message("<span class='italics'>Вы слышите щелчок из под двери.</span>", hearing_distance =  1)
 
 		if(AIRLOCK_WIRE_BACKUP_POWER1)
 			//two wires for backup power. Sending a pulse through either one causes a breaker to trip, but this does not disable it unless main power is down too (in which case it is disabled for 1 minute or however long it takes main power to come back, whichever is shorter).

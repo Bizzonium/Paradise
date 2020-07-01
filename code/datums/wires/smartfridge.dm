@@ -13,13 +13,13 @@
 /datum/wires/smartfridge/GetWireName(index)
 	switch(index)
 		if(SMARTFRIDGE_WIRE_ELECTRIFY)
-			return "Electrification"
-		
+			return "Электрификация"
+
 		if(SMARTFRIDGE_WIRE_THROW)
-			return "Item Throw"
-		
+			return "Бросание предметов"
+
 		if(SMARTFRIDGE_WIRE_IDSCAN)
-			return "ID Scan"
+			return "Проврка ID"
 
 /datum/wires/smartfridge/CanUse(mob/living/L)
 	var/obj/machinery/smartfridge/S = holder
@@ -34,9 +34,9 @@
 /datum/wires/smartfridge/get_status()
 	. = ..()
 	var/obj/machinery/smartfridge/S = holder
-	. += "The orange light is [S.seconds_electrified ? "off" : "on"]."
-	. += "The red light is [S.shoot_inventory ? "off" : "blinking"]."
-	. += "A [S.scan_id ? "purple" : "yellow"] light is on."
+	. += "Оранжевый индикатор [S.seconds_electrified ? "отключен" : "включен"]."
+	. += "Красный индикатор [S.shoot_inventory ? "отключен" : "мигает"]."
+	. += "[S.scan_id ? "Пурпурный" : "Жёлтый"] индикатор is включен."
 
 /datum/wires/smartfridge/UpdatePulsed(index)
 	var/obj/machinery/smartfridge/S = holder

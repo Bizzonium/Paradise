@@ -1,5 +1,5 @@
-<!-- 
-Title: Supply Console UI 
+<!--
+Title: Supply Console UI
 Used In File(s): \code\game\supplyshuttle.dm
 -->
 
@@ -7,19 +7,19 @@ Used In File(s): \code\game\supplyshuttle.dm
 	.category {
 		width: 150px;
 	}
-	
+
 	#misc {
 		float: left;
 		width: 350px;
 	}
-	
+
 	.supplycrate .link {
 		width: 220px;
 	}
 </style>
 <div class="item">
 	<div class="itemLabel">
-		Supply Points:
+		Очки снабжения:
 	</div>
 	<div class="itemContent">
 		{{:data.points}}
@@ -27,21 +27,21 @@ Used In File(s): \code\game\supplyshuttle.dm
 </div>
 <div class="item" style="margin-bottom: 10px;">
 	<div class="itemLabel">
-		Shuttle Status:
+		Статус шаттла:
 	</div>
 	<div class="itemContent">
 		{{if !data.moving && !data.at_station}}
-			Docked off-station.
+			Пристыкован вне станции.
 		{{else !data.moving && data.at_station}}
-			Docked at the station.
+			Пристыкован к станции.
 		{{else data.moving}}
-			Shuttle is en route (ETA: {{:data.timeleft}} minute{{if data.timeleft != 1}}s{{/if}}).
+			Шаттл в пути (ETA: {{:data.timeleft}} минут{{if data.timeleft != 1}}с{{/if}}).
 		{{/if}}
 	</div>
 </div>
 <div style="float: right; width: 70%;">
 	<div class="itemLabel">
-		Supply Crates
+		Ящики снабжения
 	</div>
 	<div class="itemContentWide" style="width: 95%;">
 		<div class="statusDisplay">
@@ -51,16 +51,16 @@ Used In File(s): \code\game\supplyshuttle.dm
 						<div class="line">
 							<div class="statusValue">
 								<div class="supplycrate">{{:helper.link(value.name, null, value.command1)}}</div>
-								{{:helper.link('#', null, value.command2, null)}}{{:helper.link('C', null, value.command3, null)}} <div style="float: right; margin-right: 20px;">{{:value.cost}} points</div>
+								{{:helper.link('#', null, value.command2, null)}}{{:helper.link('С', null, value.command3, null)}} <div style="float: right; margin-right: 20px;">{{:value.cost}} очков</div>
 							</div>
 						</div>
 					{{/for}}
 				{{else}}
 					<div class="item">
-						<b>Contents of {{:data.contents_name}}</b>
+						<b>Содержимое {{:data.contents_name}}</b>
 					</div>
 					{{:data.contents}}
-					{{:helper.link('Return', 'arrow-left', {'contents' : 1})}}
+					{{:helper.link('Назад', 'arrow-left', {'contents' : 1})}}
 				{{/if}}
 			</div>
 		</div>
@@ -68,42 +68,42 @@ Used In File(s): \code\game\supplyshuttle.dm
 </div>
 <div style="float: left; width: 30%; margin-bottom: 10px;">
 	<div class="itemLabel">
-		Categories
+		Категории
 	</div>
 	{{for data.categories}}
 		<div class="line">
-			{{:helper.link(value.name, 'gear', {'last_viewed_group':value.category}, (data.last_viewed_group==value.category) ? 'linkOn' : '', 'category')}}	
+			{{:helper.link(value.name, 'gear', {'last_viewed_group':value.category}, (data.last_viewed_group==value.category) ? 'linkOn' : '', 'category')}}
 		</div>
 	{{/for}}
 </div>
 <div class="item">
 	<div class="itemLabel">
-		Supply Orders
+		Заказы на поставку
 	</div>
 	<div class="itemContentWide">
 		<div class="statusDisplay">
 			<div class="line" style="overflow-y: auto; overflow-x: hidden; scrollbar-base-color: #336699; scrollbar-arrow-color: #ffffff; height: 140px;">
-				<u><b>Requests</b></u>
+				<u><b>Запросы</b></u>
 				<br>
 				{{for data.requests}}
 					<div class="line">
-						#{{:value.ordernum}} - {{:value.supply_type}} for {{:value.orderedby}}
+						#{{:value.ordernum}} - {{:value.supply_type}} для {{:value.orderedby}}
 						{{if value.owned == 1}}
-							{{:helper.link('CANCEL', null, value.command1, null)}}
+							{{:helper.link('ОТМЕНИТЬ', null, value.command1, null)}}
 						{{/if}}
 					</div>
 				{{empty}}
-					No active requests.
+					Нет активных запросов.
 				{{/for}}
 				<br>
-				<u><b>Orders</b></u>
+				<u><b>Заказы</b></u>
 				<br>
 				{{for data.orders}}
 					<div class="line">
-						#{{:value.ordernum}} - {{:value.supply_type}} for {{:value.orderedby}}
+						#{{:value.ordernum}} - {{:value.supply_type}} для {{:value.orderedby}}
 					</div>
 				{{empty}}
-					No confirmed orders.
+					Нет подтверждённых заказов.
 				{{/for}}
 			</div>
 		</div>

@@ -23,7 +23,7 @@ Used In File(s): \code\game\objects\items\devices\PDA\core_apps.dm
 
 <div class="item">
 	<div class="itemLabelNarrow">
-		Owner:
+		Владелец:
 	</div>
 	<div class="itemContent">
 		<span class="average">{{:data.owner}}, {{:data.ownjob}}</span>
@@ -34,12 +34,12 @@ Used In File(s): \code\game\objects\items\devices\PDA\core_apps.dm
 		ID:
 	</div>
 	<div class="itemContent">
-		{{:helper.link('Update PDA Info', 'refresh', {'choice' : "UpdateInfo"}, data.idInserted ? null : 'disabled', 'pdalink fixedLeftWide')}}
+		{{:helper.link('Обновить инфо о КПК', 'refresh', {'choice' : "UpdateInfo"}, data.idInserted ? null : 'disabled', 'pdalink fixedLeftWide')}}
 	</div>
 </div>
 
 <div class="item">
-	<H2>Functions</H2>
+	<H2>Функции</H2>
 </div>
 {{for data.categories : cat : i}}
 	<div class="item mainmenu">
@@ -66,11 +66,11 @@ Used In File(s): \code\game\objects\items\devices\PDA\core_apps.dm
 {{if data.pai}}
 	<div class="item">
 		<div class = "itemLabelNarrow">
-			<b>PAI Utilities</b>:
+			<b>Утилиты пИИ</b>:
 		</div>
 		<div class = "itemContent">
-			{{:helper.link('Configuration', 'gear', {'choice' : "pai", 'option' : "1"}, null, 'pdalink fixedLeft')}}
-			{{:helper.link('Eject pAI', 'eject', {'choice' : "pai", 'option' : "2"}, null, 'pdalink fixedLeft')}}
+			{{:helper.link('Конфигурация', 'gear', {'choice' : "pai", 'option' : "1"}, null, 'pdalink fixedLeft')}}
+			{{:helper.link('Извлечь пИИ', 'eject', {'choice' : "pai", 'option' : "2"}, null, 'pdalink fixedLeft')}}
 		</div>
 	</div>
 {{/if}}

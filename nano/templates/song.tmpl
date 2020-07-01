@@ -5,16 +5,16 @@ Used In File(s): \code\game\objects\structures\musician.dm
 
 <div class="block">
 	<div class="item">
-		<div class="itemLabel"><b>Playback</b></div>
+		<div class="itemLabel"><b>Воспроизведение</b></div>
 		<div class="itemContent">
-			{{:helper.link('New', 'file', {'newsong': 1})}}
-			{{:helper.link('Import', 'folder-open', {'import': 1})}}
-			{{:helper.link('Play', 'play', {'play': 1}, data.lines.length > 0 ? (data.playing ? 'selected' : null) : 'disabled')}}
-			{{:helper.link('Stop', 'stop', {'stop': 1}, !data.playing ? 'selected' : null)}}
+			{{:helper.link('Новый', 'file', {'newsong': 1})}}
+			{{:helper.link('Импорт', 'folder-open', {'import': 1})}}
+			{{:helper.link('Играть', 'play', {'play': 1}, data.lines.length > 0 ? (data.playing ? 'selected' : null) : 'disabled')}}
+			{{:helper.link('Стоп', 'stop', {'stop': 1}, !data.playing ? 'selected' : null)}}
 		</div>
 	</div>
 	<div class="item">
-		<div class="itemLabel">Repeat Song:</div>		
+		<div class="itemLabel">Повторы песни:</div>
 		{{:helper.link('-', null, {'repeat' : -10}, data.repeat > 0 && !data.playing ? null : 'disabled')}}
 		{{:helper.link('-', null, {'repeat' : -1}, data.repeat > 0 && !data.playing ? null : 'disabled')}}
 		<span style="float: left; width: 80px; text-align: center;">{{:data.repeat}}</span>
@@ -22,7 +22,7 @@ Used In File(s): \code\game\objects\structures\musician.dm
 		{{:helper.link('+', null, {'repeat' : 10}, data.repeat < data.maxRepeat && !data.playing ? null : 'disabled')}}
 	</div>
 	<div class="item">
-		<div class="itemLabel">Tempo:</div>		
+		<div class="itemLabel">Темпо:</div>
 		{{:helper.link('-', null, {'tempo' : 10}, data.tempo < data.maxTempo ? null : 'disabled')}}
 		{{:helper.link('-', null, {'tempo' : 1}, data.tempo < data.maxTempo ? null : 'disabled')}}
 		<span style="float: left; width: 80px; text-align: center;">{{:helper.round(600 / data.tempo)}} BPM</span>
@@ -31,29 +31,29 @@ Used In File(s): \code\game\objects\structures\musician.dm
 	</div>
 </div>
 
-<h3>Editor</h3>
+<h3>Редактор</h3>
 <div class="striped">
 	{{for data.lines}}
 		<div class="line" style="padding:4px">
 			<div class="floatLeft highlight">{{:index + 1}}:&nbsp;</div>
 			<div class="floatRight">
-				{{:helper.link('Edit', 'pencil', {'modifyline': index+1}, data.playing ? 'disabled' : null)}}
-				{{:helper.link('Insert', 'arrow-up', {'insertline': index+1}, data.playing ? 'disabled' : null)}}
-				{{:helper.link('Delete', 'trash', {'deleteline': index+1}, data.playing ? 'disabled' : null)}}
+				{{:helper.link('Редактировать', 'pencil', {'modifyline': index+1}, data.playing ? 'disabled' : null)}}
+				{{:helper.link('Вставить', 'arrow-up', {'insertline': index+1}, data.playing ? 'disabled' : null)}}
+				{{:helper.link('Удалить', 'trash', {'deleteline': index+1}, data.playing ? 'disabled' : null)}}
 			</div>
 			<div>{{:value}}</div>
 		</div>
 	{{/for}}
 </div>
 <div class="floatRight">
-	{{:helper.link('Add Line', 'arrow-down', {'insertline': data.lines.length + 1}, data.playing ? 'disabled' : null)}}
+	{{:helper.link('Добавить строчку', 'arrow-down', {'insertline': data.lines.length + 1}, data.playing ? 'disabled' : null)}}
 </div>
 <div class="clearBoth"></div>
 <hr>
 
 <div class="item">
 	<div class="itemLabelNarrow">
-		{{:helper.link('Help', data.help ? 'close' : 'question', {'help': 1})}}
+		{{:helper.link('Помощь', data.help ? 'close' : 'question', {'help': 1})}}
 	</div>
 	<div class="itemContent">
 		{{if data.help}}

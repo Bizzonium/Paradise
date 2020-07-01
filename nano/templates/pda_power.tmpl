@@ -1,6 +1,6 @@
 {{if !data.records.powerconnected}}
 	<div class="item">
-		<div class="itemLabel">Select a power monitor:</div>
+		<div class="itemLabel">Выберите монитор питания:</div>
 	</div>
 	{{for data.records.powermonitors}}
 		<div class="item">
@@ -9,39 +9,39 @@
 	{{/for}}
 {{else}}
 	<div class="item">
-		<div class="itemLabelNarrow">
-			<b>Total Power:</b>
+		<div class="itemLabel">
+			<b>Суммарная мощность:</b>
 		</div>
 		<div class="itemContent">
-			<span class="average">{{:data.records.poweravail}} W</span>
+			<span class="average">{{:data.records.poweravail}} Вт</span>
 		</div>
 	</div>
 	<div class="item">
-		<div class="itemLabelNarrow">
-			<b>Total Load:</b>
+		<div class="itemLabel">
+			<b>Суммарная нагрузка:</b>
 		</div>
 		<div class="itemContent">
-			<span class="average">{{:data.records.powerload}} W</span>
+			<span class="average">{{:data.records.powerload}} Вт</span>
 		</div>
 	</div>
 	<div class="item">
-		<div class="itemLabelNarrow">
-			<b>Total Demand:</b>
+		<div class="itemLabel">
+			<b>Суммарный спрос:</b>
 		</div>
 		<div class="itemContent">
-			<span class="average">{{:data.records.powerdemand}} W</span>
+			<span class="average">{{:data.records.powerdemand}} Вт</span>
 		</div>
 	</div>
 	<div class="item">
 		<table class="curvedEdges" style="text-align: center;"><tbody>
-			<tr><th>Area</th><th>Equip.</th><th>Lighting</th><th>Environ.</th><th>Cell</th><th>Load</th></tr>
-			{{for data.records.apcs}}		
+			<tr><th>Зона</th><th>Оборуд.</th><th>Освещение</th><th>Окружен.</th><th>Аккум.</th><th>Нагрузка</th></tr>
+			{{for data.records.apcs}}
 				<tr><td style="text-align: left; font-weight: bold;">{{:value.Name}}</td>
-					{{:helper.string('<td width="55px" bgcolor="{0}">{1}</td>', value.Equipment == "On" || value.Equipment == "AOn" ? '#4f7529' : '#8f1414', value.Equipment)}}
-					{{:helper.string('<td width="55px" bgcolor="{0}">{1}</td>', value.Lights == "On" || value.Lights == "AOn" ? '#4f7529' : '#8f1414', value.Lights)}}
-					{{:helper.string('<td width="55px" bgcolor="{0}">{1}</td>', value.Environment == "On" || value.Environment == "AOn" ? '#4f7529' : '#8f1414', value.Environment)}}
-					{{:helper.string('<td style="text-align: center;" width="65px" bgcolor="{0}">{1}{2}</td>', value.CellStatus == "F" ? '#4f7529' : value.CellStatus == "C" ? '#cd6500' : '#8f1414', value.CellStatus == "M" ? 'No Cell' : value.CellPct + '%', value.CellStatus == "M" ? '' : ' (' + value.CellStatus + ')')}}
-					<td width="55px">{{:value.Load}}W</td>
+					{{:helper.string('<td width="55px" bgcolor="{0}">{1}</td>', value.Equipment == "Вкл" || value.Equipment == "АВкл" ? '#4f7529' : '#8f1414', value.Equipment)}}
+					{{:helper.string('<td width="55px" bgcolor="{0}">{1}</td>', value.Lights == "Вкл" || value.Lights == "АВкл" ? '#4f7529' : '#8f1414', value.Lights)}}
+					{{:helper.string('<td width="55px" bgcolor="{0}">{1}</td>', value.Environment == "Вкл" || value.Environment == "АВкл" ? '#4f7529' : '#8f1414', value.Environment)}}
+					{{:helper.string('<td style="text-align: center;" width="65px" bgcolor="{0}">{1}{2}</td>', value.CellStatus == "П" ? '#4f7529' : value.CellStatus == "З" ? '#cd6500' : '#8f1414', value.CellStatus == "О" ? 'Нет' : value.CellPct + '%', value.CellStatus == "О" ? '' : ' (' + value.CellStatus + ')')}}
+					<td width="55px">{{:value.Load}}Вт</td>
 				</tr>
 			{{/for}}
 		</tbody></table>

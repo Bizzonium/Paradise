@@ -4,30 +4,30 @@ code/modules/mob/living/silicon/pai/software_modules.dm
 
 <div class="item">
 	<div class="itemLabel">
-		Receiver:
+		Приёмник:
 	</div>
 	<div class="itemContent">
 		{{if data.receiver_off}}
-			{{:helper.link("On",  '', {"stopic":"messenger", "toggler":1})}}
-			{{:helper.link("Off", '', {"stopic":"messenger", "toggler":2}, 'selected')}}
+			{{:helper.link("Вкл",  '', {"stopic":"messenger", "toggler":1})}}
+			{{:helper.link("Выкл", '', {"stopic":"messenger", "toggler":2}, 'selected')}}
 		{{else}}
-			{{:helper.link("On",  '', {"stopic":"messenger", "toggler":1}, 'selected')}}
-			{{:helper.link("Off", '', {"stopic":"messenger", "toggler":2})}}
+			{{:helper.link("Вкл",  '', {"stopic":"messenger", "toggler":1}, 'selected')}}
+			{{:helper.link("Выкл", '', {"stopic":"messenger", "toggler":2})}}
 		{{/if}}
 	</div>
 </div>
 
 <div class="item">
 	<div class="itemLabel">
-		Ringer:
+		Звуки:
 	</div>
 	<div class="itemContent">
 		{{if data.ringer_off}}
-			{{:helper.link("On",  '', {"stopic":"messenger", "ringer":1})}}
-			{{:helper.link("Off", '', {"stopic":"messenger", "ringer":2}, 'selected')}}
+			{{:helper.link("Вкл",  '', {"stopic":"messenger", "ringer":1})}}
+			{{:helper.link("Выкл", '', {"stopic":"messenger", "ringer":2}, 'selected')}}
 		{{else}}
-			{{:helper.link("On",  '', {"stopic":"messenger", "ringer":1}, 'selected')}}
-			{{:helper.link("Off", '', {"stopic":"messenger", "ringer":2})}}
+			{{:helper.link("Вкл",  '', {"stopic":"messenger", "ringer":1}, 'selected')}}
+			{{:helper.link("Выкл", '', {"stopic":"messenger", "ringer":2})}}
 		{{/if}}
 	</div>
 </div>
@@ -35,27 +35,27 @@ code/modules/mob/living/silicon/pai/software_modules.dm
 {{for data.pdas}}
 	<div class="item">
 		{{:helper.link(value.name, '', {"stopic":"messenger", "select":value.owner})}}
-		{{:helper.link("Quick Message", '', {"stopic":"messenger", "target":value.ref})}}
+		{{:helper.link("Быстрое сообщение", '', {"stopic":"messenger", "target":value.ref})}}
 	</div>
 {{/for}}
 <hr/>
 {{if data.current_ref}}
 	<div class="item">
 		<div class="itemLabel">
-			Selected PDA:
+			Выбранный PDA:
 		</div>
 		<div class="itemContent">
 			<div style="float: left; width: 80px; text-align: center;">{{:data.current_name}}</div>
-			{{:helper.link("Send Message", '', {"stopic":"messenger", "target":data.current_ref})}}
+			{{:helper.link("Отправить сообщение", '', {"stopic":"messenger", "target":data.current_ref})}}
 		</div>
 	</div>
 {{else data.current_name}}
 	<div class="item">
 		<div class="itemLabel">
-			Selected PDA:
+			Выбранный PDA:
 		</div>
 		<div class="itemContent">
-			{{:data.current_name}} (Cannot send!)
+			{{:data.current_name}} (Невозможно отправить!)
 		</div>
 	</div>
 {{/if}}
@@ -64,9 +64,9 @@ code/modules/mob/living/silicon/pai/software_modules.dm
 <div class="item">
 	<div class="itemLabel">
 		{{if value.sent}}
-			To {{:value.target}}:
+			Получатель {{:value.target}}:
 		{{else}}
-			From {{:value.target}}:
+			Отправитель {{:value.target}}:
 		{{/if}}
 	</div>
 	<div class="itemContent">
@@ -76,5 +76,5 @@ code/modules/mob/living/silicon/pai/software_modules.dm
 {{/for}}
 
 {{if data.current_name}}
-	{{:helper.link("Clear Screen", '', {"stopic":"messenger", "select":"*NONE*"})}}
+	{{:helper.link("Очистить экран", '', {"stopic":"messenger", "select":"*NONE*"})}}
 {{/if}}

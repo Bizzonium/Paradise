@@ -1,4 +1,4 @@
-<!-- 
+<!--
 Title: Request Console
 Used In File(s): \code\game\machinery\requests_console.dm
 
@@ -15,138 +15,138 @@ Used In File(s): \code\game\machinery\requests_console.dm
  -->
 
 {{if data.screen == 1}}
-	<div class="item"><h3>Request assistance from another department.</h3></div>
+	<div class="item"><h3>Запросить помощь другого отдела</h3></div>
 	<table class="block">
 	{{for data.assist_dept}}
 		{{if value != data.department}}
 			<tr>
 				<td><div class="itemLabelWidest" align="right">{{:value}} -</div></td>
-				<td><div class="item">{{:helper.link('Message', null, { 'write' : value , 'priority' : 1 })}}</div></td>
-				<td><div class="item">{{:helper.link('High Priority', null, { 'write' : value , 'priority' : 2 })}}</div></td>
+				<td><div class="item">{{:helper.link('Сообщение', null, { 'write' : value , 'priority' : 1 })}}</div></td>
+				<td><div class="item">{{:helper.link('Высокоприоритетное', null, { 'write' : value , 'priority' : 2 })}}</div></td>
 			</tr>
 		{{/if}}
 	{{empty}}
-		<tr><td><div class="itemLabel">There are no available departments to request assistance from.</div></td></tr>
+		<tr><td><div class="itemLabel">Нет доступных отделов для запроса помощи.</div></td></tr>
 	{{/for}}
 	</table><br>
-	<div class="item">{{:helper.link('Back', 'arrow-left', { 'setScreen' : 0 })}}</div>
+	<div class="item">{{:helper.link('Назад', 'arrow-left', { 'setScreen' : 0 })}}</div>
 {{else data.screen == 2}}
-	<div class="item"><h3>Request supplies from another department.</h3></div>
+	<div class="item"><h3>Запросить поставку из другого отдела</h3></div>
 	<table class="block">
 	{{for data.supply_dept}}
 		{{if value != data.department}}
 			<tr>
 				<td><div class="itemLabelWidest" align="right">{{:value}} - </div></td>
-				<td><div class="item">{{:helper.link('Message', null, { 'write' : value , 'priority' : 1 })}}</div></td>
-				<td><div class="item">{{:helper.link('High Priority', null, { 'write' : value , 'priority' : 2 })}}</div></td>
+				<td><div class="item">{{:helper.link('Сообщение', null, { 'write' : value , 'priority' : 1 })}}</div></td>
+				<td><div class="item">{{:helper.link('Высокоприоритетное', null, { 'write' : value , 'priority' : 2 })}}</div></td>
 			</tr>
 		{{/if}}
 	{{empty}}
-		<tr><td><div class="itemLabel">There are no available departments to request supplies from.</div></td></tr>
+		<tr><td><div class="itemLabel">Нет доступных отделов для запроса на поставку.</div></td></tr>
 	{{/for}}
 	</table><br>
-	<div class="item">{{:helper.link('Back', 'arrow-left', { 'setScreen' : 0 })}}</div>
+	<div class="item">{{:helper.link('Назад', 'arrow-left', { 'setScreen' : 0 })}}</div>
 {{else data.screen == 3}}
-	<div class="item"><h3>Relay info to another department.</h3></div>
+	<div class="item"><h3>Передать информацию другому отделу.</h3></div>
 	<table class="block">
 	{{for data.info_dept}}
 		{{if value != data.department}}
 			<tr>
 				<td><div class="itemLabelWidest" align="right">{{:value}} -</div></td>
-				<td width=70px><div class="item">{{:helper.link('Message', null, { 'write' : value , 'priority' : 1 })}}</div></td>
-				<td width=90px><div class="item">{{:helper.link('High Priority', null, { 'write' : value , 'priority' : 2 })}}</div></td>
+				<td width=70px><div class="item">{{:helper.link('Сообщение', null, { 'write' : value , 'priority' : 1 })}}</div></td>
+				<td width=90px><div class="item">{{:helper.link('Высокоприоритетное', null, { 'write' : value , 'priority' : 2 })}}</div></td>
 			</tr>
 		{{/if}}
 	{{empty}}
-		<tr><td><div class="itemLabel">There are no available departments to relay information to.</div></td></tr>
+		<tr><td><div class="itemLabel">Нет доступных отделов для передачи информации.</div></td></tr>
 	{{/for}}
 	</table><br>
-	<div class="item">{{:helper.link('Back', 'arrow-left', { 'setScreen' : 0 })}}</div>
+	<div class="item">{{:helper.link('Назад', 'arrow-left', { 'setScreen' : 0 })}}</div>
 {{else data.screen == 4}}
-	<div class="item"><b>Message sent successfully.</b></div>
-	<div class="item">{{:helper.link('Continue', 'arrow-right', { 'setScreen' : 0 })}}</div>
+	<div class="item"><b>Сообщение успешно отправлено.</b></div>
+	<div class="item">{{:helper.link('Продолжить', 'arrow-right', { 'setScreen' : 0 })}}</div>
 {{else data.screen == 5}}
-	<div class="item"><b>An Error occured. Message not sent.</b></div>
-	<div class="item">{{:helper.link('Continue', 'arrow-right', { 'setScreen' : 0 })}}</div>
+	<div class="item"><b>Возникла ошибка. Сообщение не отправлено.</b></div>
+	<div class="item">{{:helper.link('Продолжить', 'arrow-right', { 'setScreen' : 0 })}}</div>
 {{else data.screen == 6}}
 	<div class="statusDisplay" style="overflow: auto;">
 		{{for data.message_log}}
 			<div class="item">{{:value}}</div>
 		{{empty}}
-			<div class="item">No messages have been recieved.</div>
+			<div class="item">Входящие сообщения отсутствуют.</div>
 		{{/for}}
 	</div>
-	<div class="item">{{:helper.link('Back', 'arrow-left', { 'setScreen' : 0 })}}</div>
+	<div class="item">{{:helper.link('Назад', 'arrow-left', { 'setScreen' : 0 })}}</div>
 {{else data.screen == 7}}
-	<div class="item"><h2>Message Authentication</h2></div><br>
+	<div class="item"><h2>Аутентификация сообещния</h2></div><br>
 	<div class="statusDisplay" style="overflow: auto;">
-		<div class="item"><b>Message for {{:data.recipient}}:</b> {{:data.message}}</div>
-		<div class="item"><b>Validated by:</b> {{:data.msgVerified}}</div>
-		<div class="item"><b>Stamped by:</b> {{:data.msgStamped}}</div>
+		<div class="item"><b>Сообщение для {{:data.recipient}}:</b> {{:data.message}}</div>
+		<div class="item"><b>Утверждено:</b> {{:data.msgVerified}}</div>
+		<div class="item"><b>Проштамповано:</b> {{:data.msgStamped}}</div>
 	</div>
 	<div class="item">
-		{{:helper.link('Send Message', 'arrow-right', { 'department' : data.recipient })}}
-		{{:helper.link('Back', 'arrow-left', { 'setScreen' : 0 })}}
+		{{:helper.link('Отправить сообщение', 'arrow-right', { 'department' : data.recipient })}}
+		{{:helper.link('Назад', 'arrow-left', { 'setScreen' : 0 })}}
 	</div>
 {{else data.screen == 8}}
-	<div class="item"><h2>Station wide announcement</h2></div>
-	<div class="item"><b>Message:</b> {{:data.message}} {{:helper.link('Write Message', 'pencil', { 'writeAnnouncement' : 1 })}}</div>
+	<div class="item"><h2>Объявление на всю станцию</h2></div>
+	<div class="item"><b>Объявление:</b> {{:data.message}} {{:helper.link('Написать сообщение', 'pencil', { 'writeAnnouncement' : 1 })}}</div>
 	<br>
 	{{if data.announceAuth}}
-		<div class="item"><b>ID verified. Authentication accepted.</b></div>
+		<div class="item"><b>ID верифицировано. Аутентификация принята.</b></div>
 	{{else}}
-		<div class="item">Swipe your ID card to authenticate yourself.</div>
+		<div class="item">Проведите вашу ID карту для аутентификации.</div>
 	{{/if}}
 	<br>
 	<div class="item">
-		{{:helper.link('Announce', 'signal', { 'sendAnnouncement' : 1 }, (data.announceAuth && data.message) ? null : 'disabled' )}}
-		{{:helper.link('Back', 'arrow-left', { 'setScreen' : 0 })}}
+		{{:helper.link('Объявить', 'signal', { 'sendAnnouncement' : 1 }, (data.announceAuth && data.message) ? null : 'disabled' )}}
+		{{:helper.link('Назад', 'arrow-left', { 'setScreen' : 0 })}}
 	</div>
 {{else data.screen == 9}}
-	<div class="item"><h3>Print a Shipping Label.</h3></div>
+	<div class="item"><h3>Печать почтовой коробки.</h3></div>
 	<div class="statusDisplay" style="overflow: auto;">
-		<div class="item"><b>Destination:</b> {{:data.shipDest}}</div>
-		<div class="item"><b>Validated by:</b> {{:data.msgVerified}}</div>
-		<div class="item">{{:helper.link('Print Label', null, { 'printLabel' : 1 })}}</div>
+		<div class="item"><b>Место назначения:</b> {{:data.shipDest}}</div>
+		<div class="item"><b>Утверждено:</b> {{:data.msgVerified}}</div>
+		<div class="item">{{:helper.link('Печать коробки', null, { 'printLabel' : 1 })}}</div>
 	</div>
 	<table class="block">
 	{{for data.ship_dept}}
 		<tr>
 			<td><div class="itemLabelWidest" align="right">{{:value}} -</div></td>
-			<td><div class="item">{{:helper.link('Select', null, { 'shipSelect' : value })}}</div></td>
+			<td><div class="item">{{:helper.link('Выбрать', null, { 'shipSelect' : value })}}</div></td>
 		</tr>
 	{{empty}}
-		<tr><td><div class="itemLabel">There are no available shipping destinations.</div></td></tr>
+		<tr><td><div class="itemLabel">Нет доступных почтовых направлений.</div></td></tr>
 	{{/for}}
 	</table><br>
-	<div class="item">{{:helper.link('Back', 'arrow-left', { 'setScreen' : 0 })}}</div>
+	<div class="item">{{:helper.link('Назад', 'arrow-left', { 'setScreen' : 0 })}}</div>
 {{else data.screen == 10}}
 	<div class="statusDisplay" style="overflow: auto;">
 		{{for data.shipping_log}}
 			<div class="item">{{:value}}</div>
 		{{empty}}
-			<div class="item">No shipping labels have been printed.</div>
+			<div class="item">Нет распечатанных почтовых коробок.</div>
 		{{/for}}
 	</div>
-	<div class="item">{{:helper.link('Back', 'arrow-left', { 'setScreen' : 0 })}}</div>
+	<div class="item">{{:helper.link('Назад', 'arrow-left', { 'setScreen' : 0 })}}</div>
 {{else}}
 	{{if data.newmessagepriority == 1}}
-		<div class="item"><font color='red'>There are new messages</font></div>
+		<div class="item"><font color='red'>Пришли новые сообщения</font></div>
 	{{else data.newmessagepriority == 2}}
-		<div class="item"><font color='red'><b>NEW PRIORITY MESSAGES</b></font></div>
+		<div class="item"><font color='red'><b>НОВОЕ ПРИОРИТЕТНЫЕ СООБЩЕНИЯ</b></font></div>
 	{{/if}}
-	<div class="item">{{:helper.link('View Messages', data.newmessagepriority ? 'envelope' : 'envelope-o', { 'setScreen' : 6 })}}</div>
+	<div class="item">{{:helper.link('Посмотреть сообщения', data.newmessagepriority ? 'envelope' : 'envelope-o', { 'setScreen' : 6 })}}</div>
 	<br>
-	<div class="item">{{:helper.link('Request Assistance', 'gear', { 'setScreen' : 1 })}}</div>
-	<div class="item">{{:helper.link('Request Supplies', 'gear', { 'setScreen' : 2 })}}</div>
-	<div class="item">{{:helper.link('Relay Anonymous Information', 'gear', { 'setScreen' : 3})}}</div>
+	<div class="item">{{:helper.link('Запросить помощь', 'gear', { 'setScreen' : 1 })}}</div>
+	<div class="item">{{:helper.link('Запросить поставку', 'gear', { 'setScreen' : 2 })}}</div>
+	<div class="item">{{:helper.link('Передать анонимную информацию', 'gear', { 'setScreen' : 3})}}</div>
 	<br>
-	<div class="item">{{:helper.link('Print Shipping Label', 'gear', { 'setScreen' : 9})}}</div>
-	<div class="item">{{:helper.link('View Shipping Logs', 'gear', { 'setScreen' : 10})}}</div>
+	<div class="item">{{:helper.link('Печать почтовой коробки', 'gear', { 'setScreen' : 9})}}</div>
+	<div class="item">{{:helper.link('Посмотреть почтовые логи', 'gear', { 'setScreen' : 10})}}</div>
 	<br>
 	{{if data.announcementConsole}}
-		<div class="item">{{:helper.link('Send Station-wide Announcement', 'signal', { 'setScreen' : 8})}}</div>
+		<div class="item">{{:helper.link('Сделать объявление на всю станцию', 'signal', { 'setScreen' : 8})}}</div>
 		<br>
 	{{/if}}
-	<div class="item">{{:helper.link(data.silent ? 'Speaker OFF' : 'Speaker ON', data.silent ? 'volume-off' : 'volume-up', { 'toggleSilent' : 1})}}</div>
+	<div class="item">{{:helper.link(data.silent ? 'Динамики ВЫКЛ' : 'Динамики ВКЛ', data.silent ? 'volume-off' : 'volume-up', { 'toggleSilent' : 1})}}</div>
 {{/if}}

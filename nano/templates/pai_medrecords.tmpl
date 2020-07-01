@@ -12,75 +12,75 @@ code/modules/mob/living/silicon/pai/software_modules.dm
 <hr/>
 {{if data.general}}
 	<div class="item">
-		<div class="itemLabel">Name</div>
+		<div class="itemLabel">Имя</div>
 		<div class="itemContent">{{:data.general.name}}</div>
 	</div>
 	<div class="item">
-		<div class="itemLabel">Record ID</div>
+		<div class="itemLabel">ID записи</div>
 		<div class="itemContent">{{:data.general.id}}</div>
 	</div>
 	<div class="item">
-		<div class="itemLabel">Sex</div>
+		<div class="itemLabel">Пол</div>
 		<div class="itemContent">{{:data.general.sex}}</div>
 	</div>
 	<div class="item">
-		<div class="itemLabel">Species</div>
+		<div class="itemLabel">Раса</div>
 		<div class="itemContent">{{:data.general.species}}</div>
 	</div>
 	<div class="item">
-		<div class="itemLabel">Age</div>
+		<div class="itemLabel">Возраст</div>
 		<div class="itemContent">{{:data.general.age}}</div>
 	</div>
 	<div class="item">
-		<div class="itemLabel">Rank</div>
+		<div class="itemLabel">Ранг</div>
 		<div class="itemContent">{{:data.general.rank}}</div>
 	</div>
 	<div class="item">
-		<div class="itemLabel">Fingerprint</div>
+		<div class="itemLabel">Отпечаток</div>
 		<div class="itemContent">{{:data.general.fingerprint}}</div>
 	</div>
 	<div class="item">
-		<div class="itemLabel">Physical Status</div>
+		<div class="itemLabel">Физический статус</div>
 		<div class="itemContent">{{:data.general.p_stat}}</div>
 	</div>
 	<div class="item">
-		<div class="itemLabel">Mental Status</div>
+		<div class="itemLabel">Ментальный статус</div>
 		<div class="itemContent">{{:data.general.m_stat}}</div>
 	</div>
 {{/if}}
 {{if data.medical}}
 	<div class="item">
-		<div class="itemLabel">Blood Type</div>
+		<div class="itemLabel">Группа крови</div>
 		<div class="itemContent">{{:data.medical.b_type}}</div>
 	</div>
 	<div class="item">
-		<div class="itemLabel">Minor Disabilities</div>
+		<div class="itemLabel">Незначительные ограничения</div>
 		<div class="itemContent">{{:data.medical.mi_dis}}</div>
 		<div class="itemContent">{{:data.medical.mi_dis_d}}</div>
 	</div>
 	<div class="item">
-		<div class="itemLabel">Major Disabilities</div>
+		<div class="itemLabel">Серъёзные ограничения</div>
 		<div class="itemContent">{{:data.medical.ma_dis}}</div>
 		<div class="itemContent">{{:data.medical.ma_dis_d}}</div>
 	</div>
 	<div class="item">
-		<div class="itemLabel">Allergies</div>
+		<div class="itemLabel">Аллергии</div>
 		<div class="itemContent">{{:data.medical.alg}}</div>
 		<div class="itemContent">{{:data.medical.alg_d}}</div>
 	</div>
 	<div class="item">
-		<div class="itemLabel">Current Diseases</div>
+		<div class="itemLabel">Текущие заболевания</div>
 		<div class="itemContent">{{:data.medical.cdi}}</div>
 		<div class="itemContent">{{:data.medical.cdi_d}}</div>
 	</div>
 	<div class="item">
-		<div class="itemLabel">Important Notes</div>
+		<div class="itemLabel">Важные замечания</div>
 		<div class="itemContent">{{:data.medical.notes}}</div>
 	</div>
 {{/if}}
 
 {{if data.could_not_find}}
 	<div class="item">
-		Failed to find some records; the information above may be incomplete or missing.
+		Попытка найти записи провалилась; информация выше может быть неполной или отсутствовать.
 	</div>
 {{/if}}

@@ -31,7 +31,7 @@
 		.manifest tr.alt td {[monochrome?"border-top-width: 2px":"background-color: #DEF"]}
 	</style></head>
 	<table class="manifest" width='350px'>
-	<tr class='head'><th>Name</th><th>Rank</th><th>Activity</th></tr>
+	<tr class='head'><th>Имя</th><th>Ранг</th><th>Активность</th></tr>
 	"}
 	var/even = 0
 	// sort mobs
@@ -45,7 +45,7 @@
 				if(M.real_name == name && M.client && M.client.inactivity <= 10 * 60 * 10)
 					active = 1
 					break
-			isactive[name] = active ? "Active" : "Inactive"
+			isactive[name] = active ? "Активный" : "Неактивный"
 		else
 			isactive[name] = t.fields["p_stat"]
 		var/department = 0
@@ -76,47 +76,47 @@
 		if(!department && !(name in heads))
 			misc[name] = rank
 	if(heads.len > 0)
-		dat += "<tr><th colspan=3>Heads</th></tr>"
+		dat += "<tr><th colspan=3>Главы</th></tr>"
 		for(var/name in heads)
 			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[heads[name]]</td><td>[isactive[name]]</td></tr>"
 			even = !even
 	if(sec.len > 0)
-		dat += "<tr><th colspan=3>Security</th></tr>"
+		dat += "<tr><th colspan=3>Служба Безопасности</th></tr>"
 		for(var/name in sec)
 			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[sec[name]]</td><td>[isactive[name]]</td></tr>"
 			even = !even
 	if(eng.len > 0)
-		dat += "<tr><th colspan=3>Engineering</th></tr>"
+		dat += "<tr><th colspan=3>Инженерный</th></tr>"
 		for(var/name in eng)
 			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[eng[name]]</td><td>[isactive[name]]</td></tr>"
 			even = !even
 	if(med.len > 0)
-		dat += "<tr><th colspan=3>Medical</th></tr>"
+		dat += "<tr><th colspan=3>Медицинский</th></tr>"
 		for(var/name in med)
 			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[med[name]]</td><td>[isactive[name]]</td></tr>"
 			even = !even
 	if(sci.len > 0)
-		dat += "<tr><th colspan=3>Science</th></tr>"
+		dat += "<tr><th colspan=3>Научный</th></tr>"
 		for(var/name in sci)
 			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[sci[name]]</td><td>[isactive[name]]</td></tr>"
 			even = !even
 	if(ser.len > 0)
-		dat += "<tr><th colspan=3>Service</th></tr>"
+		dat += "<tr><th colspan=3>Сервис</th></tr>"
 		for(var/name in ser)
 			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[ser[name]]</td><td>[isactive[name]]</td></tr>"
 			even = !even
 	if(sup.len > 0)
-		dat += "<tr><th colspan=3>Supply</th></tr>"
+		dat += "<tr><th colspan=3>Снабжение</th></tr>"
 		for(var/name in sup)
 			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[sup[name]]</td><td>[isactive[name]]</td></tr>"
 			even = !even
 	if(bot.len > 0)
-		dat += "<tr><th colspan=3>Silicon</th></tr>"
+		dat += "<tr><th colspan=3>Кремниевые</th></tr>"
 		for(var/name in bot)
 			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[bot[name]]</td><td>[isactive[name]]</td></tr>"
 			even = !even
 	if(misc.len > 0)
-		dat += "<tr><th colspan=3>Miscellaneous</th></tr>"
+		dat += "<tr><th colspan=3>Разное</th></tr>"
 		for(var/name in misc)
 			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[misc[name]]</td><td>[isactive[name]]</td></tr>"
 			even = !even
@@ -265,7 +265,7 @@ GLOBAL_VAR_INIT(record_id_num, 1001)
 		else if(H.job)
 			assignment = H.job
 		else
-			assignment = "Unassigned"
+			assignment = "Нераспределенный"
 
 		var/id = num2hex(GLOB.record_id_num++, 6)
 
@@ -278,8 +278,8 @@ GLOBAL_VAR_INIT(record_id_num, 1001)
 		G.fields["rank"]		= assignment
 		G.fields["age"]			= H.age
 		G.fields["fingerprint"]	= md5(H.dna.uni_identity)
-		G.fields["p_stat"]		= "Active"
-		G.fields["m_stat"]		= "Stable"
+		G.fields["p_stat"]		= "Активный"
+		G.fields["m_stat"]		= "Стабильный"
 		G.fields["sex"]			= capitalize(H.gender)
 		G.fields["species"]		= H.dna.species.name
 		G.fields["photo"]		= get_id_photo(H)
@@ -288,7 +288,7 @@ GLOBAL_VAR_INIT(record_id_num, 1001)
 		if(H.gen_record && !jobban_isbanned(H, "Records"))
 			G.fields["notes"] = H.gen_record
 		else
-			G.fields["notes"] = "No notes found."
+			G.fields["notes"] = "Замечания не найдены."
 		general += G
 
 		//Medical Record
@@ -297,34 +297,34 @@ GLOBAL_VAR_INIT(record_id_num, 1001)
 		M.fields["name"]		= H.real_name
 		M.fields["blood_type"]	= H.dna.blood_type
 		M.fields["b_dna"]		= H.dna.unique_enzymes
-		M.fields["mi_dis"]		= "None"
-		M.fields["mi_dis_d"]	= "No minor disabilities have been declared."
-		M.fields["ma_dis"]		= "None"
-		M.fields["ma_dis_d"]	= "No major disabilities have been diagnosed."
-		M.fields["alg"]			= "None"
-		M.fields["alg_d"]		= "No allergies have been detected in this patient."
-		M.fields["cdi"]			= "None"
-		M.fields["cdi_d"]		= "No diseases have been diagnosed at the moment."
+		M.fields["mi_dis"]		= "Нет"
+		M.fields["mi_dis_d"]	= "Незначительные ограничения не были объявлены."
+		M.fields["ma_dis"]		= "Нет"
+		M.fields["ma_dis_d"]	= "Серъёзные ограничения не были диагностированы."
+		M.fields["alg"]			= "Нет"
+		M.fields["alg_d"]		= "У этого пациента аллергии не обнаружено."
+		M.fields["cdi"]			= "Нет"
+		M.fields["cdi_d"]		= "На данный момент заболеваний не диагностировано."
 		if(H.med_record && !jobban_isbanned(H, "Records"))
 			M.fields["notes"] = H.med_record
 		else
-			M.fields["notes"] = "No notes found."
+			M.fields["notes"] = "Замечания не найдены."
 		medical += M
 
 		//Security Record
 		var/datum/data/record/S = new()
 		S.fields["id"]			= id
 		S.fields["name"]		= H.real_name
-		S.fields["criminal"]	= "None"
-		S.fields["mi_crim"]		= "None"
-		S.fields["mi_crim_d"]	= "No minor crime convictions."
-		S.fields["ma_crim"]		= "None"
-		S.fields["ma_crim_d"]	= "No major crime convictions."
-		S.fields["notes"]		= "No notes."
+		S.fields["criminal"]	= "Нет"
+		S.fields["mi_crim"]		= "Нет"
+		S.fields["mi_crim_d"]	= "Нет незначительных обвинительных приговоров."
+		S.fields["ma_crim"]		= "Нет"
+		S.fields["ma_crim_d"]	= "Нет серьезных обвинительных приговоров."
+		S.fields["notes"]		= "Замечания не найдены."
 		if(H.sec_record && !jobban_isbanned(H, "Records"))
 			S.fields["notes"] = H.sec_record
 		else
-			S.fields["notes"] = "No notes."
+			S.fields["notes"] = "Замечания не найдены."
 		LAZYINITLIST(S.fields["comments"])
 		security += S
 

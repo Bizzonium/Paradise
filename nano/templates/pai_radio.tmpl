@@ -4,22 +4,22 @@ code/modules/mob/living/silicon/pai/software_modules.dm
 
 <div class="item">
 	<div class="itemLabel">
-		Microphone:
+		Микрофон:
 	</div>
 	<div class="itemContent">
 		{{if data.listening}}
-			{{:helper.link("On", '', {"stopic":"radio", "talk":1}, 'selected')}}
-			{{:helper.link("Off", '', {"stopic":"radio", "talk":1})}}
+			{{:helper.link("Вкл", '', {"stopic":"radio", "talk":1}, 'selected')}}
+			{{:helper.link("Выкл", '', {"stopic":"radio", "talk":1})}}
 		{{else}}
-			{{:helper.link("On", '', {"stopic":"radio", "talk":1})}}
-			{{:helper.link("Off", '', {"stopic":"radio", "talk":1}, 'selected')}}
+			{{:helper.link("Вкл", '', {"stopic":"radio", "talk":1})}}
+			{{:helper.link("Выкл", '', {"stopic":"radio", "talk":1}, 'selected')}}
 		{{/if}}
 	</div>
 </div>
 
 <div class="item">
 	<div class="itemLabel">
-		Frequency:
+		Частота:
 	</div>
 	<div class="itemContent">
 		{{:helper.link("--", '', {"stopic":"radio", "freq":-10})}}
@@ -37,11 +37,11 @@ code/modules/mob/living/silicon/pai/software_modules.dm
 	</div>
 	<div class="itemContent">
 		{{if value.listening}}
-			{{:helper.link("On", '', {"stopic":"radio", "channel":value.name, "listen":1}, 'selected')}}
-			{{:helper.link("Off", '', {"stopic":"radio", "channel":value.name, "listen":1})}}
+			{{:helper.link("Вкл", '', {"stopic":"radio", "channel":value.name, "listen":1}, 'selected')}}
+			{{:helper.link("Выкл", '', {"stopic":"radio", "channel":value.name, "listen":1})}}
 		{{else}}
-			{{:helper.link("On", '', {"stopic":"radio", "channel":value.name, "listen":1})}}
-			{{:helper.link("Off", '', {"stopic":"radio", "channel":value.name, "listen":1}, 'selected')}}
+			{{:helper.link("Вкл", '', {"stopic":"radio", "channel":value.name, "listen":1})}}
+			{{:helper.link("Выкл", '', {"stopic":"radio", "channel":value.name, "listen":1}, 'selected')}}
 		{{/if}}
 	</div>
 </div>

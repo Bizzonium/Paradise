@@ -1,25 +1,25 @@
 <div class="item">
 	<div class="itemLabel">
-		Status:
+		Статус:
 	</div>
 	<div class="itemContent">
-		{{:helper.link('On', 'power-off', {'toggleStatus' : 1}, data.on ? 'selected' : null)}}{{:helper.link('Off', 'close', {'toggleStatus' : 1}, data.on ? null : 'selected')}}
+		{{:helper.link('Вкл', 'power-off', {'toggleStatus' : 1}, data.on ? 'selected' : null)}}{{:helper.link('Выкл', 'close', {'toggleStatus' : 1}, data.on ? null : 'selected')}}
 	</div>
 </div>
 
 <div class="item">
 	<div class="itemLabel">
-		Gas Pressure:
+		Давление газа:
 	</div>
 	<div class="itemContent">
-		{{:helper.smoothRound(data.gasPressure)}} kPa
+		{{:helper.smoothRound(data.gasPressure)}} кПа
 	</div>
 </div>
 
-<h3>Gas Temperature</h3>
+<h3>Температура газа</h3>
 <div class="item">
 	<div class="itemLabel">
-		Current:
+		Текущая:
 	</div>
 	<div class="itemContent">
 		{{:helper.displayBar(data.gasTemperature, data.minGasTemperature, data.maxGasTemperature, data.gasTemperatureClass)}}
@@ -31,12 +31,12 @@
 
 <div class="item">
 	<div class="itemLabel">
-		Target:
+		Требуемая:
 	</div>
 	<div class="itemContent">
 		{{:helper.displayBar(data.targetGasTemperature, data.minGasTemperature, data.maxGasTemperature)}}
 		<div style="clear: both; padding-top: 4px;">
-			{{:helper.link('Min', null, {'minimum' : 'yes'}, (data.targetGasTemperature > data.minGasTemperature) ? null : 'disabled')}}
+			{{:helper.link('Мин', null, {'minimum' : 'yes'}, (data.targetGasTemperature > data.minGasTemperature) ? null : 'disabled')}}
 			{{:helper.link('-', null, {'temp' : -100}, (data.targetGasTemperature > data.minGasTemperature) ? null : 'disabled')}}
 			{{:helper.link('-', null, {'temp' : -10}, (data.targetGasTemperature > data.minGasTemperature) ? null : 'disabled')}}
 			{{:helper.link('-', null, {'temp' : -1}, (data.targetGasTemperature > data.minGasTemperature) ? null : 'disabled')}}
@@ -44,7 +44,7 @@
 			{{:helper.link('+', null, {'temp' : 1}, (data.targetGasTemperature < data.maxGasTemperature) ? null : 'disabled')}}
 			{{:helper.link('+', null, {'temp' : 10}, (data.targetGasTemperature < data.maxGasTemperature) ? null : 'disabled')}}
 			{{:helper.link('+', null, {'temp' : 100}, (data.targetGasTemperature < data.maxGasTemperature) ? null : 'disabled')}}
-			{{:helper.link('Max', null, {'maximum' : 'yes'}, (data.targetGasTemperature < data.maxGasTemperature) ? null : 'disabled')}}
+			{{:helper.link('Макс', null, {'maximum' : 'yes'}, (data.targetGasTemperature < data.maxGasTemperature) ? null : 'disabled')}}
 		</div>
 	</div>
 </div>

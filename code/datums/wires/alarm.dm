@@ -12,19 +12,19 @@
 /datum/wires/alarm/GetWireName(index)
 	switch(index)
 		if(AALARM_WIRE_IDSCAN)
-			return "ID Scan"
-		
+			return "Проверка ID"
+
 		if(AALARM_WIRE_POWER)
-			return "Power"
-		
+			return "Питание"
+
 		if(AALARM_WIRE_SYPHON)
-			return "Syphon"
-		
+			return "Сифон"
+
 		if(AALARM_WIRE_AI_CONTROL)
-			return "AI Control"
-			
+			return "Управление ИИ"
+
 		if(AALARM_WIRE_AALARM)
-			return "Atmospherics Alarm"
+			return "Атмосферная тревога"
 
 /datum/wires/alarm/CanUse(mob/living/L)
 	var/obj/machinery/alarm/A = holder
@@ -35,9 +35,9 @@
 /datum/wires/alarm/get_status()
 	. = ..()
 	var/obj/machinery/alarm/A = holder
-	. += "The Air Alarm is [A.locked ? "" : "un"]locked."
-	. += "The Air Alarm is [(A.shorted || (A.stat & (NOPOWER|BROKEN))) ? "offline." : "working properly!"]"
-	. += "The 'AI control allowed' light is [A.aidisabled ? "off" : "on"]."
+	. += "Воздушная тревога [A.locked ? "за" : "раз"]блокирована."
+	. += "Воздушная тревога [(A.shorted || (A.stat & (NOPOWER|BROKEN))) ? "отключена." : "работает должным образом!"]"
+	. += "Индикаторы 'Управление ИИ разрешено' [A.aidisabled ? "отключены" : "включены"]."
 
 /datum/wires/alarm/UpdateCut(index, mended)
 	var/obj/machinery/alarm/A = holder

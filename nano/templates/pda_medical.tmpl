@@ -1,6 +1,6 @@
 {{if !data.records}}
 	<div class="item">
-		<div class="itemLabel">Select a record:</div>
+		<div class="itemLabel">Выберите запись:</div>
 	</div>
 	{{for data.recordsList}}
 		<div class="item">
@@ -8,7 +8,7 @@
 		</div>
 	{{empty}}
 		<div class="item">
-			 <span class="average">No records found.</span>
+			 <span class="average">Записи не найдены.</span>
 		</div>
 	{{/for}}
 {{else}}
@@ -16,36 +16,36 @@
 		<div class="item">
 			<div class="itemContent" style="width: 100%;">
 				{{if data.records.general}}
-					<span class="good">Name:		</span> <span class="average">{{:data.records.general.name}}	</span><br>
-					<span class="good">Sex:			</span> <span class="average">{{:data.records.general.sex}}		</span><br>
-					<span class="good">Species:		</span> <span class="average">{{:data.records.general.species}}	</span><br>
-					<span class="good">Age:			</span> <span class="average">{{:data.records.general.age}}		</span><br>
-					<span class="good">Rank:		</span> <span class="average">{{:data.records.general.rank}}	</span><br>
-					<span class="good">Fingerprint:		</span> <span class="average">{{:data.records.general.fingerprint}}	</span><br>
-					<span class="good">Physical Status:	</span> <span class="average">{{:data.records.general.p_stat}}	</span><br>
-					<span class="good">Mental Status:	</span> <span class="average">{{:data.records.general.m_stat}}	</span><br><br>
+					<span class="good">Имя:		</span> <span class="average">{{:data.records.general.name}}	</span><br>
+					<span class="good">Пол:			</span> <span class="average">{{:data.records.general.sex}}		</span><br>
+					<span class="good">Раса:		</span> <span class="average">{{:data.records.general.species}}	</span><br>
+					<span class="good">Возраст:			</span> <span class="average">{{:data.records.general.age}}		</span><br>
+					<span class="good">Ранг:		</span> <span class="average">{{:data.records.general.rank}}	</span><br>
+					<span class="good">Отпечаток:		</span> <span class="average">{{:data.records.general.fingerprint}}	</span><br>
+					<span class="good">Физический статус:	</span> <span class="average">{{:data.records.general.p_stat}}	</span><br>
+					<span class="good">Ментальный статус:	</span> <span class="average">{{:data.records.general.m_stat}}	</span><br><br>
 				{{else}}
 					<span class="bad">
-						General Record Lost!<br><br>
+						Основная запись потеряна!<br><br>
 					</span>
 				{{/if}}
 				{{if data.records.medical}}
 					<div class="item">
-						<div class="itemLabel">Medical Data:</div>
+						<div class="itemLabel">Медицинские данные:</div>
 					</div>
-					<span class="good">Blood Type:		</span> <span class="average">{{:data.records.medical.b_type}}	</span><br><br>
-					<span class="good">Minor Disabilities:	</span> <span class="average">{{:data.records.medical.mi_dis}}	</span><br>
-					<span class="good">Details:		</span> <span class="average">{{:data.records.medical.mi_dis_d}}	</span><br><br>
-					<span class="good">Major Disabilities:	</span> <span class="average">{{:data.records.medical.ma_dis}}	</span><br>
-					<span class="good">Details:		</span> <span class="average">{{:data.records.medical.ma_dis_d}}	</span><br><br>
-					<span class="good">Allergies:		</span> <span class="average">{{:data.records.medical.alg}}		</span><br>
-					<span class="good">Details:		</span> <span class="average">{{:data.records.medical.alg_d}}	</span><br><br>
-					<span class="good">Current Disease:	</span> <span class="average">{{:data.records.medical.cdi}}		</span><br>
-					<span class="good">Details:		</span> <span class="average">{{:data.records.medical.alg_d}}	</span><br><br>
-					<span class="good">Important Notes:	</span> <span class="average">{{:data.records.medical.notes}}	</span>
+					<span class="good">Группа крови:		</span> <span class="average">{{:data.records.medical.b_type}}	</span><br><br>
+					<span class="good">Незначительные ограничения:	</span> <span class="average">{{:data.records.medical.mi_dis}}	</span><br>
+					<span class="good">Детали:		</span> <span class="average">{{:data.records.medical.mi_dis_d}}	</span><br><br>
+					<span class="good">Серъёзные ограничения:	</span> <span class="average">{{:data.records.medical.ma_dis}}	</span><br>
+					<span class="good">Детали:		</span> <span class="average">{{:data.records.medical.ma_dis_d}}	</span><br><br>
+					<span class="good">Аллергии:		</span> <span class="average">{{:data.records.medical.alg}}		</span><br>
+					<span class="good">Детали:		</span> <span class="average">{{:data.records.medical.alg_d}}	</span><br><br>
+					<span class="good">Текущие заболевания:	</span> <span class="average">{{:data.records.medical.cdi}}		</span><br>
+					<span class="good">Детали:		</span> <span class="average">{{:data.records.medical.alg_d}}	</span><br><br>
+					<span class="good">Важные замечания:	</span> <span class="average">{{:data.records.medical.notes}}	</span>
 				{{else}}
 					<span class="bad">
-						Medical Record Lost!
+						Медицинские записи потеряны!
 					</span>
 				{{/if}}
 			</div>

@@ -10,13 +10,13 @@
 /datum/wires/nuclearbomb/GetWireName(index)
 	switch(index)
 		if(NUCLEARBOMB_WIRE_LIGHT)
-			return "Bomb Light"
+			return "Индикатор бомбы"
 
 		if(NUCLEARBOMB_WIRE_TIMING)
-			return "Bomb Timing"
+			return "Тайминг бомбы"
 
 		if(NUCLEARBOMB_WIRE_SAFETY)
-			return "Bomb Safety"
+			return "Предохранитли бомбы"
 
 /datum/wires/nuclearbomb/CanUse(mob/living/L)
 	var/obj/machinery/nuclearbomb/N = holder
@@ -27,9 +27,9 @@
 /datum/wires/nuclearbomb/get_status()
 	. = ..()
 	var/obj/machinery/nuclearbomb/N = holder
-	. += "The device is [N.timing ? "shaking!" : "still."]"
-	. += "The device is is [N.safety ? "quiet" : "whirring"]."
-	. += "The lights are [N.lighthack ? "static" : "functional"]."
+	. += "Устройство [N.timing ? "тресётся!" : "неподвижно."]"
+	. += "Устройство [N.safety ? "бесшумно" : "жужжит"]."
+	. += "Индикаторы [N.lighthack ? "статичны" : "функционируют"]."
 
 /datum/wires/nuclearbomb/UpdatePulsed(index)
 	var/obj/machinery/nuclearbomb/N = holder
@@ -52,12 +52,12 @@
 				if(N.safety == 1)
 					if(!N.is_syndicate)
 						set_security_level(N.previous_level)
-					N.visible_message("<span class='notice'>The [N] quiets down.</span>")
+					N.visible_message("<span class='notice'>[N] становится бесшумным.</span>")
 					if(!N.lighthack)
 						if(N.icon_state == "nuclearbomb2")
 							N.icon_state = "nuclearbomb1"
 				else
-					N.visible_message("<span class='notice'>The [N] emits a quiet whirling noise!</span>")
+					N.visible_message("<span class='notice'>[N] производит тихий жужжащий шум!</span>")
 				updateUIs()
 
 /datum/wires/nuclearbomb/UpdateCut(index, mended)

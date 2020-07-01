@@ -1,6 +1,6 @@
 <div class="item">
 	<div class="itemLabel">
-		Stored Capacity:
+		Хранимая ёмкость:
 	</div>
 	<div class="itemContent">
 		{{:helper.displayBar(data.storedCapacity, 0, 100, data.charging ? 'good' : 'average')}}
@@ -10,67 +10,67 @@
 	</div>
 </div>
 
-<h3>Input Management</h3>
+<h3>Управление входной мощностью</h3>
 <div class="item">
 	<div class="itemLabel">
-		Charge Mode:
+		Режим зарядки:
 	</div>
 	<div class="itemContent">
-		{{:helper.link('Auto', 'refresh', {'cmode' : 1}, data.chargeMode ? 'selected' : null)}}{{:helper.link('Off', 'close', {'cmode' : 1}, data.chargeMode ? null : 'selected')}}
+		{{:helper.link('Авто', 'refresh', {'cmode' : 1}, data.chargeMode ? 'selected' : null)}}{{:helper.link('Выкл', 'close', {'cmode' : 1}, data.chargeMode ? null : 'selected')}}
 		&nbsp;
 		{{if data.charging == 2}}
-			[<span class='good'>Charging</span>]
+			[<span class='good'>Заряжается</span>]
 		{{else data.charging == 1}}
-			[<span class='average'>Partially Charging</span>]
+			[<span class='average'>Частично заряжается</span>]
 		{{else}}
-			[<span class='bad'>Not Charging</span>]
+			[<span class='bad'>Не заряжается</span>]
 		{{/if}}
 	</div>
 </div>
 
 <div class="item">
 	<div class="itemLabel">
-		Input Level:
+		Входная мощность:
 	</div>
 	<div class="itemContent">
 		{{:helper.displayBar(data.chargeLevel, 0, data.chargeMax)}}
 		<div style="clear: both; padding-top: 4px;">
-			{{:helper.link('MIN', null, {'input' : 'min'}, (data.chargeLevel > 0) ? null : 'disabled')}}
-			{{:helper.link('SET', null, {'input' : 'set'}, null)}}
-			{{:helper.link('MAX', null, {'input' : 'max'}, (data.chargeLevel < data.chargeMax) ? null : 'disabled')}}
+			{{:helper.link('МИН', null, {'input' : 'min'}, (data.chargeLevel > 0) ? null : 'disabled')}}
+			{{:helper.link('УСТАНОВИТЬ', null, {'input' : 'set'}, null)}}
+			{{:helper.link('МАКС', null, {'input' : 'max'}, (data.chargeLevel < data.chargeMax) ? null : 'disabled')}}
 			<div style="float: left; width: 100px; text-align: center;">&nbsp;{{:data.chargeLevel}} W&nbsp;</div>
 		</div>
 	</div>
 </div>
 
-<h3>Output Management</h3>
+<h3>Управление выходной мощностью</h3>
 <div class="item">
 	<div class="itemLabel">
-		Output Status:
+		Статус:
 	</div>
 	<div class="itemContent">
-		{{:helper.link('Online', 'power-off', {'online' : 1}, data.outputOnline ? 'selected' : null)}}{{:helper.link('Offline', 'close', {'online' : 1}, data.outputOnline ? null : 'selected')}}
+		{{:helper.link('Онлайн', 'power-off', {'online' : 1}, data.outputOnline ? 'selected' : null)}}{{:helper.link('Оффлайн', 'close', {'online' : 1}, data.outputOnline ? null : 'selected')}}
 		&nbsp;
 		{{if data.outputting == 2}}
-			[<span class='good'>Outputting</span>]
+			[<span class='good'>Выводится</span>]
 		{{else data.outputting == 1}}
-			[<span class='average'>Stored energy too low</span>]
+			[<span class='average'>Хранимой энергии слишком мало</span>]
 		{{else}}
-			[<span class='bad'>Not Outputting</span>]
+			[<span class='bad'>Не выводится</span>]
 		{{/if}}
 	</div>
 </div>
 
 <div class="item">
 	<div class="itemLabel">
-		Output Level:
+		Выходная мощность:
 	</div>
 	<div class="itemContent">
 		{{:helper.displayBar(data.outputLevel, 0, data.outputMax)}}
 		<div style="clear: both; padding-top: 4px;">
-			{{:helper.link('MIN', null, {'output' : 'min'}, (data.outputLevel > 0) ? null : 'disabled')}}
-			{{:helper.link('SET', null, {'output' : 'set'}, null)}}
-			{{:helper.link('MAX', null, {'output' : 'max'}, (data.outputLevel < data.outputMax) ? null : 'disabled')}}
+			{{:helper.link('МИН', null, {'output' : 'min'}, (data.outputLevel > 0) ? null : 'disabled')}}
+			{{:helper.link('УСТАНОВИТЬ', null, {'output' : 'set'}, null)}}
+			{{:helper.link('МАКС', null, {'output' : 'max'}, (data.outputLevel < data.outputMax) ? null : 'disabled')}}
 			<div style="float: left; width: 100px; text-align: center;">&nbsp;{{:data.outputLevel}} W&nbsp;</div>
 		</div>
 	</div>
@@ -78,12 +78,12 @@
 
 <div class="item">
 	<div class="itemLabel">
-		Output Load:
+		Выходная нагрузка:
 	</div>
 	<div class="itemContent">
 		{{:helper.displayBar(data.outputLoad, 0, data.outputMax, (data.outputLoad < data.outputLevel) ? 'good' : 'average')}}
 		<div class="statusValue">
-			{{:helper.smoothRound(data.outputLoad)}} W
+			{{:helper.smoothRound(data.outputLoad)}} Вт
 		</div>
 	</div>
 </div>

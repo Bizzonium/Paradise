@@ -7,18 +7,18 @@ Used In File(s): \code\modules\mining\laborcamp\laborstacker.dm
 	.statusLabel {
 		width: 200px;
 	}
-	
+
 	.pointsValue {
 		float: left;
 		margin-right: 10px;
 	}
-	
+
 	.centerButton {
 		float: none;
 	}
 </style>
 
-<h1>Ore values</h1>
+<h1>Количество руды</h1>
 <div class='statusDisplay'>
   	{{for data.ores}}
 	  	<div class="line">
@@ -32,7 +32,7 @@ Used In File(s): \code\modules\mining\laborcamp\laborstacker.dm
     {{/for}}
 </div>
 
-<h1>Points</h1>
+<h1>Очки</h1>
 <div class='statusDisplay'>
 	<div class="line">
 		<div class='statusLabel'>
@@ -45,7 +45,7 @@ Used In File(s): \code\modules\mining\laborcamp\laborstacker.dm
 	{{if data.id}}
 		<div class="line">
 			<div class='statusLabel'>
-				Points collected:
+				Очков собрано:
 			</div>
 			<div class='statusValue'>
 				{{:data.points}}
@@ -53,7 +53,7 @@ Used In File(s): \code\modules\mining\laborcamp\laborstacker.dm
 		</div>
 			<div class="line">
 			<div class='statusLabel'>
-				Goal:
+				Цель:
 			</div>
 			<div class='statusValue'>
 				{{:data.goal}}
@@ -61,16 +61,16 @@ Used In File(s): \code\modules\mining\laborcamp\laborstacker.dm
 		</div>
 			<div class="line">
 			<div class='statusLabel'>
-				Unclaimed points:
+				Свободные очки:
 			</div>
 			<div class='statusValue'>
 				<div class="pointsValue">{{:data.unclaimed_points}}</div>
-				{{:helper.link('Claim points', null, { 'claim_points' : 1 }, data.unclaimed_points ? null : 'disabled')}}
+				{{:helper.link('Присвоить очки', null, { 'claim_points' : 1 }, data.unclaimed_points ? null : 'disabled')}}
 			</div>
 		</div>
 	{{/if}}
 </div>
 
 <div class='statusDisplay'>
-		{{:helper.link('Move shuttle', null, { 'move_shuttle' : 1 }, data.can_go_home ? null : 'disabled', 'link centerButton')}}
+		{{:helper.link('Отправить шаттл', null, { 'move_shuttle' : 1 }, data.can_go_home ? null : 'disabled', 'link centerButton')}}
 </div>

@@ -1,10 +1,10 @@
-<!-- 
+<!--
 Title: Pool Controller UI.
 Used In File(s): \code\game\machinery\poolcontroller.dm
  -->
 <div class="item">
 	<div class="itemLabel">
-		<b>Current Temperature</b>: 
+		<b>Текущая температура</b>:
 	</div>
 	<div class="itemContent">
 		<font color={{:data.TempColor}}>{{:helper.capitalizeFirstLetter(data.currentTemp)}}</font>
@@ -13,43 +13,43 @@ Used In File(s): \code\game\machinery\poolcontroller.dm
 
 <div class="item">
 	<div class="itemLabel">
-		Safety Status:
+		Статус безопасности:
 	</div>
 	<div class="itemContent">
 		{{if data.emagged}}
-			<b><font color='red'>WARNING: OVERRIDDEN</font></b>
+			<b><font color='red'>ВНИМАНИЕ: ПЕРЕОПРЕДЕЛЁН</font></b>
 		{{else}}
-			<b><font color='green'>Nominal</font></b>
+			<b><font color='green'>В норме</font></b>
 		{{/if}}
 	</div>
 </div>
 
 <div class="item">
 	<div class="itemContent">
-		<b>Temperature Selection:</b>
+		<b>Выбор температуры:</b>
 	</div>
 
 	{{if data.emagged}}
 		<div class="itemContentWide" style="width: 100%;">
-			{{:helper.link('Scalding', 'arrow-circle-up', { 'temp' : 'Scalding' }, data.currentTemp == "scalding" ? 'selected' : null)}}
+			{{:helper.link('Обжигающая', 'arrow-circle-up', { 'temp' : 'Scalding' }, data.currentTemp == "scalding" ? 'selected' : null)}}
 		</div>
 	{{/if}}
 
 	<div class="itemContentWide" style="width: 100%;">
-		{{:helper.link('Warm', 'arrow-circle-up', { 'temp' : 'Warm' }, data.currentTemp == "warm" ? 'selected' : null)}}
+		{{:helper.link('Тёплая', 'arrow-circle-up', { 'temp' : 'Warm' }, data.currentTemp == "warm" ? 'selected' : null)}}
 	</div>
 
 	<div class="itemContentWide" style="width: 100%;">
-		{{:helper.link('Normal', 'arrow-circle-right', { 'temp' : 'Normal' }, data.currentTemp == "normal" ? 'selected' : null)}}
+		{{:helper.link('Нормальная', 'arrow-circle-right', { 'temp' : 'Normal' }, data.currentTemp == "normal" ? 'selected' : null)}}
 	</div>
 
 	<div class="itemContentWide" style="width: 100%;">
-		{{:helper.link('Cool', 'arrow-circle-down', { 'temp' : 'Cool' }, data.currentTemp == "cool" ? 'selected' : null)}}
+		{{:helper.link('Холодная', 'arrow-circle-down', { 'temp' : 'Cool' }, data.currentTemp == "cool" ? 'selected' : null)}}
 	</div>
 
 	{{if data.emagged}}
 		<div class="itemContentWide" style="width: 100%;">
-			{{:helper.link('Frigid', 'arrow-circle-down', { 'temp' : 'Frigid' }, data.currentTemp == "frigid" ? 'selected' : null)}}
+			{{:helper.link('Ледяная', 'arrow-circle-down', { 'temp' : 'Frigid' }, data.currentTemp == "frigid" ? 'selected' : null)}}
 		</div>
 	{{/if}}
 </div>

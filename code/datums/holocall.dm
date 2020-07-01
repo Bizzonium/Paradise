@@ -33,10 +33,10 @@
 			dialed_holopads += H
 			var/area/area = get_area(H)
 			LAZYADD(H.holo_calls, src)
-			H.atom_say("[area] pad beeps: Incoming call from [caller]!")
+			H.atom_say("[area] пад подает звуковой сигнал: Входящий звонок от [caller]!")
 
 	if(!dialed_holopads.len)
-		calling_holopad.atom_say("Connection failure.")
+		calling_holopad.atom_say("Сбой подключения.")
 		qdel(src)
 		return
 
@@ -86,9 +86,9 @@
 /datum/holocall/proc/Disconnect(obj/machinery/hologram/holopad/H)
 	if(H == connected_holopad)
 		var/area/A = get_area(connected_holopad)
-		calling_holopad.atom_say("[A] holopad disconnected.")
+		calling_holopad.atom_say("[A] голопад отключился.")
 	else if(H == calling_holopad && connected_holopad)
-		connected_holopad.atom_say("[user] disconnected.")
+		connected_holopad.atom_say("[user] завершил звонок.")
 
 	user.unset_machine(H)
 	if(istype(hangup))
@@ -100,7 +100,7 @@
 /datum/holocall/proc/ConnectionFailure(obj/machinery/hologram/holopad/H, graceful = FALSE)
 	if(H == connected_holopad || H == calling_holopad)
 		if(!graceful && H != calling_holopad)
-			calling_holopad.atom_say("Connection failure.")
+			calling_holopad.atom_say("Сбой подключения.")
 		qdel(src)
 		return
 
@@ -108,7 +108,7 @@
 	dialed_holopads -= H
 	if(!dialed_holopads.len)
 		if(graceful)
-			calling_holopad.atom_say("Call rejected.")
+			calling_holopad.atom_say("Звонок отклонён.")
 		qdel(src)
 
 //Answers a call made to a holopad `H` which cannot be the calling holopad. Pads not in the call are ignored
@@ -170,14 +170,14 @@
 		if(!connected_holopad)
 			. = world.time < (call_start_time + HOLOPAD_MAX_DIAL_TIME)
 			if(!.)
-				calling_holopad.atom_say("No answer received.")
+				calling_holopad.atom_say("Ответ не получен.")
 				calling_holopad.temp = ""
 
 	else if(!.)
 		qdel(src)
 
 /datum/action/innate/end_holocall
-	name = "End Holocall"
+	name = "Завершить голозвонок"
 	button_icon_state = "camera_off"
 	var/datum/holocall/hcall
 

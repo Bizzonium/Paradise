@@ -3,65 +3,65 @@ Title: Power Monitoring Console
 Used In File(s): \code\modules\nano\modules\power_monitor.dm
 -->
 {{if !data.powermonitor && data.select_monitor}}
-	<h2>Station Power Monitors</h2>
+	<h2>Монитор питания станции</h2>
 	<div class="item">
-		Select a power monitor:
+		Выберите монитор питания:
 	</div>
 	{{for data.powermonitors}}
 		<div class="item">
 			{{:helper.link(value.Name, 'gear', { 'selectmonitor' : value.ref }, null, null)}}
 		</div>
 	{{empty}}
-		<h2>Network Error</h2>
-		<span class='bad'>No power monitors found.</span>
+		<h2>Ошибка сети</h2>
+		<span class='bad'>Мониторы питания не найдены.</span>
 	{{/for}}
 {{/if}}
 {{if data.powermonitor}}
 	{{if data.select_monitor}}
-		{{:helper.link('Return', 'gear', { 'return' : 1 }, null, null)}}
+		{{:helper.link('Назад', 'gear', { 'return' : 1 }, null, null)}}
 	{{/if}}
-	<h2>Powernet Status</h2>
+	<h2>Состояние цепи питания</h2>
 	<div class="item">
 		<div class="itemLabelNarrow">
-			<b>Total Power:</b>
+			<b>Суммарная мощность:</b>
 		</div>
 		<div class="itemContent">
-			<span class="average">{{:helper.smoothRound(data.poweravail)}} W</span>
+			<span class="average">{{:helper.smoothRound(data.poweravail)}} Вт</span>
 		</div>
 	</div>
 	<div class="item">
 		<div class="itemLabelNarrow">
-			<b>Total Load:</b>
+			<b>Суммарная нагрузка:</b>
 		</div>
 		<div class="itemContent">
-			<span class="average">{{:helper.smoothRound(data.powerload)}} W</span>
+			<span class="average">{{:helper.smoothRound(data.powerload)}} Вт</span>
 		</div>
 	</div>
 	<div class="item">
 		<div class="itemLabelNarrow">
-			<b>Total Demand:</b>
+			<b>Суммарный спрос:</b>
 		</div>
 		<div class="itemContent">
-			<span class="average">{{:helper.smoothRound(data.powerdemand)}} W</span>
+			<span class="average">{{:helper.smoothRound(data.powerdemand)}} Вт</span>
 		</div>
 	</div>
 	<div class="item">
 		<table class="curvedEdges" style="text-align: center;"><tbody>
-			<tr><th>Area</th><th>Equip.</th><th>Lighting</th><th>Environ.</th><th>Cell</th><th>Load</th></tr>
+			<tr><th>Зона</th><th>Оборуд.</th><th>Освещение</th><th>Окружен.</th><th>Аккум.</th><th>Нагрузка</th></tr>
 			{{for data.apcs}}
 				<tr><td style="text-align: left; font-weight: bold;">{{:value.Name}}</td>
-					{{:helper.string('<td width="55px" bgcolor="{0}">{1}</td>', value.Equipment == "On" || value.Equipment == "AOn" ? '#4f7529' : '#8f1414', value.Equipment)}}
-					{{:helper.string('<td width="55px" bgcolor="{0}">{1}</td>', value.Lights == "On" || value.Lights == "AOn" ? '#4f7529' : '#8f1414', value.Lights)}}
-					{{:helper.string('<td width="55px" bgcolor="{0}">{1}</td>', value.Environment == "On" || value.Environment == "AOn" ? '#4f7529' : '#8f1414', value.Environment)}}
-					{{:helper.string('<td style="text-align: center;" width="65px" bgcolor="{0}">{1}{2}</td>', value.CellStatus == "F" ? '#4f7529' : value.CellStatus == "C" ? '#cd6500' : '#8f1414', value.CellStatus == "M" ? 'No Cell' : value.CellPct + '%', value.CellStatus == "M" ? '' : ' (' + value.CellStatus + ')')}}
-					<td width="65px">{{:value.Load}}W</td>
+					{{:helper.string('<td width="55px" bgcolor="{0}">{1}</td>', value.Equipment == "Вкл" || value.Equipment == "АВкл" ? '#4f7529' : '#8f1414', value.Equipment)}}
+					{{:helper.string('<td width="55px" bgcolor="{0}">{1}</td>', value.Lights == "Вкл" || value.Lights == "АВкл" ? '#4f7529' : '#8f1414', value.Lights)}}
+					{{:helper.string('<td width="55px" bgcolor="{0}">{1}</td>', value.Environment == "Вкл" || value.Environment == "АВкл" ? '#4f7529' : '#8f1414', value.Environment)}}
+					{{:helper.string('<td style="text-align: center;" width="65px" bgcolor="{0}">{1}{2}</td>', value.CellStatus == "П" ? '#4f7529' : value.CellStatus == "З" ? '#cd6500' : '#8f1414', value.CellStatus == "О" ? 'No Cell' : value.CellPct + '%', value.CellStatus == "О" ? '' : ' (' + value.CellStatus + ')')}}
+					<td width="65px">{{:value.Load}}Вт</td>
 				</tr>
 			{{/for}}
 		</tbody></table>
 	</div>
 {{else}}
 	{{if !data.select_monitor}}
-		<h2>Network Error</h2>
-		<span class='bad'>Power monitor not connected to power network.</span>
+		<h2>Ошибка сети</h2>
+		<span class='bad'>Монитор питания не подключен к цепи питания.</span>
 	{{/if}}
 {{/if}}

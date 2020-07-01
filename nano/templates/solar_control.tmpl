@@ -3,20 +3,20 @@ Title: Solar Control Computer
 Used In File(s): \code\modules\power\solar.dm
 -->
 
-<h1>Status</h1>
+<h1>Статус</h1>
 <div class='statusDisplay'>
 	<div class="line">
 		<div class='statusLabel' style='font-weight:bold;'>
-			Generated power:
+			Генерируемая энергия:
 		</div>
 		<div class='statusValue'>
-			{{:helper.smoothRound(data.generated)}} W
+			{{:helper.smoothRound(data.generated)}} Вт
 		</div>
 	</div>
 
 	<div class='line'>
 		<div class='statusLabel' style='font-weight:bold;'>
-			Orientation:
+			Ориентация:
 		</div>
 
 		<div class='statusValue'>
@@ -30,29 +30,29 @@ Used In File(s): \code\modules\power\solar.dm
 	</div>
 </div>
 
-<h1>Tracking</h1>
+<h1>Трекинг солнца</h1>
 <div class='statusDisplay'>
 	<div class="line">
 		<div class='statusLabel' style='font-weight:bold;'>
-			Tracker status:
+			Статус трекера:
 		</div>
 
-		{{:helper.link('Off', 'close', {'track' : '0'}, (data.tracking_state == 0) ? 'selected' : '')}}
-		{{:helper.link('Timed', 'clock-o', {'track' : '1'}, (data.tracking_state == 1) ? 'selected' : '')}}
+		{{:helper.link('Выкл', 'close', {'track' : '0'}, (data.tracking_state == 0) ? 'selected' : '')}}
+		{{:helper.link('По времени', 'clock-o', {'track' : '1'}, (data.tracking_state == 1) ? 'selected' : '')}}
 		{{if data.connected_tracker}}
-			{{:helper.link('Auto', 'signal', {'track' : '2'}, (data.tracking_state == 2) ? 'selected' : '')}}
+			{{:helper.link('Авто', 'signal', {'track' : '2'}, (data.tracking_state == 2) ? 'selected' : '')}}
 		{{else}}
-			{{:helper.link('Auto', 'signal', null, 'disabled')}}
+			{{:helper.link('Авто', 'signal', null, 'disabled')}}
 		{{/if}}
 	</div>
 
 	<div class="line">
 		<div class='statusLabel' style='font-weight:bold;'>
-			Tracking rate:
+			Скорость трекинга:
 		</div>
 
 		<div class='statusValue'>
-			 {{:helper.smoothRound(data.tracking_rate)}} deg/h ({{:data.rotating_way}})
+			 {{:helper.smoothRound(data.tracking_rate)}} град/ч ({{:data.rotating_way}})
 		</div>
 	</div>
 
@@ -66,31 +66,31 @@ Used In File(s): \code\modules\power\solar.dm
 	</div>
 </div>
 
-<h1>Connected Devices</h1>
+<h1>Подключенные устройства</h1>
 <div class='statusDisplay'>
 	<div class="line">
 		<div class='statusLabel' style='font-weight:bold;'>
-			Solars panels:
+			Солнечные панели:
 		</div>
 		<div class='statusValue'>
-			{{:data.connected_panels}} connected
+			{{:data.connected_panels}} подключено
 		</div>
 	</div>
 
 	<div class='line'>
 		<div class='statusLabel' style='font-weight:bold;'>
-			Solar tracker:
+			Трекер солнца:
 		</div>
 
 		<div class='statusValue'>
 			{{if data.connected_tracker}}
-				<span class='good'>Found</span>
+				<span class='good'>Найден</span>
 			{{else}}
-				<span class='bad'>Not Found</span>
+				<span class='bad'>Не найден</span>
 			{{/if}}
 		</div>
 	</div>
 </div>
 <div class='line'>
-	{{:helper.link('Search for devices', 'refresh', {'search_connected' : '1'})}}
+	{{:helper.link('Искать устройства', 'refresh', {'search_connected' : '1'})}}
 </div>

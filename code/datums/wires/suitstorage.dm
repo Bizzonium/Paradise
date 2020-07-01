@@ -11,22 +11,22 @@
 /datum/wires/suitstorage/GetWireName(index)
 	switch(index)
 		if(SSU_WIRE_ID)
-			return "ID lock"
+			return "ID замок"
 		if(SSU_WIRE_SHOCK)
-			return "Shock wire"
+			return "Шок провод"
 		if(SSU_WIRE_SAFETY)
-			return "Safety wire"
+			return "Провод предохранителя"
 		if(SSU_WIRE_UV)
-			return "UV wire"
+			return "УФ провод"
 
 
 /datum/wires/suitstorage/get_status()
 	. = ..()
 	var/obj/machinery/suit_storage_unit/A = holder
-	. += "The blue light is [A.secure ? "on" : "off"]."
-	. += "The red light is [A.safeties ? "off" : "blinking"]."
-	. += "The green light is [A.shocked ? "on" : "off"]."
-	. += "The UV display shows [A.uv_super ? "15 nm" : "185 nm"]."
+	. += "Синий индикатор [A.secure ? "включен" : "отключен"]."
+	. += "Красный индикатор [A.safeties ? "отключен" : "мигает"]."
+	. += "Зелёный индикатор [A.shocked ? "включен" : "отключен"]."
+	. += "УФ дисплей показывает [A.uv_super ? "15 нм" : "185 нм"]."
 
 datum/wires/suitstorage/CanUse()
 	var/obj/machinery/suit_storage_unit/A = holder

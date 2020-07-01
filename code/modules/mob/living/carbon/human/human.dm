@@ -717,15 +717,15 @@
 						for(var/datum/data/record/R in GLOB.data_core.security)
 							if(R.fields["id"] == E.fields["id"])
 
-								var/setcriminal = input(usr, "Specify a new criminal status for this person.", "Security HUD", R.fields["criminal"]) in list(SEC_RECORD_STATUS_NONE, SEC_RECORD_STATUS_ARREST, SEC_RECORD_STATUS_SEARCH, SEC_RECORD_STATUS_MONITOR, SEC_RECORD_STATUS_DEMOTE, SEC_RECORD_STATUS_INCARCERATED, SEC_RECORD_STATUS_PAROLLED, SEC_RECORD_STATUS_RELEASED, "Cancel")
-								var/t1 = copytext(trim(sanitize(input("Enter Reason:", "Security HUD", null, null) as text)), 1, MAX_MESSAGE_LEN)
+								var/setcriminal = input(usr, "Укажите новый преступный статус для этого лица.", "Security HUD", R.fields["criminal"]) in list(SEC_RECORD_STATUS_NONE, SEC_RECORD_STATUS_ARREST, SEC_RECORD_STATUS_SEARCH, SEC_RECORD_STATUS_MONITOR, SEC_RECORD_STATUS_DEMOTE, SEC_RECORD_STATUS_INCARCERATED, SEC_RECORD_STATUS_PAROLLED, SEC_RECORD_STATUS_RELEASED, "Отмена")
+								var/t1 = copytext(trim(sanitize(input("Введите причину:", "Security HUD", null, null) as text)), 1, MAX_MESSAGE_LEN)
 								if(!t1)
-									t1 = "(none)"
+									t1 = "(нет)"
 
-								if(hasHUD(usr, "security") && setcriminal != "Cancel")
+								if(hasHUD(usr, "security") && setcriminal != "Отмена")
 									found_record = 1
 									if(R.fields["criminal"] == SEC_RECORD_STATUS_EXECUTE)
-										to_chat(usr, "<span class='warning'>Unable to modify the sec status of a person with an active Execution order. Use a security computer instead.</span>")
+										to_chat(usr, "<span class='warning'>Не удаётся модифицировать статус лица с активным ордером на казнь Используйте компьютер.</span>")
 									else
 										var/rank
 										if(ishuman(usr))
@@ -742,7 +742,7 @@
 							break // Git out of the general records
 
 			if(!found_record)
-				to_chat(usr, "<span class='warning'>Unable to locate a data core entry for this person.</span>")
+				to_chat(usr, "<span class='warning'>Не удаётся найти данные этого лица в базе данных.</span>")
 
 	if(href_list["secrecord"])
 		if(hasHUD(usr,"security"))
@@ -756,17 +756,17 @@
 					for(var/datum/data/record/R in GLOB.data_core.security)
 						if(R.fields["id"] == E.fields["id"])
 							if(hasHUD(usr,"security"))
-								to_chat(usr, "<b>Name:</b> [R.fields["name"]]	<b>Criminal Status:</b> [R.fields["criminal"]]")
-								to_chat(usr, "<b>Minor Crimes:</b> [R.fields["mi_crim"]]")
-								to_chat(usr, "<b>Details:</b> [R.fields["mi_crim_d"]]")
-								to_chat(usr, "<b>Major Crimes:</b> [R.fields["ma_crim"]]")
-								to_chat(usr, "<b>Details:</b> [R.fields["ma_crim_d"]]")
-								to_chat(usr, "<b>Notes:</b> [R.fields["notes"]]")
-								to_chat(usr, "<a href='?src=[UID()];secrecordComment=`'>\[View Comment Log\]</a>")
+								to_chat(usr, "<b>Имя:</b> [R.fields["name"]]	<b>Преступный статус:</b> [R.fields["criminal"]]")
+								to_chat(usr, "<b>Незначительные преступления:</b> [R.fields["mi_crim"]]")
+								to_chat(usr, "<b>Детали:</b> [R.fields["mi_crim_d"]]")
+								to_chat(usr, "<b>Серъёзные преступления:</b> [R.fields["ma_crim"]]")
+								to_chat(usr, "<b>Детали:</b> [R.fields["ma_crim_d"]]")
+								to_chat(usr, "<b>Замечания:</b> [R.fields["notes"]]")
+								to_chat(usr, "<a href='?src=[UID()];secrecordComment=`'>\[Посмотреть комментарии\]</a>")
 								read = 1
 
 			if(!read)
-				to_chat(usr, "<span class='warning'>Unable to locate a data core entry for this person.</span>")
+				to_chat(usr, "<span class='warning'>Не удаётся найти данные этого лица в базе данных.</span>")
 
 	if(href_list["secrecordComment"])
 		if(hasHUD(usr,"security"))
@@ -785,11 +785,11 @@
 									for(var/c in R.fields["comments"])
 										to_chat(usr, c)
 								else
-									to_chat(usr, "<span class='warning'>No comments found</span>")
-								to_chat(usr, "<a href='?src=[UID()];secrecordadd=`'>\[Add comment\]</a>")
+									to_chat(usr, "<span class='warning'>Комментарии не найдены</span>")
+								to_chat(usr, "<a href='?src=[UID()];secrecordadd=`'>\[Добавить комментарий\]</a>")
 
 			if(!read)
-				to_chat(usr, "<span class='warning'>Unable to locate a data core entry for this person.</span>")
+				to_chat(usr, "<span class='warning'>Не удаётся найти данные этого лица в базе данных.</span>")
 
 	if(href_list["secrecordadd"])
 		if(hasHUD(usr,"security"))
@@ -802,18 +802,18 @@
 					for(var/datum/data/record/R in GLOB.data_core.security)
 						if(R.fields["id"] == E.fields["id"])
 							if(hasHUD(usr,"security"))
-								var/t1 = copytext(trim(sanitize(input("Add Comment:", "Sec. records", null, null) as message)), 1, MAX_MESSAGE_LEN)
+								var/t1 = copytext(trim(sanitize(input("Добавить комментарий:", "Sec. records", null, null) as message)), 1, MAX_MESSAGE_LEN)
 								if(!t1 || usr.stat || usr.restrained() || !hasHUD(usr, "security"))
 									return
 								if(ishuman(usr))
 									var/mob/living/carbon/human/U = usr
-									R.fields["comments"] += "Made by [U.get_authentification_name()] ([U.get_assignment()]) on [GLOB.current_date_string] [station_time_timestamp()]<BR>[t1]"
+									R.fields["comments"] += "Сделал [U.get_authentification_name()] ([U.get_assignment()]) в [GLOB.current_date_string] [station_time_timestamp()]<BR>[t1]"
 								if(isrobot(usr))
 									var/mob/living/silicon/robot/U = usr
-									R.fields["comments"] += "Made by [U.name] ([U.modtype] [U.braintype]) on [GLOB.current_date_string] [station_time_timestamp()]<BR>[t1]"
+									R.fields["comments"] += "Сделал [U.name] ([U.modtype] [U.braintype]) в [GLOB.current_date_string] [station_time_timestamp()]<BR>[t1]"
 								if(isAI(usr))
 									var/mob/living/silicon/ai/U = usr
-									R.fields["comments"] += "Made by [U.name] (artificial intelligence) on [GLOB.current_date_string] [station_time_timestamp()]<BR>[t1]"
+									R.fields["comments"] += "Сделал [U.name] (artificial intelligence) в [GLOB.current_date_string] [station_time_timestamp()]<BR>[t1]"
 
 	if(href_list["medical"])
 		if(hasHUD(usr,"medical"))
@@ -826,10 +826,10 @@
 				if(E.fields["name"] == perpname)
 					for(var/datum/data/record/R in GLOB.data_core.general)
 						if(R.fields["id"] == E.fields["id"])
-							var/setmedical = input(usr, "Specify a new medical status for this person.", "Medical HUD", R.fields["p_stat"]) in list("*SSD*", "*Deceased*", "Physically Unfit", "Active", "Disabled", "Cancel")
+							var/setmedical = input(usr, "Укажите новый медицинский статус для этого лица.", "Medical HUD", R.fields["p_stat"]) in list("*КРС*", "*Скончавшийся*", "Физически непригодный", "Активный", "Инвалид", "Отмена")
 
 							if(hasHUD(usr,"medical"))
-								if(setmedical != "Cancel")
+								if(setmedical != "Отмена")
 									R.fields["p_stat"] = setmedical
 									modified = 1
 									if(GLOB.PDA_Manifest.len)
@@ -839,7 +839,7 @@
 										sec_hud_set_security_status()
 
 			if(!modified)
-				to_chat(usr, "<span class='warning'>Unable to locate a data core entry for this person.</span>")
+				to_chat(usr, "<span class='warning'>Не удаётся найти данные этого лица в базе данных.</span>")
 
 	if(href_list["medrecord"])
 		if(hasHUD(usr,"medical"))
@@ -853,18 +853,18 @@
 					for(var/datum/data/record/R in GLOB.data_core.medical)
 						if(R.fields["id"] == E.fields["id"])
 							if(hasHUD(usr,"medical"))
-								to_chat(usr, "<b>Name:</b> [R.fields["name"]]	<b>Blood Type:</b> [R.fields["b_type"]]")
-								to_chat(usr, "<b>DNA:</b> [R.fields["b_dna"]]")
-								to_chat(usr, "<b>Minor Disabilities:</b> [R.fields["mi_dis"]]")
-								to_chat(usr, "<b>Details:</b> [R.fields["mi_dis_d"]]")
-								to_chat(usr, "<b>Major Disabilities:</b> [R.fields["ma_dis"]]")
-								to_chat(usr, "<b>Details:</b> [R.fields["ma_dis_d"]]")
-								to_chat(usr, "<b>Notes:</b> [R.fields["notes"]]")
-								to_chat(usr, "<a href='?src=[UID()];medrecordComment=`'>\[View Comment Log\]</a>")
+								to_chat(usr, "<b>Имя:</b> [R.fields["name"]]	<b>Группа крови:</b> [R.fields["b_type"]]")
+								to_chat(usr, "<b>ДНК:</b> [R.fields["b_dna"]]")
+								to_chat(usr, "<b>Незначительные ограничения:</b> [R.fields["mi_dis"]]")
+								to_chat(usr, "<b>Детали:</b> [R.fields["mi_dis_d"]]")
+								to_chat(usr, "<b>Серъёзные ограничения:</b> [R.fields["ma_dis"]]")
+								to_chat(usr, "<b>Детали:</b> [R.fields["ma_dis_d"]]")
+								to_chat(usr, "<b>Замечания:</b> [R.fields["notes"]]")
+								to_chat(usr, "<a href='?src=[UID()];medrecordComment=`'>\[Посмотреть комментарии\]</a>")
 								read = 1
 
 			if(!read)
-				to_chat(usr, "<span class='warning'>Unable to locate a data core entry for this person.</span>")
+				to_chat(usr, "<span class='warning'>Не удаётся найти данные этого лица в базе данных.</span>")
 
 	if(href_list["medrecordComment"])
 		if(hasHUD(usr,"medical"))
@@ -883,11 +883,11 @@
 									for(var/c in R.fields["comments"])
 										to_chat(usr, c)
 								else
-									to_chat(usr, "<span class='warning'>No comment found</span>")
-								to_chat(usr, "<a href='?src=[UID()];medrecordadd=`'>\[Add comment\]</a>")
+									to_chat(usr, "<span class='warning'>Комментарии не найдены</span>")
+								to_chat(usr, "<a href='?src=[UID()];medrecordadd=`'>\[Добавить комментарий\]</a>")
 
 			if(!read)
-				to_chat(usr, "<span class='warning'>Unable to locate a data core entry for this person.</span>")
+				to_chat(usr, "<span class='warning'>Не удаётся найти данные этого лица в базе данных.</span>")
 
 	if(href_list["medrecordadd"])
 		if(hasHUD(usr,"medical"))
@@ -899,18 +899,18 @@
 					for(var/datum/data/record/R in GLOB.data_core.medical)
 						if(R.fields["id"] == E.fields["id"])
 							if(hasHUD(usr,"medical"))
-								var/t1 = copytext(trim(sanitize(input("Add Comment:", "Med. records", null, null) as message)), 1, MAX_MESSAGE_LEN)
+								var/t1 = copytext(trim(sanitize(input("Добавить комментарий:", "Med. records", null, null) as message)), 1, MAX_MESSAGE_LEN)
 								if(!t1 || usr.stat || usr.restrained() || !hasHUD(usr, "medical"))
 									return
 								if(ishuman(usr))
 									var/mob/living/carbon/human/U = usr
-									R.fields["comments"] += "Made by [U.get_authentification_name()] ([U.get_assignment()]) on [GLOB.current_date_string] [station_time_timestamp()]<BR>[t1]"
+									R.fields["comments"] += "Сделал [U.get_authentification_name()] ([U.get_assignment()]) в [GLOB.current_date_string] [station_time_timestamp()]<BR>[t1]"
 								if(isrobot(usr))
 									var/mob/living/silicon/robot/U = usr
-									R.fields["comments"] += "Made by [U.name] ([U.modtype] [U.braintype]) on [GLOB.current_date_string] [station_time_timestamp()]<BR>[t1]"
+									R.fields["comments"] += "Сделал [U.name] ([U.modtype] [U.braintype]) в [GLOB.current_date_string] [station_time_timestamp()]<BR>[t1]"
 								if(isAI(usr))
 									var/mob/living/silicon/ai/U = usr
-									R.fields["comments"] += "Made by [U.name] (artificial intelligence) on [GLOB.current_date_string] [station_time_timestamp()]<BR>[t1]"
+									R.fields["comments"] += "Сделал [U.name] (artificial intelligence) в [GLOB.current_date_string] [station_time_timestamp()]<BR>[t1]"
 
 	if(href_list["lookitem"])
 		var/obj/item/I = locate(href_list["lookitem"])

@@ -29,24 +29,24 @@ Used In File(s): \code\game\machinery\computer\skills.dm
 				hidden.parent("td").parent("tr").hide()
 			}
 		}
-		
+
 		function selectTextField(){
 			var filter_text = document.getElementById('filter');
 			filter_text.focus();
 			filter_text.select();
 		}
-		
+
 		$(window).load(function() {
 			selectTextField();
 			updateSearch();
 		});
-		
+
 		$("#filter").keyup(function() {
 			updateSearch();
 		});
 	</script>
 {{/if}}
-<style type="text/css">			
+<style type="text/css">
 	.infoButton {
 		background: none;
 		border: none;
@@ -64,7 +64,7 @@ Used In File(s): \code\game\machinery\computer\skills.dm
 
 <div class="item">
 	<div class="itemLabelNarrow">
-		<b>Confirm Identity:</b>
+		<b>Подтвердите личность:</b>
 	</div>
 	<div class="itemContent">
 		{{:helper.link(data.scan ? data.scan : "----------", 'eject', {'scan' : 1}, null, data.scan ? 'itemContentWide' : 'fixedLeft')}}
@@ -73,14 +73,14 @@ Used In File(s): \code\game\machinery\computer\skills.dm
 <hr>
 {{if data.authenticated}}
 	{{if data.screen == 1}} <!-- SKILL_DATA_R_LIST -->
-		<div style="text-align: center;">    
-			<div style="display: inline-block;">{{:helper.link('New Record', 'plus', {'new_g' : 1})}}</div>
+		<div style="text-align: center;">
+			<div style="display: inline-block;">{{:helper.link('Новая запись', 'plus', {'new_g' : 1})}}</div>
 		</div>
-		<h3><center>Record List</center></h3>
+		<h3><center>Список записей</center></h3>
 		<table width='560' align='center' cellspacing='0' cellpadding='5' id='maintable'>
 			<tr id='search_tr'>
 				<td align='center'>
-					<b>Search:</b> <input type='text' id='filter' value='' style='width:300px;'></input>
+					<b>Поиск:</b> <input type='text' id='filter' value='' style='width:300px;'></input>
 				</td>
 			</tr>
 		</table>
@@ -89,10 +89,10 @@ Used In File(s): \code\game\machinery\computer\skills.dm
 				<table style='width: 100%;' id='maintable_data'>
 					<thead>
 						<tr>
-							<th>{{:helper.link('Name', null, {'sort' : 'name'}, null, 'infoButton')}}</th>
+							<th>{{:helper.link('Имя', null, {'sort' : 'name'}, null, 'infoButton')}}</th>
 							<th>{{:helper.link('ID', null, {'sort' : 'id'}, null, 'infoButton')}}</th>
-							<th>{{:helper.link('Rank', null, {'sort' : 'rank'}, null, 'infoButton')}}</th>
-							<th>{{:helper.link('Fingerprints', null, {'sort' : 'fingerprint'}, null, 'infoButton')}}</th>
+							<th>{{:helper.link('Ранг', null, {'sort' : 'rank'}, null, 'infoButton')}}</th>
+							<th>{{:helper.link('Отпечаток', null, {'sort' : 'fingerprint'}, null, 'infoButton')}}</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -108,20 +108,20 @@ Used In File(s): \code\game\machinery\computer\skills.dm
 				</table>
 			</span>
 		</div>
-		<h3><center>Menu</center></h3>
-		<div class="line">{{:helper.link('Record Maintenance', 'wrench', {'screen' : 2})}}</div>
-		<div class="line">{{:helper.link('Logout', 'lock', {'logout' : 1})}}</div>
+		<h3><center>Меню</center></h3>
+		<div class="line">{{:helper.link('Обслуживание записей', 'wrench', {'screen' : 2})}}</div>
+		<div class="line">{{:helper.link('Выйти', 'lock', {'logout' : 1})}}</div>
 	{{else data.screen == 2}} <!-- SKILL_DATA_MAINT -->
 		<h3>Records Maintenance</h3>
-		<div class="line">{{:helper.link('Backup To Disk', 'download', {'back' : 1}, 'disabled')}}</div>
-		<div class="line">{{:helper.link('Upload From disk', 'upload', {'u_load' : 1}, 'disabled')}}</div>
-		<div class="line">{{:helper.link('Delete All Records', 'trash', {'del_all' : 1})}}</div>
-		<div class="line">{{:helper.link('Back', 'arrow-left', {'screen' : 1})}}</div>
+		<div class="line">{{:helper.link('Резервное копирование на диск', 'download', {'back' : 1}, 'disabled')}}</div>
+		<div class="line">{{:helper.link('Загрузить с диска', 'upload', {'u_load' : 1}, 'disabled')}}</div>
+		<div class="line">{{:helper.link('Удалить ВСЕ записи', 'trash', {'del_all' : 1})}}</div>
+		<div class="line">{{:helper.link('Назад', 'arrow-left', {'screen' : 1})}}</div>
 	{{else data.screen == 3}} <!-- SKILL_DATA_RECORD -->
-		<h3><center>Employment Record</center></h3>
-		<h4><center>General Data</center></h4>
+		<h3><center>Записи о трудоустройстве</center></h3>
+		<h4><center>Общие данные</center></h4>
 		{{if data.general.empty}}
-			<span class="bad"><center>General Record Lost!</center></span>
+			<span class="bad"><center>Общие данные потеряны!</center></span>
 		{{else}}
 			<div class="statusDisplayRecords">
 				<table style='width:100%'><tr>
@@ -148,25 +148,25 @@ Used In File(s): \code\game\machinery\computer\skills.dm
 					</td>
 				</tr></table>
 			</div>
-			
-			<h4><center>Employment Data</center></h4>
+
+			<h4><center>Данные трудоустройств</center></h4>
 			<div class="item">
 				<div class="itemLabel">
-					Employment/skills summary:
+					Сводка трудоустройств/навыков:
 				</div>
 				<div class="itemContent">
-					{{:data.general.notes ? data.general.notes : 'None'}}
+					{{:data.general.notes ? data.general.notes : 'Отсутствуют'}}
 				</div>
 			</div>
 		{{/if}}
 		<h3><center>Menu</center></h3>
-		<div class="line">{{:helper.link('Delete Record (All)', 'trash', {'del_rg' : 1})}}</div>
-		<div class="line">{{:helper.link('Print Record', 'print', {'print_r' : 1})}}</div>
-		<div class="line">{{:helper.link('Back', 'arrow-left', {'screen' : 1})}}</div>
+		<div class="line">{{:helper.link('Удалить запись (всё)', 'trash', {'del_rg' : 1})}}</div>
+		<div class="line">{{:helper.link('Печать записи', 'print', {'print_r' : 1})}}</div>
+		<div class="line">{{:helper.link('Назад', 'arrow-left', {'screen' : 1})}}</div>
 	{{/if}}
 {{else}}
-	<h3>Menu</h3>
-	{{:helper.link('Login', 'unlock', {'login' : 1})}}
+	<h3>Меню</h3>
+	{{:helper.link('Войти', 'unlock', {'login' : 1})}}
 {{/if}}
 
 {{if data.temp}}
@@ -178,7 +178,7 @@ Used In File(s): \code\game\machinery\computer\skills.dm
 				<center>{{:data.temp.text}}</center>
 			{{/if}}
 
-			
+
 			{{if data.temp.has_buttons}}
 				<div class="line">
 					<div style="display: inline-block;">
@@ -190,9 +190,9 @@ Used In File(s): \code\game\machinery\computer\skills.dm
 					</div>
 				</div>
 			{{/if}}
-			
+
 			<div style="display: inline-block;">
-				<div class="line">{{:helper.link('Clear screen', 'home', {'temp' : 1})}}</div>
+				<div class="line">{{:helper.link('Очистить экран', 'home', {'temp' : 1})}}</div>
 			</div>
 		</div>
 	</div>

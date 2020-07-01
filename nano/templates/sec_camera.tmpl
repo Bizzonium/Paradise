@@ -2,23 +2,23 @@
 Title: Security Camera Console (Main content)
 Used In File(s): \code\game\machinery\computer\camera.dm
  -->
-{{:helper.link('Show Map', 'thumb-tack', {'showMap' : 1})}}
-{{:helper.link('Reset', 'refresh', {'reset' : 1})}}
+{{:helper.link('Показать карту', 'thumb-tack', {'showMap' : 1})}}
+{{:helper.link('Сбросить', 'refresh', {'reset' : 1})}}
 <div class='item'>
-    <div class='itemLabel'>Current Camera: </div>
+    <div class='itemLabel'>Текущая камера: </div>
     {{if data.current}}
         <div class='itemContent'><b>{{:data.current.name}}</b></div>
     {{else}}
-        <div class='itemContent'>None</div>
+        <div class='itemContent'>Нет</div>
     {{/if}}
 </div>
 
 {{if data.networks}}
 <div class="item">
-    <h2>Networks</h2>
-    Please select the networks you'd like this console to monitor.
+    <h2>Сети</h2>
+    Пожалуйста, выберите сети, которые вы хотели бы мониторить на этой консоли.
     {{if data.emagged}}
-        <div class="bad">WARNING: Unauthorized access detected.</div>
+        <div class="bad">ВНИМАНИЕ: обнаружен неавторизованный доступ</div>
     {{/if}}
     <div class="item">
         {{for data.networks}}
@@ -28,12 +28,12 @@ Used In File(s): \code\game\machinery\computer\camera.dm
 </div>
 {{/if}}
 <div class="item">
-    <h2>Cameras</h2>
+    <h2>Камеры</h2>
     {{for data.cameras}}
         {{if data.current && value.name == data.current.name}}
             {{:helper.link(value.name, '', {'switchTo' : value.camera}, 'selected')}}
         {{else value.deact}}
-            {{:helper.link(value.name + " (deactivated)", '', {}, 'inactive')}}
+            {{:helper.link(value.name + " (деактивирована)", '', {}, 'inactive')}}
         {{else}}
             {{:helper.link(value.name, '', {'switchTo' : value.camera})}}
         {{/if}}

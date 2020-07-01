@@ -1,17 +1,17 @@
 {{if data.maskConnected}}
-	<div class="noticePlaceholder">This tank is connected to a mask.</div>
+	<div class="noticePlaceholder">Этот баллон подключен к маске.</div>
 {{else}}
-	<div class="notice">This tank is NOT connected to a mask.</div>
+	<div class="notice">Этот баллон НЕ подключен к маске.</div>
 {{/if}}
 
 <div class="item">
 	<div class="itemLabel">
-		Tank Pressure:
+		Давление баллона:
 	</div>
 	<div class="itemContent">
 		{{:helper.displayBar(data.tankPressure, 0, 1013, (data.tankPressure > 200) ? 'good' : ((data.tankPressure > 100) ? 'average' : 'bad'))}}
 		<div class="statusValue">
-			{{:helper.smoothRound(data.tankPressure)}} kPa
+			{{:helper.smoothRound(data.tankPressure)}} кПа
 		</div>
 	</div>
 </div>
@@ -20,7 +20,7 @@
 
 <div class="item">
 	<div class="itemLabel">
-		Mask Release Pressure:
+		Давление подачи в маску:
 	</div>
 	<div class="itemContent">
 		{{:helper.displayBar(data.releasePressure, 0, data.maxReleasePressure, (data.releasePressure >= 23) ? null : ((data.releasePressure >= 17) ? 'average' : 'bad'))}}
@@ -30,18 +30,18 @@
 			<div style="float: left; width: 80px; text-align: center;">&nbsp;{{:data.releasePressure}} kPa&nbsp;</div>
 			{{:helper.link('+', null, {'dist_p' : 1}, (data.releasePressure < data.maxReleasePressure) ? null : 'disabled')}}
 			{{:helper.link('+', null, {'dist_p' : 10}, (data.releasePressure < data.maxReleasePressure) ? null : 'disabled')}}
-			{{:helper.link('Max', null, {'dist_p' : 'max'}, (data.releasePressure < data.maxReleasePressure) ? null : 'disabled')}}
-			{{:helper.link('Reset', null, {'dist_p' : 'reset'}, (data.releasePressure != data.defaultReleasePressure) ? null : 'disabled')}}
+			{{:helper.link('Макс', null, {'dist_p' : 'max'}, (data.releasePressure < data.maxReleasePressure) ? null : 'disabled')}}
+			{{:helper.link('Сбросить', null, {'dist_p' : 'reset'}, (data.releasePressure != data.defaultReleasePressure) ? null : 'disabled')}}
 		</div>
 	</div>
 </div>
 
 <div class="item">
 	<div class="itemLabel">
-		Mask Release Valve:
+		Клапан подачи в маску:
 	</div>
 	<div class="itemContent">
-		{{:helper.link('Open', 'unlock', {'stat' : 1}, (!data.maskConnected) ? 'disabled' : (data.valveOpen ? 'selected' : null))}}{{:helper.link('Close', 'lock', {'stat' : 1}, data.valveOpen ? null : 'selected')}}
+		{{:helper.link('Открыть', 'unlock', {'stat' : 1}, (!data.maskConnected) ? 'disabled' : (data.valveOpen ? 'selected' : null))}}{{:helper.link('Закрыть', 'lock', {'stat' : 1}, data.valveOpen ? null : 'selected')}}
 	</div>
 </div>
 

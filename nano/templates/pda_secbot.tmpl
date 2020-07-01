@@ -1,9 +1,9 @@
 {{if !data.beepsky.active}}
 	{{if data.beepsky.count == 0}}
-		<H1><span class="bad">No bots found.</span></H1>
+		<H1><span class="bad">Боты не найдены.</span></H1>
 	{{else}}
 		<div class="item">
-			Select a bot:
+			Выберите бота:
 		</div>
 		<br>
 		{{for data.beepsky.bots}}
@@ -13,16 +13,16 @@
 		{{/for}}
 	{{/if}}
 	<br>
-	{{:helper.link('Scan for Bots','rss', {'radiomenu' : "1", 'op' : "scanbots"}, null, 'pdalink fixedLeftWidest')}}
+	{{:helper.link('Сканировать ботов','rss', {'radiomenu' : "1", 'op' : "scanbots"}, null, 'pdalink fixedLeftWidest')}}
 {{else}}
 	<H1><span class="average">{{:data.beepsky.active}}</span></H1>
 	{{if data.beepsky.botstatus.mode == -1}}
-		<H1><span class="bad">Waiting for response...</span></H1>
+		<H1><span class="bad">Ожидание ответа...</span></H1>
 	{{else}}
-		<H1><span class="good">Status:</span></H1>
+		<H1><span class="good">Статус:</span></H1>
 		<div class="item">
 			<div class="itemLabel">
-				<span class="good">Location:</span>
+				<span class="good">Местоположение:</span>
 			</div>
 			<div class="itemContent">
 				<span class="average">{{:data.beepsky.botstatus.loca}}</span>
@@ -30,30 +30,30 @@
 		</div>
 		<div class="item">
 			<div class="itemLabel">
-				<span class="good">Mode:</span>
+				<span class="good">Режим:</span>
 			</div>
 			<div class="itemContent">
 				<span class="average">
 					{{if data.beepsky.botstatus.mode ==0}}
-						Ready
+						Готов
 					{{else data.beepsky.botstatus.mode == 1}}
-						Apprehending target
+						Преследование цели
 					{{else data.beepsky.botstatus.mode ==2 || data.beepsky.botstatus.mode == 3}}
-						Arresting target
+						Арест цели
 					{{else data.beepsky.botstatus.mode ==4}}
-						Starting patrol
+						Начало патрулирования
 					{{else data.beepsky.botstatus.mode ==5}}
-						On Patrol
+						Патрулирование
 					{{else data.beepsky.botstatus.mode ==6}}
-						Responding to summons
+						Ответ на призыв
 					{{/if}}
 				</span>
 			</div>
 		</div>
 		<div class="item">
-			{{:helper.link('Stop Patrol', 'gear', {'radiomenu' : "1", 'op' : "stop"}, null, 'pdalink fixedLeftWide')}}
-			{{:helper.link('Start Patrol', 'gear', {'radiomenu' : "1", 'op' : "go"}, null, 'pdalink fixedLeftWide')}}
-			{{:helper.link('Summon Bot', 'gear', {'radiomenu' : "1", 'op' : "summon"}, null, 'pdalink fixedLeftWide')}}
+			{{:helper.link('Остановить патруль', 'gear', {'radiomenu' : "1", 'op' : "stop"}, null, 'pdalink fixedLeftWide')}}
+			{{:helper.link('Начать патруль', 'gear', {'radiomenu' : "1", 'op' : "go"}, null, 'pdalink fixedLeftWide')}}
+			{{:helper.link('Призвать бота', 'gear', {'radiomenu' : "1", 'op' : "summon"}, null, 'pdalink fixedLeftWide')}}
 		</div>
 	{{/if}}
 {{/if}}

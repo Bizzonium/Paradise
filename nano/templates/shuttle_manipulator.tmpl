@@ -2,11 +2,11 @@
 Title: Shuttle Manipulator UI
 -->
 
-<h3>Operations</h3>
+<h3>Операции</h3>
 <div class="item">
-	{{:helper.link('Status', 'link', {'selectMenuKey' : 'stat'}, data.selectedMenuKey == 'stat' ? 'selected' : null)}}
-	{{:helper.link('Templates', 'link', {'selectMenuKey' : 'stemp'}, data.selectedMenuKey == 'stemp' ? 'selected' : null)}}
-	{{:helper.link('Modification', 'link', {'selectMenuKey' : 'mod'}, data.selectedMenuKey == 'mod' ? 'selected' : null)}}
+	{{:helper.link('Статус', 'link', {'selectMenuKey' : 'stat'}, data.selectedMenuKey == 'stat' ? 'selected' : null)}}
+	{{:helper.link('Шаблоны', 'link', {'selectMenuKey' : 'stemp'}, data.selectedMenuKey == 'stemp' ? 'selected' : null)}}
+	{{:helper.link('Модификация', 'link', {'selectMenuKey' : 'mod'}, data.selectedMenuKey == 'mod' ? 'selected' : null)}}
 </div>
 
 <div class="item">&nbsp;</div>
@@ -16,23 +16,23 @@ Title: Shuttle Manipulator UI
 	{{for data.shuttles}}
 		<div class='statusDisplay'>
 			<div class='itemLabel'>
-			Name: {{:value.name}}
+			Имя: {{:value.name}}
 			</div>
 			<div class='itemContentWide'>
 			ID: {{:value.id}}
 			</div>
 			<div class='itemContentWide'>
-			Shuttle Timer: {{:value.timeleft}}
+			Таймер шаттла: {{:value.timeleft}}
 			</div>
 			<div class='itemContentWide'>
-			Shuttle Mode: {{:value.mode}}
+			Режим шаттла: {{:value.mode}}
 			</div>
 			<div class='itemContentWide'>
-			Shuttle Status: {{:value.status}}
+			Статус шаттла: {{:value.status}}
 			</div>
 			<div class='itemContentWide'>
-			{{:helper.link('Jump to', 'space-shuttle', {'jump_to' : 1, 'type' : 'mobile', 'id' : value.id}, null)}}
-			{{:helper.link('Fast Travel', 'rocket', {'fast_travel' : 1, 'id' : value.id}, null)}}
+			{{:helper.link('Прыжок на', 'space-shuttle', {'jump_to' : 1, 'type' : 'mobile', 'id' : value.id}, null)}}
+			{{:helper.link('Быстрое путешествие', 'rocket', {'fast_travel' : 1, 'id' : value.id}, null)}}
 			</div>
 		</div>
 	{{/for}}
@@ -48,21 +48,21 @@ Title: Shuttle Manipulator UI
 		{{for data.templates[data.existing_shuttle.id].templates}}
 			<div class='statusDisplay'>
 				<div class='itemLabelWide'>
-					Name: {{:value.name}}
+					Название: {{:value.name}}
 				</div>
 				{{if value.description}}
 					<div class='itemContent'>
-						Description: {{:value.description}}
+						Описание: {{:value.description}}
 					</div>
 				{{/if}}
 				{{if value.admin_notes}}
 					<div class='itemContent'>
-						Admin Notes: {{:value.admin_notes}}
+						Заметки админа: {{:value.admin_notes}}
 					</div>
 				{{/if}}
 
 				<div class='item'>
-					{{:helper.link('select template', 'space-shuttle', {'select_template' : 1, 'shuttle_id' : value.shuttle_id}, (data.selected && data.selected.shuttle_id == value.shuttle_id) ? 'selected' : null)}}
+					{{:helper.link('Выбрать шаблон', 'space-shuttle', {'select_template' : 1, 'shuttle_id' : value.shuttle_id}, (data.selected && data.selected.shuttle_id == value.shuttle_id) ? 'selected' : null)}}
 				</div>
 			</div>
 		{{/for}}
@@ -74,10 +74,10 @@ Title: Shuttle Manipulator UI
 		{{if data.existing_shuttle}}
 			<div class='itemGroup'>
 				<div class='itemLabelWide'>
-					Existing Shuttle: {{:data.existing_shuttle.name}}
+					Существующий шаттл: {{:data.existing_shuttle.name}}
 				</div>
 				<div class='item'>
-					Status: {{:data.existing_shuttle.status}}
+					Статус: {{:data.existing_shuttle.status}}
 				</div>
 				{{if data.existing_shuttle.timer}}
 					<div class='item'>
@@ -85,37 +85,37 @@ Title: Shuttle Manipulator UI
 					</div>
 				{{/if}}
 				<div class='item'>
-					{{:helper.link('Jump to', 'space-shuttle', {'jump_to' : 1, 'type' : 'mobile', 'id' : data.existing_shuttle.id}, null)}}
+					{{:helper.link('Прыжок на', 'space-shuttle', {'jump_to' : 1, 'type' : 'mobile', 'id' : data.existing_shuttle.id}, null)}}
 				</div>
 			</div>
 		{{else}}
-			<h3>No shuttle selected</h3>
+			<h3>Шаттл не выбран</h3>
 		{{/if}}
 
 
 		{{if data.selected}}
 			<div class='itemGroup'>
 				<div class='itemLabelWide'>
-					Name: {{:data.selected.name}}
+					Название: {{:data.selected.name}}
 				</div>
 				{{if data.selected.description}}
 					<div class='itemContent'>
-						Description: {{:data.selected.description}}
+						Описание: {{:data.selected.description}}
 					</div>
 				{{/if}}
 				{{if data.selected.admin_notes}}
 					<div class='itemContent'>
-						Admin Notes: {{:data.selected.admin_notes}}
+						Заметки админа: {{:data.selected.admin_notes}}
 					</div>
 				{{/if}}
 
 				<div class='item'>
-					{{:helper.link('Preview', 'exclamation-circle', {'preview' : 1, 'shuttle_id' : data.selected.shuttle_id}, null)}}
-					{{:helper.link('Load', 'exclamation-circle', {'load' : 1, 'shuttle_id' : data.selected.shuttle_id}, null)}}
+					{{:helper.link('Предпросмотр', 'exclamation-circle', {'preview' : 1, 'shuttle_id' : data.selected.shuttle_id}, null)}}
+					{{:helper.link('Загрузка', 'exclamation-circle', {'load' : 1, 'shuttle_id' : data.selected.shuttle_id}, null)}}
 				</div>
 			</div>
 		{{else}}
-			<h3>No template selected</h3>
+			<h3>Шаблон не выбран</h3>
 		{{/if}}
 	</div>
 {{/if}}

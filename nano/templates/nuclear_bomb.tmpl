@@ -1,4 +1,4 @@
-<!-- 
+<!--
 Title: Nuke Control Panel/Nuclear Bomb Defusion
 Used In File(s): \code\game\gamemodes\nuclear\nuclearbomb.dm
 -->
@@ -6,23 +6,23 @@ Used In File(s): \code\game\gamemodes\nuclear\nuclearbomb.dm
 	{{:helper.syndicateMode()}}
 {{/if}}
 <div class="item">
-	<div class="itemLabel">Authorization Disk:</div>
+	<div class="itemLabel">Диск авторизации:</div>
 	<div class="itemContent">
 	{{if data.auth}}
 		{{:helper.link('++++++++++', 'eject', {'auth' : 1})}}
-	{{else}} 
+	{{else}}
 		{{:helper.link('----------', 'floppy-o', {'auth' : 1})}}
 	{{/if}}
 	</div>
-</div>	
+</div>
 <hr>
 <div class="item">
-	<div class="itemLabel">Status:</div>
+	<div class="itemLabel">Статус:</div>
 	<div class="itemContent"> {{:data.authstatus}} - {{:data.safe}} </div>
 </div>
 
 <div class="item">
-	<div class="itemLabel">Time Left:</div>
+	<div class="itemLabel">Времени осталось:</div>
 	<div class="itemContent">{{:data.time}}</div>
 </div>
 
@@ -30,22 +30,22 @@ Used In File(s): \code\game\gamemodes\nuclear\nuclearbomb.dm
 	{{if data.auth && data.yescode}}
 		<div class="item">
 			<div class="itemLabel">
-				Timer
+				Таймер
 			</div>
 			<div class="itemContent">
-				{{:helper.link('On', 'play', {'timer' : 1}, data.timer ? 'selected' : '')}}
-				{{:helper.link('Off', 'stop', {'timer' : 0}, !data.timer ? 'selected' : '')}}
+				{{:helper.link('Вкл', 'play', {'timer' : 1}, data.timer ? 'selected' : '')}}
+				{{:helper.link('Выкл', 'stop', {'timer' : 0}, !data.timer ? 'selected' : '')}}
 			</div>
 		</div>
 		<div class="item">
 			<div class="itemLabel">
-				Set Time
+				Установить время
 			</div>
 			<div class="itemContent">
 			{{:helper.link('--', '', {'time' : -10}, data.time <= 120 ? 'disabled' : '')}}
 			{{:helper.link('-', '', {'time' : -1}, data.time <= 120 ? 'disabled' : '')}}
 			<div class="link redButton">
-			{{:data.time}} 
+			{{:data.time}}
 			</div>
 			{{:helper.link('+', '', {'time' : 1})}}
 			{{:helper.link('++', '', {'time' : 10})}}
@@ -56,22 +56,22 @@ Used In File(s): \code\game\gamemodes\nuclear\nuclearbomb.dm
 
 		<div class="item">
 			<div class="itemLabel">
-				Timer
+				Таймер
 			</div>
 			<div class="itemContent">
-				{{:helper.link('On', 'play', null, 'disabled')}}
-				{{:helper.link('Off', 'pause', null, 'disabled')}}
+				{{:helper.link('Вкл', 'play', null, 'disabled')}}
+				{{:helper.link('Выкл', 'pause', null, 'disabled')}}
 			</div>
 		</div>
 		<div class="item">
 			<div class="itemLabel">
-				Set Time
+				Установить время
 			</div>
 			<div class="itemContent">
 			{{:helper.link('--', '', null, 'disabled')}}
 			{{:helper.link('-', '', null, 'disabled')}}
 			<div class="link redButton">
-			{{:data.time}} 
+			{{:data.time}}
 			</div>
 			{{:helper.link('+', '', null, 'disabled')}}
 			{{:helper.link('++', '', null, 'disabled')}}
@@ -84,20 +84,20 @@ Used In File(s): \code\game\gamemodes\nuclear\nuclearbomb.dm
 	{{if data.auth && data.yescode}}
 		<div class="item">
 			<div class="itemLabel">
-				Safety
-			</div> 
+				Предохранитель
+			</div>
 			<div class="itemContent">
-			{{:helper.link('Engaged', 'info', {'safety' : 1}, data.safety ? 'selected' : '')}}
-			{{:helper.link('Disengaged', 'exclamation-triangle', {'safety' : 0}, data.safety ? '' : 'selected')}}
+			{{:helper.link('Включить', 'info', {'safety' : 1}, data.safety ? 'selected' : '')}}
+			{{:helper.link('Отключить', 'exclamation-triangle', {'safety' : 0}, data.safety ? '' : 'selected')}}
 			</div>
 		</div>
 		<div class="item">
 			<div class="itemLabel">
-				Anchor
-			</div> 
+				Якорь
+			</div>
 			<div class="itemContent">
-			{{:helper.link('Engaged', 'lock', {'anchor' : 1}, data.anchored ? 'selected' : '')}}
-			{{:helper.link('Disengaged', 'unlock', {'anchor' : 0}, data.anchored ? '' : 'selected')}}
+			{{:helper.link('Включить', 'lock', {'anchor' : 1}, data.anchored ? 'selected' : '')}}
+			{{:helper.link('Отключить', 'unlock', {'anchor' : 0}, data.anchored ? '' : 'selected')}}
 			</div>
 		</div>
 
@@ -105,22 +105,22 @@ Used In File(s): \code\game\gamemodes\nuclear\nuclearbomb.dm
 
 		<div class="item">
 			<div class="itemLabel">
-				Safety
-			</div> 
+				Предохранитель
+			</div>
 			<div class="itemContent">
-			{{:helper.link('Engaged', 'info', null, 'disabled')}}
-			{{:helper.link('Disengaged', 'exclamation-triangle', null, 'disabled')}}
+			{{:helper.link('Включить', 'info', null, 'disabled')}}
+			{{:helper.link('Отключить', 'exclamation-triangle', null, 'disabled')}}
 			</div>
 		</div>
 		<div class="item">
 			<div class="itemLabel">
-				Anchor
-			</div> 
-			<div class="itemContent">
-			{{:helper.link('Engaged', 'lock', null, 'disabled')}}
-			{{:helper.link('Disengaged', 'unlock', null, 'disabled')}}
+				Якорь
 			</div>
-		</div>	
+			<div class="itemContent">
+			{{:helper.link('Включить', 'lock', null, 'disabled')}}
+			{{:helper.link('Отключить', 'unlock', null, 'disabled')}}
+			</div>
+		</div>
 	{{/if}}
 </div>
 <hr>

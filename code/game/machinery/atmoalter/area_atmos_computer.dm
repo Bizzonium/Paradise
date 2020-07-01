@@ -1,6 +1,6 @@
 /obj/machinery/computer/area_atmos
-	name = "area air control"
-	desc = "A computer used to control the stationary scrubbers and pumps in the area."
+	name = "контроль воздуха области"
+	desc = "Компьютер используется для контроля станционными скрубберами и насосами на области."
 	icon_screen = "area_atmos"
 	icon_keyboard = "atmos_key"
 	circuit = /obj/item/circuitboard/area_atmos
@@ -13,7 +13,7 @@
 	light_color = LIGHT_COLOR_CYAN
 
 	//Simple variable to prevent me from doing attack_hand in both this and the child computer
-	var/zone = "This computer is working on a wireless range, the range is currently limited to 25 meters."
+	var/zone = "Данный компьютер работает на беспроводном радиусе, ограниченной в текущий момент 25 метрами."
 
 /obj/machinery/computer/area_atmos/New()
 	..()
@@ -70,7 +70,7 @@
 			</style>
 		</head>
 		<body>
-			<center><h1>Area Air Control</h1></center>
+			<center><h1>Контроль воздуха области</h1></center>
 			<font color="red">[status]</font><br>
 			<a href="?src=[UID()];scan=1">Scan</a>
 			<table border="1" width="90%">"}
@@ -78,7 +78,7 @@
 		dat += {"
 				<tr>
 					<td>[scrubber.name]</td>
-					<td width="150"><a class="green" href="?src=[UID()];scrub=\ref[scrubber];toggle=1">Turn On</a> <a class="red" href="?src=[UID()];scrub=\ref[scrubber];toggle=0">Turn Off</a></td>
+					<td width="150"><a class="green" href="?src=[UID()];scrub=\ref[scrubber];toggle=1">Включить</a> <a class="red" href="?src=[UID()];scrub=\ref[scrubber];toggle=0">Отключить</a></td>
 				</tr>"}
 
 	dat += {"
@@ -105,7 +105,7 @@
 
 		if(!validscrubber(scrubber))
 			spawn(20)
-				status = "ERROR: Couldn't connect to scrubber! (timeout)"
+				status = "ОШИБКА: Не удаётся подключится к скрубберу! (таймаут)"
 				connectedscrubbers -= scrubber
 				src.updateUsrDialog()
 			return
@@ -129,13 +129,13 @@
 			connectedscrubbers += scrubber
 
 	if(!found)
-		status = "ERROR: No scrubber found!"
+		status = "ОШИБКА: Скруббер не найден!"
 
 	src.updateUsrDialog()
 
 
 /obj/machinery/computer/area_atmos/area
-	zone = "This computer is working in a wired network limited to this area."
+	zone = "Данный компьютер работает в проводной сети, ограниченной этой областью."
 
 /obj/machinery/computer/area_atmos/area/validscrubber(obj/machinery/portable_atmospherics/scrubber/huge/scrubber as obj )
 	if(!isobj(scrubber))
@@ -175,6 +175,6 @@
 
 
 	if(!found)
-		status = "ERROR: No scrubber found!"
+		status = "ОШИБКА: Скруббер не найден!"
 
 	src.updateUsrDialog()

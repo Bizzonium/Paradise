@@ -4,15 +4,15 @@ code/modules/mob/living/silicon/pai/software_modules.dm
 
 <div class="item">
 	<div class="itemLabel">
-		Cable:
+		Кабель:
 	</div>
 	<div class="itemContent">
 		{{if data.machine}}
-			{{:helper.link("Connected", '', {}, 'selected')}}
+			{{:helper.link("Подключен", '', {}, 'selected')}}
 		{{else data.cable}}
-			{{:helper.link("Extended", '', {}, 'yellowButton')}}
+			{{:helper.link("Вытянут", '', {}, 'yellowButton')}}
 		{{else}}
-			{{:helper.link("Retracted", '', {"stopic":"door_jack", "cable":1})}}
+			{{:helper.link("Втянут", '', {"stopic":"door_jack", "cable":1})}}
 		{{/if}}
 	</div>
 </div>
@@ -20,7 +20,7 @@ code/modules/mob/living/silicon/pai/software_modules.dm
 {{if data.machine}}
 <div class="item">
 	<div class="itemLabel">
-		Hack:
+		Взлом:
 	</div>
 	<div class="itemContent">
 		{{if data.inprogress}}
@@ -31,14 +31,14 @@ code/modules/mob/living/silicon/pai/software_modules.dm
 			{{else}}
 				<div class='good'>{{:helper.smoothRound(data.progress_a)}}.{{:helper.smoothRound(data.progress_b)}}%</div>
 			{{/if}}
-			{{:helper.link("Cancel", '', {"stopic":"door_jack", "cancel":1}, null, 'redButton')}}
+			{{:helper.link("Отменить", '', {"stopic":"door_jack", "cancel":1}, null, 'redButton')}}
 		{{else}}
-			{{:helper.link("Start", '', {"stopic":"door_jack", "jack":1})}}
+			{{:helper.link("Старт", '', {"stopic":"door_jack", "jack":1})}}
 		{{/if}}
 	</div>
 </div>
 {{else data.aborted}}
 <div class="item">
-	<div class='bad'>Hack aborted!</div>
+	<div class='bad'>Взлом отменён!</div>
 </div>
 {{/if}}

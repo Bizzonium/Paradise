@@ -64,7 +64,7 @@ Used In File(s): \code\game\machinery\computer\security.dm
 
 <div class="item">
 	<div class="itemLabelNarrow">
-		<b>Confirm Identity:</b>
+		<b>Подтвердите личность:</b>
 	</div>
 	<div class="itemContent">
 		{{:helper.link(data.scan ? data.scan : "----------", 'eject', {'scan' : 1}, null, data.scan ? 'itemContentWide' : 'fixedLeft')}}
@@ -74,13 +74,13 @@ Used In File(s): \code\game\machinery\computer\security.dm
 {{if data.authenticated}}
 	{{if data.screen == 1}} <!-- SEC_DATA_R_LIST -->
 		<div style="text-align: center;">
-			<div style="display: inline-block;">{{:helper.link('New Record', 'plus', {'new_g' : 1})}}</div>
+			<div style="display: inline-block;">{{:helper.link('Новая запись', 'plus', {'new_g' : 1})}}</div>
 		</div>
-		<h3><center>Record List</center></h3>
+		<h3><center>Список записей</center></h3>
 		<table width='560' align='center' cellspacing='0' cellpadding='5' id='maintable'>
 			<tr id='search_tr'>
 				<td align='center'>
-					<b>Search:</b> <input type='text' id='filter' value='' style='width:300px;'></input>
+					<b>Поиск:</b> <input type='text' id='filter' value='' style='width:300px;'></input>
 				</td>
 			</tr>
 		</table>
@@ -89,11 +89,11 @@ Used In File(s): \code\game\machinery\computer\security.dm
 				<table style='width: 100%' id='maintable_data'>
 					<thead>
 						<tr>
-							<th>{{:helper.link('Name', null, {'sort' : 'name'}, null, 'infoButton')}}</th>
+							<th>{{:helper.link('Имя', null, {'sort' : 'name'}, null, 'infoButton')}}</th>
 							<th>{{:helper.link('ID', null, {'sort' : 'id'}, null, 'infoButton')}}</th>
-							<th>{{:helper.link('Rank', null, {'sort' : 'rank'}, null, 'infoButton')}}</th>
-							<th>{{:helper.link('Fingerprints', null, {'sort' : 'fingerprint'}, null, 'infoButton')}}</th>
-							<th>{{:helper.link('Criminal Status', null, {'sort' : 'crimstat'}, null, 'infoButton')}}</th>
+							<th>{{:helper.link('Ранг', null, {'sort' : 'rank'}, null, 'infoButton')}}</th>
+							<th>{{:helper.link('Отпечаток', null, {'sort' : 'fingerprint'}, null, 'infoButton')}}</th>
+							<th>{{:helper.link('Преступный статус', null, {'sort' : 'crimstat'}, null, 'infoButton')}}</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -110,22 +110,22 @@ Used In File(s): \code\game\machinery\computer\security.dm
 				</table>
 			</span>
 		</div>
-		<h3><center>Menu</center></h3>
-		<div class="line">{{:helper.link('Record Maintenance', 'wrench', {'screen' : 2})}}</div>
-		<div class="line">{{:helper.link('Print Cell Log', 'print', {'printlogs' : 1})}}</div>
-		<div class="line">{{:helper.link('Logout', 'lock', {'logout' : 1})}}</div>
+		<h3><center>Меню</center></h3>
+		<div class="line">{{:helper.link('Обслуживание записей', 'wrench', {'screen' : 2})}}</div>
+		<div class="line">{{:helper.link('Печать лога камер заключения', 'print', {'printlogs' : 1})}}</div>
+		<div class="line">{{:helper.link('Выйти', 'lock', {'logout' : 1})}}</div>
 	{{else data.screen == 2}} <!-- SEC_DATA_MAINT -->
 		<h3>Records Maintenance</h3>
-		<div class="line">{{:helper.link('Backup To Disk', 'download', {'back' : 1}, 'disabled')}}</div>
-		<div class="line">{{:helper.link('Upload From Disk', 'upload', {'u_load' : 1}, 'disabled')}}</div>
-		<div class="line">{{:helper.link('Delete All Records', 'trash', {'del_all' : 1})}}</div>
-		<div class="line">{{:helper.link('Delete All Cell Logs', 'trash', {'del_alllogs' : 1})}}</div>
-		<div class="line">{{:helper.link('Back', 'arrow-left', {'screen' : 1})}}</div>
+		<div class="line">{{:helper.link('Резервное копирование на диск', 'download', {'back' : 1}, 'disabled')}}</div>
+		<div class="line">{{:helper.link('Загрузить с диска', 'upload', {'u_load' : 1}, 'disabled')}}</div>
+		<div class="line">{{:helper.link('Удалить ВСЕ записи', 'trash', {'del_all' : 1})}}</div>
+		<div class="line">{{:helper.link('Удалить ВСЕ логи камер заключения', 'trash', {'del_alllogs' : 1})}}</div>
+		<div class="line">{{:helper.link('Назад', 'arrow-left', {'screen' : 1})}}</div>
 	{{else data.screen == 3}} <!-- SEC_DATA_RECORD -->
-		<h3><center>Security Record</center></h3>
-		<h4><center>General Data</center></h4>
+		<h3><center>Запись Службы Безопасности</center></h3>
+		<h4><center>Общие данные</center></h4>
 		{{if data.general.empty}}
-			<span class="bad"><center>General Record Lost!</center></span>
+			<span class="bad"><center>Общие записи потеряны!</center></span>
 		{{else}}
 			<div class="statusDisplayRecords">
 				<table style='width:100%'><tr>
@@ -159,13 +159,13 @@ Used In File(s): \code\game\machinery\computer\security.dm
 			</div>
 		{{/if}}
 
-		<h4><center>Security Data</center></h4>
+		<h4><center>Данные Службы Безопасности</center></h4>
 		{{if data.security.empty}}
-			<span class="bad"><center>Security Record Lost!</center></span>
+			<span class="bad"><center>Данные Службы Безопасности потеряны!</center></span>
 			<div style="text-align: center;">
-				<div style="display: inline-block; height: 100%; vertical-align: middle;">{{:helper.link('New Record', 'plus', {'new_s' : 1})}}</div>
+				<div style="display: inline-block; height: 100%; vertical-align: middle;">{{:helper.link('Новая запись', 'plus', {'new_s' : 1})}}</div>
 			</div>
-			<h3><center>Menu</center></h3>
+			<h3><center>Меню</center></h3>
 		{{else}}
 			{{for data.security.fields}}
 				<div class="item">
@@ -181,28 +181,28 @@ Used In File(s): \code\game\machinery\computer\security.dm
 				{{/if}}
 			{{/for}}
 
-			<h4><center>Comments/Log</center></h4>
+			<h4><center>Комментарии/Лог</center></h4>
 			{{for data.security.comments}}
 				<div class="line">{{:value}}</div>
-				<div class="line">{{:helper.link('Remove entry', 'trash', {'del_c' : index})}}</div>
+				<div class="line">{{:helper.link('Удалить элемент', 'trash', {'del_c' : index})}}</div>
 				<br><hr>
 			{{/for}}
 
 			<div style="text-align: center;">
-				<div style="display: inline-block; height: 100%; vertical-align: middle;">{{:helper.link('Add Entry', 'plus', {'add_c' : 1})}}</div>
+				<div style="display: inline-block; height: 100%; vertical-align: middle;">{{:helper.link('Добавить элемент', 'plus', {'add_c' : 1})}}</div>
 			</div>
 
-			<h3><center>Menu</center></h3>
-			<div class="line">{{:helper.link('Delete Record (Security Only)', 'trash', {'del_r' : 1})}}</div>
+			<h3><center>Меню</center></h3>
+			<div class="line">{{:helper.link('Удалить запись (Только Службы Безопасности)', 'trash', {'del_r' : 1})}}</div>
 		{{/if}}
 
-		<div class="line">{{:helper.link('Delete Record (All)', 'trash', {'del_rg' : 1})}}</div>
-		<div class="line">{{:helper.link('Print Record', 'print', {'print_r' : 1})}}</div>
-		<div class="line">{{:helper.link('Back', 'arrow-left', {'screen' : 1})}}</div>
+		<div class="line">{{:helper.link('Удалить запись (всё)', 'trash', {'del_rg' : 1})}}</div>
+		<div class="line">{{:helper.link('Печать записи', 'print', {'print_r' : 1})}}</div>
+		<div class="line">{{:helper.link('Назад', 'arrow-left', {'screen' : 1})}}</div>
 	{{/if}}
 {{else}}
-	<h3>Menu</h3>
-	{{:helper.link('Login', 'unlock', {'login' : 1})}}
+	<h3>Меню</h3>
+	{{:helper.link('Войти', 'unlock', {'login' : 1})}}
 {{/if}}
 
 {{if data.temp}}
@@ -227,7 +227,7 @@ Used In File(s): \code\game\machinery\computer\security.dm
 			{{/if}}
 
 			<div style="display: inline-block;">
-				<div class="item">{{:helper.link('Clear screen', 'home', {'temp' : 1})}}</div>
+				<div class="item">{{:helper.link('Очистить экран', 'home', {'temp' : 1})}}</div>
 			</div>
 		</div>
 	</div>
