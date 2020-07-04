@@ -1,7 +1,7 @@
-<h1>WIRELESS CONNECTIVITY</h1>
+<h1>БЕСПРОВОДНОЕ ПОДКЛЮЧЕНИЕ</h1>
 <div class="item">
 	<div class="itemLabelWide">
-		Active NTNet Relays:
+		Активные NTNet реле:
 	</div>
 	<div class="itemContentNarrow">
 		<b>{{:data.ntnetrelays}}</b>
@@ -9,88 +9,88 @@
 	{{if data.ntnetrelays}}
 		<div class='item'>
 			<div class="itemLabelWide">
-				System status:
+				Статус системы:
 			</div>
 			<div class="itemContentNarrow">
-				<b>{{:data.ntnetstatus ? "ENABLED" : "DISABLED"}}</b>
+				<b>{{:data.ntnetstatus ? "ВКЛЮЧЕНА" : "ОТКЛЮЧЕНА"}}</b>
 			</div>
 		</div>
 		<div class='item'>
 			<div class="itemLabelWide">
-				Control:
+				Управление:
 			</div>
 			<div class="itemContentNarrow">
-				{{:helper.link('TOGGLE', null, {'action' : 'toggleWireless'})}}
+				{{:helper.link('ПЕРЕКЛЮЧИТЬ', null, {'action' : 'toggleWireless'})}}
 			</div>
 		</div>
-		<i>Caution - Disabling wireless transmitters when using wireless device may prevent you from re-enabling them again!</i>
+		<i>Внимание: Отключение беспроводных трансмиттеров во время использования беспроводного устройста может помешать их реактивации!</i>
 	{{else}}
-		<br><p>Wireless coverage unavailable, no relays are connected.</p>
+		<br><p>Беспроводное покрытие недоступно, нет подключенных реле.</p>
 	{{/if}}
-</div>	
+</div>
 
-<h1>FIREWALL CONFIGURATION</h1>
+<h1>КОНФИГУРАЦИЯ ФАЙРВОЛА</h1>
 <div class="statusDisplay" style="overflow: auto;">
 	<table style='width: 100%;'>
 		<tr>
-			<th>PROTOCOL</th>
-			<th>STATUS</th>
-			<th>CONTROL</th>
+			<th>ПРОТОКОЛ</th>
+			<th>СТАТУС</th>
+			<th>УПРАВЛЕНИЕ</th>
 		</tr>
 		<tr>
-			<td>Software Downloads</td>
-			<td><center>{{:data.config_softwaredownload ? 'ENABLED' : 'DISABLED'}}</td>
-			<td><div style="text-align: center;"><div style="display: inline-block;">{{:helper.link('TOGGLE', null, {'action' : 'toggle_function', 'id' : 1})}}</div></div></td>
+			<td>Загрузка програм</td>
+			<td><center>{{:data.config_softwaredownload ? 'ВКЛЮЧЕНА' : 'ОТКЛЮЧЕНА'}}</td>
+			<td><div style="text-align: center;"><div style="display: inline-block;">{{:helper.link('ПЕРЕКЛЮЧИТЬ', null, {'action' : 'toggle_function', 'id' : 1})}}</div></div></td>
 		</tr>
 		<tr>
-			<td>Peer to Peer Traffic</td>
-			<td><center>{{:data.config_peertopeer ? 'ENABLED' : 'DISABLED'}}</td>
-			<td><div style="text-align: center;"><div style="display: inline-block;">{{:helper.link('TOGGLE', null, {'action' : 'toggle_function', 'id' : 2})}}</div></div></td>
+			<td>P2P Трафик</td>
+			<td><center>{{:data.config_peertopeer ? 'ВКЛЮЧЕН' : 'ОТКЛЮЧЕН'}}</td>
+			<td><div style="text-align: center;"><div style="display: inline-block;">{{:helper.link('ПЕРЕКЛЮЧИТЬ', null, {'action' : 'toggle_function', 'id' : 2})}}</div></div></td>
 		</tr>
 		<tr>
-			<td>Communication Systems</td>
-			<td><center>{{:data.config_communication ? 'ENABLED' : 'DISABLED'}}</td>
-			<td><div style="text-align: center;"><div style="display: inline-block;">{{:helper.link('TOGGLE', null, {'action' : 'toggle_function', 'id' : 3})}}</div></div></td>
+			<td>Коммуникационные системы</td>
+			<td><center>{{:data.config_communication ? 'ВКЛЮЧЕНЫ' : 'ОТКЛЮЧЕНЫ'}}</td>
+			<td><div style="text-align: center;"><div style="display: inline-block;">{{:helper.link('ПЕРЕКЛЮЧИТЬ', null, {'action' : 'toggle_function', 'id' : 3})}}</div></div></td>
 		</tr>
 		<tr>
-			<td>Remote System Control</td>
-			<td><center>{{:data.config_systemcontrol ? 'ENABLED' : 'DISABLED'}}</td>
-			<td><div style="text-align: center;"><div style="display: inline-block;">{{:helper.link('TOGGLE', null, {'action' : 'toggle_function', 'id' : 4})}}</div></div></td>
+			<td>Удалённое управление системой</td>
+			<td><center>{{:data.config_systemcontrol ? 'ВКЛЮЧЕНО' : 'ОТКЛЮЧЕНО'}}</td>
+			<td><div style="text-align: center;"><div style="display: inline-block;">{{:helper.link('ПЕРЕКЛЮЧИТЬ', null, {'action' : 'toggle_function', 'id' : 4})}}</div></div></td>
 		</tr>
 	</table>
 </div>
 
-<h1>SECURITY SYSTEMS</h1>
+<h1>СИСТЕМЫ БЕЗОПАСНОСТИ</h1>
 {{if data.idsalarm}}
     <div class="statusDisplay" style="overflow: auto;">
 		<div class="item">
 			<div class="itemContent" style="width: 100%;">
-				<h1>NETWORK INCURSION DETECTED</h1>
-				<i>An abnormal activity has been detected in the network. Please verify system logs for more information</i>
+				<h1>ОБНАРУЖЕНА СЕТЕВАЯ АТАКА</h1>
+				<i>В сети обнаружена ненормальная активность. Пожалуйста, проверьте системные логи для получения дополнительной информации.</i>
 			</div>
 		</div>
-    </div>		
+    </div>
 {{/if}}
 <div class="item">
-	<div class="itemLabelWide">Intrusion Detection System:</div>
-	<div class="itemContentNarrow"><b>{{:data.idsstatus ? 'ENABLED' : 'DISABLED'}}</b></div>
+	<div class="itemLabelWide">Система обнаружения атак:</div>
+	<div class="itemContentNarrow"><b>{{:data.idsstatus ? 'ВКЛЮЧЕНА' : 'ОТКЛЮЧЕНА'}}</b></div>
 </div>
 <div class="item">
-	<div class="itemLabelWide">Maximal Log Count:</div>
+	<div class="itemLabelWide">Максимальное количество логов:</div>
 	<div class="itemContentNarrow"><b>{{:data.ntnetmaxlogs}}</b></div>
 </div>
 <div class="item">
-	<div class="itemLabelWide">Controls:</div>
+	<div class="itemLabelWide">Управление:</div>
 	<div class="itemContentNarrow">
 		<table>
-			<tr><td>{{:helper.link('RESET IDS', null, {'action' : 'resetIDS'})}}
-			<tr><td>{{:helper.link('TOGGLE IDS', null, {'action' : 'toggleIDS'})}}
-			<tr><td>{{:helper.link('SET LOG LIMIT', null, {'action' : 'updatemaxlogs'})}}
-			<tr><td>{{:helper.link('PURGE LOGS', null, {'action' : 'purgelogs'})}}
+			<tr><td>{{:helper.link('СБРОСИТЬ ID', null, {'action' : 'resetIDS'})}}
+			<tr><td>{{:helper.link('ПЕРЕКЛЮЧИТЬ ID', null, {'action' : 'toggleIDS'})}}
+			<tr><td>{{:helper.link('УСТАНОВИТЬ ЛИМИТ ЛОГОВ', null, {'action' : 'updatemaxlogs'})}}
+			<tr><td>{{:helper.link('ОЧИСТИТЬ ЛОГИ', null, {'action' : 'purgelogs'})}}
 		</table>
 	</div>
 </div>
-<b>System Logs</b>
+<b>СИСТЕМНЫЕ ЛОГИ</b>
 <div class="statusDisplay" style="overflow: auto;">
 	<div class="item">
 		<div class="itemContent" style="width: 100%;">

@@ -1,77 +1,77 @@
 {{if data.error}}
 	<div class='item'>
-		<h2>An error has occurred during operation...</h2>
-		<b>Additional information: </b>{{:data.error}}<br>
-		{{:helper.link('Clear', null, {'action' : 'PRG_reset'})}}
+		<h2>Возникла ошибка во время операции...</h2>
+		<b>Дополнительная информация: </b>{{:data.error}}<br>
+		{{:helper.link('Очистить', null, {'action' : 'PRG_reset'})}}
 	</div>
 {{else data.downloading}}
-	<h2>Download in progress...</h2>
+	<h2>Выполняется скачивание...</h2>
 	<div class='item'>
-		<div class="itemLabel">Downloaded file: </div>
+		<div class="itemLabel">Скачиваемый файл: </div>
 		<div class="itemContent">{{:data.download_name}}</div>
 	</div>
 	<div class='item'>
-		<div class="itemLabel">Download progress: </div>
-		<div class="itemContent">{{:helper.smoothRound(data.download_progress)}}/{{:data.download_size}}GQ</div>
+		<div class="itemLabel">Прогресс скачивания: </div>
+		<div class="itemContent">{{:helper.smoothRound(data.download_progress)}}/{{:data.download_size}}ГК</div>
 	</div>
 	<div class='item'>
-		<div class="itemLabel">Transfer speed: </div>
-		<div class="itemContent">{{:data.download_netspeed}}GQ/s</div>
+		<div class="itemLabel">Скорость передачи: </div>
+		<div class="itemContent">{{:data.download_netspeed}}ГК/с</div>
 	</div>
 	<div class='item'>
-		<div class="itemLabel">Controls: </div>
-		<div class="itemContent">{{:helper.link('Abort download', 'arrow-left', {'action' : 'PRG_reset'})}}</div>
+		<div class="itemLabel">Действия с файлом: </div>
+		<div class="itemContent">{{:helper.link('Отменить загрузку', 'arrow-left', {'action' : 'PRG_reset'})}}</div>
 	</div>
 {{else data.uploading}}
-	<h2>Server enabled</h2>
+	<h2>Сервер запущен</h2>
 	<div class='item'>
-		<div class="itemLabel">Connected clients:</div>
+		<div class="itemLabel">Подключенные пользователи: </div>
 		<div class="itemContent">{{:data.upload_clients}}</div>
 	</div>
 	<div class='item'>
-		<div class="itemLabel">Provided file: </div>
+		<div class="itemLabel">Предоставленный файл: </div>
 		<div class="itemContent">{{:data.upload_filename}}</div>
 	</div>
 	<div class='item'>
-		<div class="itemLabel">Server password: </div>
-		<div class="itemContent">{{if data.upload_haspassword}}ENABLED{{else}}DISABLED{{/if}}</div>
+		<div class="itemLabel">Пароль сервера: </div>
+		<div class="itemContent">{{if data.upload_haspassword}}ВКЛЮЧЕН{{else}}ОТКЛЮЧЕН{{/if}}</div>
 	</div>
 	<div class='item'>
-		<div class="itemLabel">Commands: </div>
+		<div class="itemLabel">Управление: </div>
 		<div class="itemContent">
-			{{:helper.link('Set password', 'key', {'action' : 'PRG_setpassword'})}}
-			{{:helper.link('Exit server', 'arrow-left', {'action' : 'PRG_reset'})}}
+			{{:helper.link('Установить пароль', 'key', {'action' : 'PRG_setpassword'})}}
+			{{:helper.link('Покинуть сервер', 'arrow-left', {'action' : 'PRG_reset'})}}
 		</div>
 	</div>
 {{else data.upload_filelist}}
-	<h2>File transfer server ready. Select file to upload: </h2>
+	<h2>Сервер передачи файлов готов. Выберите файл для загрузки:</h2>
 	<table>
-	<tr><th>File name<th>File size<th>Controls
+	<tr><th>Название файла<th>Размер файла<th>Действия с файлом
 	{{for data.upload_filelist}}
 		<tr><td>{{:value.filename}}
-		<td>{{:value.size}}GQ
-		<td>{{:helper.link('Select', 'upload', {'action' : 'PRG_uploadfile', 'id' : value.uid})}}
+		<td>{{:value.size}}ГК
+		<td>{{:helper.link('Загрузить', 'upload', {'action' : 'PRG_uploadfile', 'id' : value.uid})}}
 	{{/for}}
 	</table>
 	<hr>
-	{{:helper.link('Set password', 'key', {'action' : 'PRG_setpassword'})}}
-	{{:helper.link('Return', 'arrow-left', {'action' : 'PRG_reset'})}}
+	{{:helper.link('Установить пароль', 'key', {'action' : 'PRG_setpassword'})}}
+	{{:helper.link('Вернуться', 'arrow-left', {'action' : 'PRG_reset'})}}
 {{else}}
-	<h2>Available files:</h2>
-	<table><tr><th>Server UID<th>File Name<th>File Size<th>Password Protection<th>Operations
+	<h2>Доступные файлы:</h2>
+	<table><tr><th>UID Сервера<th>Название файла<th>Размер файла<th>Защита паролем<th>Действия с файлом
 		{{for data.servers}}
 			<tr><td>{{:value.uid}}
 			<td>{{:value.filename}}
-			<td>{{:value.size}}GQ
+			<td>{{:value.size}}ГК
 			{{if value.haspassword}}
-				<td>Enabled
+				<td>Включен
 			{{else}}
-				<td>Disabled
+				<td>Отключен
 			{{/if}}
-			
-			<td>{{:helper.link('Download', 'download', {'action' : 'PRG_downloadfile', 'id' : value.uid})}}
+
+			<td>{{:helper.link('Скачать', 'download', {'action' : 'PRG_downloadfile', 'id' : value.uid})}}
 		{{/for}}
 	</table>
 	<hr>
-	{{:helper.link('Send file', 'upload', {'action' : 'PRG_uploadmenu'})}}
+	{{:helper.link('Отправить файл', 'upload', {'action' : 'PRG_uploadmenu'})}}
 {{/if}}

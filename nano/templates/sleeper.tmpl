@@ -2,25 +2,25 @@
 Title: Sleeper Status UI
 Used In File(s): \code\game\machinery\Sleeper.dm
  -->
-<h3>Sleeper Status</h3>
+<h3>Статус слипера</h3>
 
 <div class="statusDisplay">
 	{{if !data.hasOccupant}}
-		<div class="line">Sleeper Unoccupied</div>
+		<div class="line">Слипер не занят</div>
 	{{else}}
 		<div class="line">
 			{{:data.occupant.name}}&nbsp;=>&nbsp;
 			{{if data.occupant.stat == 0}}
-				<span class="good">Conscious</span>
+				<span class="good">В сознании</span>
 			{{else data.occupant.stat == 1}}
-				<span class="average">Unconscious</span>
+				<span class="average">Без сознания</span>
 			{{else}}
-				<span class="bad">DEAD</span>
+				<span class="bad">МЁРТВ</span>
 			{{/if}}
 		</div>
 
 			<div class="line">
-				<div class="statusLabel">Health:</div>
+				<div class="statusLabel">Здоровье:</div>
 				{{if data.occupant.health >= data.occupant.maxHealth}}
 					{{:helper.displayBar(data.occupant.health, 0, data.occupant.maxHealth, 'good')}}
 				{{else data.occupant.health > 0}}
@@ -34,25 +34,25 @@ Used In File(s): \code\game\machinery\Sleeper.dm
 			</div>
 
 			<div class="line">
-				<div class="statusLabel">=&gt; Brute Damage:</div>
+				<div class="statusLabel">=&gt; Физические повреждения:</div>
 				{{:helper.displayBar(data.occupant.bruteLoss, 0, data.occupant.maxHealth, 'bad')}}
 				<div class="statusValue">{{:helper.smoothRound(data.occupant.bruteLoss)}}</div>
 			</div>
 
 			<div class="line">
-				<div class="statusLabel">=&gt; Resp. Damage:</div>
+				<div class="statusLabel">=&gt; Респираторные повреждения:</div>
 				{{:helper.displayBar(data.occupant.oxyLoss, 0, data.occupant.maxHealth, 'bad')}}
 				<div class="statusValue">{{:helper.smoothRound(data.occupant.oxyLoss)}}</div>
 			</div>
 
 			<div class="line">
-				<div class="statusLabel">=&gt; Toxin Damage:</div>
+				<div class="statusLabel">=&gt; Токсические повреждения:</div>
 				{{:helper.displayBar(data.occupant.toxLoss, 0, data.occupant.maxHealth, 'bad')}}
 				<div class="statusValue">{{:helper.smoothRound(data.occupant.toxLoss)}}</div>
 			</div>
 
 			<div class="line">
-				<div class="statusLabel">=&gt; Burn Severity:</div>
+				<div class="statusLabel">=&gt; Тяжесть ожогов:</div>
 				{{:helper.displayBar(data.occupant.fireLoss, 0, data.occupant.maxHealth, 'bad')}}
 				<div class="statusValue">{{:helper.smoothRound(data.occupant.fireLoss)}}</div>
 			</div>
@@ -85,7 +85,7 @@ Used In File(s): \code\game\machinery\Sleeper.dm
 				{{/if}}
 				If you can get the changing temperature bars to work right, congratulations
 				-->
-				<div class="statusLabel">Patient Temperature:</div>
+				<div class="statusLabel">Температура пациента:</div>
 				{{if data.occupant.temperatureSuitability == -3}}
 				{{:helper.displayBar(data.occupant.bodyTemperature, 0, data.occupant.maxTemp, 'bad')}}
 				<div class="statusValue bad">{{:helper.smoothRound(data.occupant.btCelsius)}}&deg;C, {{:helper.smoothRound(data.occupant.btFaren)}}&deg;F</div>
@@ -115,24 +115,24 @@ Used In File(s): \code\game\machinery\Sleeper.dm
 
 			<br>
 			<div class="line">
-				<div class="statusLabel">Pulse:</div> <div class="statusValue">{{:data.occupant.pulse}} bpm</div>
+				<div class="statusLabel">Пульс:</div> <div class="statusValue">{{:data.occupant.pulse}} bpm</div>
 			</div>
 			<div class="line">
-				<div class="statusLabel">Blood Level:</div>
+				<div class="statusLabel">Уровень крови:</div>
 				{{if data.occupant.bloodPercent <= 60}}
 					{{:helper.displayBar(data.occupant.bloodLevel, 0, data.occupant.bloodMax, 'bad')}}
 				<div class="statusValue">
-					{{:helper.smoothRound(data.occupant.bloodPercent)}}%, {{:helper.smoothRound(data.occupant.bloodLevel)}}cl
+					{{:helper.smoothRound(data.occupant.bloodPercent)}}%, {{:helper.smoothRound(data.occupant.bloodLevel)}}сл
 				</div>
 				{{else data.occupant.bloodPercent <= 90}}
 					{{:helper.displayBar(data.occupant.bloodLevel, 0, data.occupant.bloodMax, 'average')}}
 				<div class="statusValue">
-					{{:helper.smoothRound(data.occupant.bloodPercent)}}%, {{:helper.smoothRound(data.occupant.bloodLevel)}}cl
+					{{:helper.smoothRound(data.occupant.bloodPercent)}}%, {{:helper.smoothRound(data.occupant.bloodLevel)}}сл
 				</div>
 				{{else}}
 					{{:helper.displayBar(data.occupant.bloodLevel, 0, data.occupant.bloodMax, 'good')}}
 				<div class="statusValue">
-					{{:helper.smoothRound(data.occupant.bloodPercent)}}%, {{:helper.smoothRound(data.occupant.bloodLevel)}}cl
+					{{:helper.smoothRound(data.occupant.bloodPercent)}}%, {{:helper.smoothRound(data.occupant.bloodLevel)}}сл
 				</div>
 				{{/if}}
 			</div>
@@ -140,33 +140,33 @@ Used In File(s): \code\game\machinery\Sleeper.dm
 	{{/if}}
 </div>
 
-<h3>Sleeper Operation</h3>
+<h3>Операции слипера</h3>
 <div class="item">
 	<div class="itemLabel">
-		Sleeper Status:
+		Статус слипера:
 	</div>
 	<div class="itemContent" style="width: 26%;">
-		{{:helper.link('Eject Occupant', 'arrow-circle-o-down', {'ejectify' : 1}, data.hasOccupant ? null : 'disabled')}}
+		{{:helper.link('Извлечь пациента', 'arrow-circle-o-down', {'ejectify' : 1}, data.hasOccupant ? null : 'disabled')}}
 	</div>
 </div>
 <div class="item">&nbsp;</div>
 <div class="item">
 	<div class="itemLabel">
-		Dialysis Beaker:
+		Мензурка диализа:
 	</div>
 	<div class="itemContent" style="width: 40%;">
 		{{if data.isBeakerLoaded}}
-			<span class="highlight">{{:helper.smoothRound(data.beakerFreeSpace)}} units of space remaining</span><br>
+			<span class="highlight">{{:helper.smoothRound(data.beakerFreeSpace)}} свободных юнитов осталось</span><br>
 		{{else}}
-			<span class="average"><i>No Dialysis Output Beaker Loaded</i></span>
+			<span class="average"><i>Мензурка для результата диализа не загружена</i></span>
 		{{/if}}
 	</div>
 	<div class="itemContent" style="width: 26%;">
-		{{:helper.link('Eject Beaker', 'eject', {'removebeaker' : 1}, data.isBeakerLoaded ? null : 'disabled')}}
+		{{:helper.link('Извлечь мензурку', 'eject', {'removebeaker' : 1}, data.isBeakerLoaded ? null : 'disabled')}}
 		{{if data.isBeakerLoaded}}
 		<div class="line">
 			<div class="itemContent">
-				{{:helper.link('On', 'power-off', {'togglefilter' : 1}, data.occupant.hasBlood ? (data.dialysis ? 'selected' : null) : 'disabled')}}{{:helper.link('Off', 'close', {'togglefilter' : 1}, data.dialysis ? null : 'selected')}}
+				{{:helper.link('Вкл', 'power-off', {'togglefilter' : 1}, data.occupant.hasBlood ? (data.dialysis ? 'selected' : null) : 'disabled')}}{{:helper.link('Выкл', 'close', {'togglefilter' : 1}, data.dialysis ? null : 'selected')}}
 			</div>
 		</div>
 		{{/if}}
@@ -174,7 +174,7 @@ Used In File(s): \code\game\machinery\Sleeper.dm
 </div>
 <div class="item">
     <div class="itemLabel">
-        Chemicals:
+        Химикаты:
     </div>
 
     {{for data.chemicals}}
@@ -201,10 +201,10 @@ Used In File(s): \code\game\machinery\Sleeper.dm
 	<div class="item">&nbsp;</div>
 	<div class="item">
 		<div class="itemLabel" style="width: 35%">
-			Auto-eject dead patients:
+			Авто-извлечение мёртвых пациентов:
 		</div>
 		<div class="itemContent" style="width: 30%">
-			{{:helper.link('On', 'power-off', {'auto_eject_dead_on' : 1}, data.auto_eject_dead ? 'selected' : null)}}{{:helper.link('Off', 'close', {'auto_eject_dead_off' : 0}, data.auto_eject_dead ? null : 'selected')}}
+			{{:helper.link('Вкл', 'power-off', {'auto_eject_dead_on' : 1}, data.auto_eject_dead ? 'selected' : null)}}{{:helper.link('Выкл', 'close', {'auto_eject_dead_off' : 0}, data.auto_eject_dead ? null : 'selected')}}
 		</div>
 	</div>
 </div>

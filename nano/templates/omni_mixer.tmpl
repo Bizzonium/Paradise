@@ -1,22 +1,22 @@
 <div class="item">
 	<div class="itemContent" style="padding: 5px">
-		{{:helper.link(data.power ? 'On' : 'Off', null, {'command' : 'power'}, data.config ? 'disabled' : null)}}
+		{{:helper.link(data.power ? 'Вкл' : 'Выкл', null, {'command' : 'power'}, data.config ? 'disabled' : null)}}
 	</div>
 	<div class="itemContent" style="padding: 5px">
-		{{:helper.link('Configure', null, {'command' : 'configure'}, null, data.config ? 'selected' : null)}}
+		{{:helper.link('Настроить', null, {'command' : 'configure'}, null, data.config ? 'selected' : null)}}
 	</div>
-	
+
 	{{if data.config}}
-	
+
         <div style="width: 315px; text-align: center">
             <div style="float: left">
-                <div class="white" style="height: 26">Port</div>
+                <div class="white" style="height: 26">Порт</div>
                 {{for data.ports}}
-                    <div class="average" style="height: 26">{{:value.dir}} Port</div>
+                    <div class="average" style="height: 26">{{:value.dir}} порт</div>
                 {{/for}}
             </div>
             <div style="float: left; margin-left: 10">
-                <div class="white" style="height: 26">Input</div>
+                <div class="white" style="height: 26">Вход</div>
                 {{for data.ports}}
                     <div style="height: 26">
                         {{:helper.link(' ', null, value.input ? {'command' : 'switch_mode', 'mode' : 'none', 'dir' : value.dir} : {'command' : 'switch_mode', 'mode' : 'in', 'dir' : value.dir}, value.output ? 'disabled' : null, value.input ? 'selected' : null)}}
@@ -24,7 +24,7 @@
                 {{/for}}
             </div>
             <div style="float: left; margin-left: 10">
-                <div class="white" style="height: 26">Output</div>
+                <div class="white" style="height: 26">Выход</div>
                 {{for data.ports}}
                     <div style="height: 26">
                         {{:helper.link(' ', null, value.output ? null : {'command' : 'switch_mode', 'mode' : 'out', 'dir' : value.dir}, null, value.output ? 'selected' : null)}}
@@ -32,7 +32,7 @@
                 {{/for}}
             </div>
             <div style="float: left; margin-left: 10">
-                <div class="white" style="height: 26">Concentration</div>
+                <div class="white" style="height: 26">Концентрация</div>
                 {{for data.ports}}
                     <div style="height: 26">
                         {{:helper.link( value.input ? helper.round(value.concentration*100)+' %' : '-', null, {'command' : 'switch_con', 'dir' : value.dir}, value.input ? null : 'disabled')}}
@@ -40,47 +40,47 @@
                 {{/for}}
             </div>
             <div style="float: left; margin-left: 10">
-                <div class="white" style="height: 26">Lock</div>
+                <div class="white" style="height: 26">Блокировка</div>
                 {{for data.ports}}
                     <div style="height: 26">
-                        {{:helper.link(' ', value.con_lock ? 'lock' : 'unlock', {'command' : 'switch_conlock', 'dir' : value.dir}, value.input ? null : 'disabled', value.con_lock ? 'selected' : null)}}
+                        {{:helper.link(' ', value.con_lock ? 'Заблокировать' : 'Разблокировать', {'command' : 'switch_conlock', 'dir' : value.dir}, value.input ? null : 'disabled', value.con_lock ? 'selected' : null)}}
                     </div>
                 {{/for}}
             </div>
         </div>
 
         <div class="itemContent" style="padding: 5px">
-            Set Flow Rate Limit: {{:(data.set_flow_rate/10)}} L/s
+            Установить лимит скорости потока: {{:(data.set_flow_rate/10)}} L/s
         </div>
         <div class="itemContent" style="padding: 5px">
-            {{:helper.link('Set Flow Rate Limit', null, {'command' : 'set_flow_rate'})}}
+            {{:helper.link('Установить лимит', null, {'command' : 'set_flow_rate'})}}
         </div>
-	
+
 	{{else}}
-	
+
         <div style="width: 315px; text-align: center">
             <div style="float: left">
-                <div class="white" style="height: 26">Port</div>
+                <div class="white" style="height: 26">Порт</div>
                 {{for data.ports}}
-                    <div class="average" style="height: 26">{{:value.dir}} Port</div>
+                    <div class="average" style="height: 26">{{:value.dir}} порт</div>
                 {{/for}}
             </div>
             <div style="float: left; margin-left: 10">
-                <div class="white" style="height: 26">Mode</div>
+                <div class="white" style="height: 26">Режим</div>
                 {{for data.ports}}
                     <div style="height: 26">
                             {{if value.input}}
-                                Input
+                                Вход
                             {{else value.output}}
-                                Output
+                                Выход
                             {{else}}
-                                Disabled
+                                Отключен
                             {{/if}}
                     </div>
                 {{/for}}
             </div>
             <div style="float: left; margin-left: 10">
-                <div class="white" style="height: 26">Concentration</div>
+                <div class="white" style="height: 26">Концентрация</div>
                 {{for data.ports}}
                     <div style="height: 26">
                         {{if value.input}}
@@ -94,7 +94,7 @@
         </div>
 
         <div class="itemContent" style="padding: 5px">
-            Flow Rate: {{:(data.last_flow_rate/10)}} L/s
+            Скорость потока: {{:(data.last_flow_rate/10)}} Л/с
         </div>
 
 	{{/if}}

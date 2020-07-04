@@ -19,9 +19,9 @@ Used In File(s): \code\game\machinery\computer\cloning.dm
 		<div class="itemLabelNarrow">Автопроцессинг</div>
 		<div class="itemContentWide">
 			{{if data.autoallowed}}
-				{{:helper.link('Включен', 'check', {'task' : 'autoprocess'}, data.autoprocess ? 'selected' : '')}}{{:helper.link('Отключен', 'close', {'task' : 'stopautoprocess'}, !data.autoprocess ? 'selected' : '')}}
+				{{:helper.link('Включить', 'check', {'task' : 'autoprocess'}, data.autoprocess ? 'selected' : '')}}{{:helper.link('Отключить', 'close', {'task' : 'stopautoprocess'}, !data.autoprocess ? 'selected' : '')}}
 			{{else}}
-				{{:helper.link('Включен', 'check', null, 'disabled')}}{{:helper.link('Отключен', 'close', null, 'selected')}}
+				{{:helper.link('Включить', 'check', null, 'disabled')}}{{:helper.link('Отключить', 'close', null, 'selected')}}
 			{{/if}}
 		</div>
 	</div>
@@ -37,7 +37,7 @@ Used In File(s): \code\game\machinery\computer\cloning.dm
 	<div class="item">
 		<div class="itemLabelNarrow">Сканер</div>
 		<div class="itemContentWide{{if data.scanner}} good{{else}} bad{{/if}}">
-			{{if data.scanner}} найден!{{else}} Ошибка: Не обнаружен!{{/if}}
+			{{if data.scanner}} Найден!{{else}} Ошибка: Не обнаружен!{{/if}}
 		</div>
 	</div>
 	<div class="item">
@@ -59,7 +59,7 @@ Used In File(s): \code\game\machinery\computer\cloning.dm
 		</div>
 		<div class="item">
 			<div class="itemLabelNarrow">Блокировка сканера</div>
-			<div class="itemContentWide">{{if data.occupant}}{{:helper.link('Включена', 'lock', {'lock' : 1}, data.locked ? 'selected' : '')}}{{else}} {{:helper.link('Включена', 'lock', null, 'disabled')}}{{/if}}{{:helper.link('Отключена', 'unlock', {'lock' : 1}, !data.locked ? 'selected' : '')}}</div>
+			<div class="itemContentWide">{{if data.occupant}}{{:helper.link('Включить', 'lock', {'lock' : 1}, data.locked ? 'selected' : '')}}{{else}} {{:helper.link('Включить', 'lock', null, 'disabled')}}{{/if}}{{:helper.link('Отключить', 'unlock', {'lock' : 1}, !data.locked ? 'selected' : '')}}</div>
 		</div>
 		{{if data.can_brainscan}}
 		<div class="item">

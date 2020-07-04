@@ -5,26 +5,26 @@ code/modules/mob/living/silicon/pai/software_modules.dm
 {{if data.holder}}
 	<div class="item">
 		<div class="itemLabel">
-			Bioscan Results for {{:data.holder}} :
+			Результаты биосканирования {{:data.holder}} :
 		</div>
 		<div class="itemContent">
-			Health Status : 	{{:data.health}}
+			Статус здоровья : 	{{:data.health}}
 		</div>
 
 		<div class="itemContent">
-			Brute Damage : 		{{:data.brute}}
+			Физические повреждения : 		{{:data.brute}}
 		<div class="itemContent">
-			Oxygen Content : 	{{:data.oxy}}
+			Содержание кислорода : 	{{:data.oxy}}
 		<div class="itemContent">
-			Toxin Content : 	{{:data.tox}}
+			Содержание токсинов : 	{{:data.tox}}
 		</div>
 		<div class="itemContent">
-			Burn Status : 		{{:data.burn}}
+			Статус ожогов : 		{{:data.burn}}
 		</div>
 		<div class="itemContent">
-			User Temperature :	{{:data.temp}}
+			Температура пользователя :	{{:data.temp}}
 		</div>
 	</div>
 {{else}}
-	<span class="bad">Error: No biological host found!</span>
+	<span class="bad">Ошибка: биологический владелец не найден!</span>
 {{/if}}

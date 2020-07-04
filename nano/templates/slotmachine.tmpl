@@ -4,18 +4,18 @@ Used In File(s): /code/game/machinery/slotmachine.dm
 -->
 {{if data.money != null}}
 	<div class="line">
-		{{:data.plays}} players have tried their luck today!
+		{{:data.plays}} игроков испытало удачу сегодня!
 	</div>
 	<div class="line">
-		<div class="statusLabel">Credits Remaining:</div>
+		<div class="statusLabel">Кредитов осталось:</div>
 		{{:helper.string("<div class='statusValue {0}'>{1}</div>", data.money >= 10 ? "" : "bad", helper.smoothRound(data.money))}}
 	</div>
 	<div class="item">
 		<div class="statusLabel">
-			Ten credits to play!
+			10 кредитов за игру!
 		</div>
 		<div class="statusValue">
-			{{:helper.link('SPIN!', 'refresh', {'ops' : 1}, data.money >= 10 && !data.working ? null : 'disabled')}}
+			{{:helper.link('ВРАЩАТЬ!', 'refresh', {'ops' : 1}, data.money >= 10 && !data.working ? null : 'disabled')}}
 		</div>
 	</div>
 	{{if data.result}}
@@ -24,11 +24,11 @@ Used In File(s): /code/game/machinery/slotmachine.dm
 		</div>
 	{{/if}}
 	{{if data.working}}
-		<div class="notice">Spinning!</div>
+		<div class="notice">Вращение!</div>
 	{{/if}}
 {{else}}
 	<div class="notice">
-		Could not scan your card or could not find account!<br>
-		Please wear or hold your ID and try again.	
+		Не удаётся сканировать вашу карту или найти аккаунт!<br>
+		Пожалуйста, наденьте или держите вашу ID карту и попробуйте снова.
 	</div>
 {{/if}}

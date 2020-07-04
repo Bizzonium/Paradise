@@ -127,12 +127,12 @@ Used In File(s): \code\game\objects\items\devices\PDA\PDA.dm
 	<div class="item">
         <div class="floatLeft">
 			{{if data.idInserted}}
-				{{:helper.link(data.idLink, 'eject', {'choice' : "Authenticate"}, null, 'pdalink fixedLeftWide')}}
+				{{:helper.link(data.idLink, 'eject', {'choice' : "Authenticate"}, null, 'pdalink fixedLeftWidest')}}
 			{{/if}}
 			{{if data.cartridge_name}}
-				{{:helper.link(data.cartridge_name, 'eject', {'choice' : "Eject"}, null, 'pdalink fixedLeftWidest')}}
+				{{:helper.link(data.cartridge_name, 'eject', {'choice' : "Eject"}, null, 'pdalink fixedLeftWide')}}
 			{{/if}}
-			{{:helper.link('Переключить тему', 'gear', {'choice': "Retro"}, null, 'pdalink fixedLeftWide')}}
+			{{:helper.link('Сменить тему', 'gear', {'choice': "Retro"}, null, 'pdalink fixedLeft')}}
 		</div>
 		<div class="clock">
 			{{:data.stationTime}}
@@ -151,6 +151,6 @@ Used In File(s): \code\game\objects\items\devices\PDA\PDA.dm
 	</div>
 {{else}}
     <div class="wholeScreen">
-        <br><br><br><br><br><br><br>Не найдена информация о владельце, пожалуйста, проведите ID карту.
+        <br><br><br><br><br><br><br>Не найдена информация о владельце, пожалуйста, вставьте ID карту.
     </div>
 {{/if}}

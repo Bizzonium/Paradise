@@ -7,7 +7,7 @@ Copy-pasted from pda.tmpl
 <div class="item">
 	<center><table class="pmon"><tbody>
 		{{if data.manifest.heads}}
-			<tr><th colspan="3" class="command">Command</th></tr>
+			<tr><th colspan="3" class="command">Командование</th></tr>
 			{{for data.manifest["heads"]}}
 				{{if value.rank == "Captain"}}
 					<tr><td><span class="good">{{:value.name}}</span></td><td><span class="good">{{:value.rank}}</span></td><td><span class="good">{{:value.active}}</span></td></tr>
@@ -17,7 +17,7 @@ Copy-pasted from pda.tmpl
 			{{/for}}
 		{{/if}}
 		{{if data.manifest.sec}}
-			<tr><th colspan="3" class="sec">Security</th></tr>
+			<tr><th colspan="3" class="sec">Служба Безопасности</th></tr>
 			{{for data.manifest["sec"]}}
 				{{if value.rank == "Head of Security"}}
 					<tr><td><span class="good">{{:value.name}}</span></td><td><span class="good">{{:value.rank}}</span></td><td><span class="good">{{:value.active}}</span></td></tr>
@@ -27,7 +27,7 @@ Copy-pasted from pda.tmpl
 			{{/for}}
 		{{/if}}
 		{{if data.manifest.eng}}
-			<tr><th colspan="3" class="eng">Engineering</th></tr>
+			<tr><th colspan="3" class="eng">Инженерный</th></tr>
 			{{for data.manifest["eng"]}}
 				{{if value.rank == "Chief Engineer"}}
 					<tr><td><span class="good">{{:value.name}}</span></td><td><span class="good">{{:value.rank}}</span></td><td><span class="good">{{:value.active}}</span></td></tr>
@@ -37,7 +37,7 @@ Copy-pasted from pda.tmpl
 			{{/for}}
 		{{/if}}
 		{{if data.manifest.med}}
-			<tr><th colspan="3" class="med">Medical</th></tr>
+			<tr><th colspan="3" class="med">Медицинский</th></tr>
 			{{for data.manifest["med"]}}
 				{{if value.rank == "Chief Medical Officer"}}
 					<tr><td><span class="good">{{:value.name}}</span></td><td><span class="good">{{:value.rank}}</span></td><td><span class="good">{{:value.active}}</span></td></tr>
@@ -47,7 +47,7 @@ Copy-pasted from pda.tmpl
 			{{/for}}
 		{{/if}}
 		{{if data.manifest.sci}}
-			<tr><th colspan="3" class="sci">Science</th></tr>
+			<tr><th colspan="3" class="sci">Научный</th></tr>
 			{{for data.manifest["sci"]}}
 				{{if value.rank == "Research Director"}}
 					<tr><td><span class="good">{{:value.name}}</span></td><td><span class="good">{{:value.rank}}</span></td><td><span class="good">{{:value.active}}</span></td></tr>
@@ -57,7 +57,7 @@ Copy-pasted from pda.tmpl
 			{{/for}}
 		{{/if}}
 		{{if data.manifest.ser}}
-			<tr><th colspan="3" class="ser">Service</th></tr>
+			<tr><th colspan="3" class="ser">Сервис</th></tr>
 			{{for data.manifest["ser"]}}
 				{{if value.rank == "Head of Personnel"}}
 					<tr><td><span class="good">{{:value.name}}</span></td><td><span class="good">{{:value.rank}}</span></td><td><span class="good">{{:value.active}}</span></td></tr>
@@ -67,7 +67,7 @@ Copy-pasted from pda.tmpl
 			{{/for}}
 		{{/if}}
 		{{if data.manifest.sup}}
-			<tr><th colspan="3" class="sup">Supply</th></tr>
+			<tr><th colspan="3" class="sup">Снабжение</th></tr>
 			{{for data.manifest["sup"]}}
 				{{if value.rank == "Head of Personnel"}}
 					<tr><td><span class="good">{{:value.name}}</span></td><td><span class="good">{{:value.rank}}</span></td><td><span class="good">{{:value.active}}</span></td></tr>
@@ -79,7 +79,7 @@ Copy-pasted from pda.tmpl
 			{{/for}}
 		{{/if}}
 		{{if data.manifest.civ}}
-			<tr><th colspan="3" class="civ">Civilian</th></tr>
+			<tr><th colspan="3" class="civ">Гражданские</th></tr>
 			{{for data.manifest["civ"]}}
 				{{if value.rank == "Head of Personnel"}}
 					<tr><td><span class="good">{{:value.name}}</span></td><td><span class="good">{{:value.rank}}</span></td><td><span class="good">{{:value.active}}</span></td></tr>
@@ -89,7 +89,7 @@ Copy-pasted from pda.tmpl
 			{{/for}}
 		{{/if}}
 		{{if data.manifest.misc}}
-			<tr><th colspan="3" class="misc">Misc</th></tr>
+			<tr><th colspan="3" class="misc">Разное</th></tr>
 			{{for data.manifest["misc"]}}
 				<tr><td><span class="average">{{:value.name}}</span></td><td><span class="average">{{:value.rank}}</span></td><td><span class="average">{{:value.active}}</span></td></tr>
 			{{/for}}

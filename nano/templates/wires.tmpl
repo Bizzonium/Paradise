@@ -4,9 +4,9 @@
 			<tr>
 			<td style='color: {{:value.seen_colour}};'>{{:value.colour_name}} {{if value.index}}({{:value.index}}){{/if}}</td>
 			<td class='floatRight'>
-			{{:helper.link(value.cut ? 'Mend' : 'Cut', null, {'action' : 'cut', 'wire' : value.colour})}}
-			{{:helper.link('Pulse', null, {'action' : 'pulse', 'wire' : value.colour})}}
-			{{:helper.link(value.attached ? 'Detach' : 'Attach', null, {'action' : 'attach', 'wire' : value.colour})}}
+			{{:helper.link(value.cut ? 'Починить' : 'Разрезать', null, {'action' : 'cut', 'wire' : value.colour})}}
+			{{:helper.link('Пульс', null, {'action' : 'pulse', 'wire' : value.colour})}}
+			{{:helper.link(value.attached ? 'Открепить' : 'Прикрепить', null, {'action' : 'attach', 'wire' : value.colour})}}
 			</td>
 			</tr>
 		{{/for}}

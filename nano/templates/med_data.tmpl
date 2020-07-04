@@ -117,11 +117,11 @@ Used In File(s): \code\game\machinery\computer\medical.dm
 		<br><hr>
 		{{:helper.link('Back', 'arrow-left', {'screen' : 1})}}
 	{{else data.screen == 6}} <!-- MED_DATA_MEDBOT -->
-		<h3><center>Наблюдение медицинского робота</center></h3>
+		<h3><center>Медицинские боты</center></h3>
 		{{for data.medbots}}
 			<h4>{{:value.name}}</h4>
 			<div class="item">
-				<div class="itemLabel">Локация:</div>
+				<div class="itemLabel">Местоположение:</div>
 				<div class="itemContent">{{:value.x}}, {{:value.y}}</div>
 			</div>
 			<div class="item">
@@ -132,12 +132,12 @@ Used In File(s): \code\game\machinery\computer\medical.dm
 			</div>
 			<hr>
 		{{empty}}
-			<h4 class="bad"><center>Не обнаружено!</center></h4>
+			<h4 class="bad"><center>Не обнаружены!</center></h4>
 		{{/for}}
 		<div class="line">{{:helper.link('Назад', 'arrow-left', {'screen' : 1})}}</div>
 	{{/if}}
 {{else}}
-	<h3>Menu</h3>
+	<h3>Меню</h3>
 	{{:helper.link('Войти', 'unlock', {'login' : 1})}}
 {{/if}}
 

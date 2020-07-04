@@ -71,15 +71,15 @@ Used In File(s): /code/modules/economy/ATM.dm
 		<form name='transfer' id='transfer' action='?src={{:data.src}}' method='get'>
 			<input type='hidden' name='src' value='{{:data.src}}'>
 			<input type='hidden' name='choice' value='transfer'>
-			<div class='itemLabel'>Целевой номер аккаунта:</div>
+			<div class='itemLabel'>Номер получателя:</div>
 			<div class='itemContent'><input type='text' name='target_acc_number' value='' style='width:200px;'></div>
 
-			<div class='itemLabel'>Сумма для перевода:</div>
+			<div class='itemLabel'>Сумма перевода:</div>
 			<div class='itemContent'><input type='text' name='funds_amount' value='' style='width:200px;'></div>
 
 			<div class='itemLabel'>Назначение платежа:</div>
-			<div class='itemContent'><input type='text' name='purpose' value='Funds transfer' style='width:200px;'></div>
-			<input type='submit' value='Transfer funds'>
+			<div class='itemContent'><input type='text' name='purpose' value='Перевод средств' style='width:200px;'></div>
+			<input type='submit' value='Выполнить перевод'>
 		</form>
 		<hr>
 		{{:helper.link('Back', 'arrow-left', {'choice' : 'view_screen', 'view_screen' : 0})}}
@@ -128,7 +128,7 @@ Used In File(s): /code/modules/economy/ATM.dm
 		<h3>Menu</h3>
 		<div class="line">{{:helper.link('Сменить уровень безопасности аккаунта', 'lock', {'choice' : 'view_screen', 'view_screen' : 1})}}</div>
 		<div class="line">{{:helper.link('Совершить перевод', 'exchange', {'choice' : 'view_screen', 'view_screen' : 2})}}</div>
-		<div class="line">{{:helper.link('Посмотреть логи транзакций', 'list', {'choice' : 'view_screen', 'view_screen' : 3})}}</div>
+		<div class="line">{{:helper.link('Посмотреть лог транзакций', 'list', {'choice' : 'view_screen', 'view_screen' : 3})}}</div>
 		<div class="line">{{:helper.link('Распечатать банковскую выписку', 'print', {'choice' : 'balance_statement'})}}</div>
 		<div class="line">{{:helper.link('Выйти', 'sign-out', {'choice' : 'logout'})}}</div>
 	{{/if}}

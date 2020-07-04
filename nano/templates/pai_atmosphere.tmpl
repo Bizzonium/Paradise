@@ -5,16 +5,16 @@ code/modules/mob/living/silicon/pai/software_modules.dm
 {{if data.reading}}
 	<div class="item">
 		<div class="itemLabel">
-			Pressure:
+			Давление:
 		</div>
 		<div class="itemContent">
-			{{:helper.smoothRound(data.pressure, 1)}} kPa
+			{{:helper.smoothRound(data.pressure, 1)}} кПа
 		</div>
 	</div>
 
 	<div class="item">
 		<div class="itemLabel">
-			Temperature:
+			Температура:
 		</div>
 		<div class="itemContent">
 			{{:helper.smoothRound(data.temperature)}}K ({{:helper.smoothRound(data.temperatureC)}}&deg;C)
@@ -32,5 +32,5 @@ code/modules/mob/living/silicon/pai/software_modules.dm
 		</div>
 	{{/for}}
 {{else}}
-	<span class="bad">Unable to obtain air reading!</span>
+	<span class="bad">Не удаётся получить показания по воздуху!</span>
 {{/if}}

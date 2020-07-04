@@ -1,8 +1,8 @@
 {{if data.menu == 0}}
-	<h3>Статус бака</h3>
+	<h3>Статус канистры</h3>
 	<div class="item">
 		<div class="itemLabel">
-			Этикетка бака:
+			Этикетка канистры:
 		</div>
 		<div class="itemContent">
 			<div style="float: left; width: 180px;">{{:data.name}}</div> {{:helper.link('Сменить', 'pencil', {'choice' : 'menu', 'mode_target' : 1}, data.canLabel ? null : 'disabled')}}
@@ -11,7 +11,7 @@
 
 	<div class="item">
 		<div class="itemLabel">
-			Давление бака:
+			Давление канистры:
 		</div>
 		<div class="itemContent">
 			{{:helper.smoothRound(data.tankPressure)}} кПа
@@ -34,7 +34,7 @@
 				Этикетка баллона:
 			</div>
 			<div class="itemContent">
-				<div style="float: left; width: 180px;">{{:data.holdingTank.name}}</div> {{:helper.link('Eject', 'eject', {'remove_tank' : 1})}}
+				<div style="float: left; width: 180px;">{{:data.holdingTank.name}}</div> {{:helper.link('Извлечь', 'eject', {'remove_tank' : 1})}}
 			</div>
 		</div>
 

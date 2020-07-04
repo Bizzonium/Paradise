@@ -1,88 +1,88 @@
-<h3>Status</h3>
+<h3>Статус</h3>
 <div class='item'>
 	<div class="itemLabel">
-		Generator Status:
+		Статус генератора:
 	</div>
 	<div class = "itemContent">
 		{{if data.active}}
-			<span class="good">Online</span>
+			<span class="good">Онлайн</span>
 		{{else}}
-			<span class="average">Offline</span>
+			<span class="average">Оффлайн</span>
 		{{/if}}
 	</div>
 	<div class="itemLabel">
-		Generator Control:
+		Управление генератором:
 	</div>
 	<div class = "itemContent">
 		{{if data.active}}
-			{{:helper.link('STOP', 'power-off', {'action' : "disable"})}}
+			{{:helper.link('СТОП', 'power-off', {'action' : "disable"})}}
 		{{else}}
-			{{:helper.link('START', 'power-off', {'action' : "enable"})}}
+			{{:helper.link('СТАРТ', 'power-off', {'action' : "enable"})}}
 		{{/if}}
 	</div>
 </div>
-<h3>Fuel</h3>
+<h3>Топливо</h3>
 <div class='item'>
 	<div class="itemLabel">
-		Fuel Type:
+		Тип топлива:
 	</div>
 	<div class="itemContent">
 		<span class="good">{{:data.fuel_type}}</span>
 	</div>
 	<div class="itemLabel">
-		Fuel Level:
+		Уровень топлива:
 	</div>
 	<div class="itemContent">
 		{{if data.fuel_stored >= 5000}}
 			{{:helper.displayBar(data.fuel_stored, 0, data.fuel_capacity, 'good')}}
-			<br><span class="good">{{:helper.smoothRound(data.fuel_stored)}}/{{:data.fuel_capacity}} cm3</span>
+			<br><span class="good">{{:helper.smoothRound(data.fuel_stored)}}/{{:data.fuel_capacity}} см3</span>
 		{{else data.fuel_stored >= 1000}}
 			{{:helper.displayBar(data.fuel_stored, 0, data.fuel_capacity, 'average')}}
-			<br><span class="average">{{:helper.smoothRound(data.fuel_stored)}}/{{:data.fuel_capacity}} cm3</span>
+			<br><span class="average">{{:helper.smoothRound(data.fuel_stored)}}/{{:data.fuel_capacity}} см3</span>
 		{{else}}
 			{{:helper.displayBar(data.fuel_stored, 0, data.fuel_capacity, 'bad')}}
-			<br><span class="bad">{{:helper.smoothRound(data.fuel_stored)}}/{{:data.fuel_capacity}} cm3</span>
+			<br><span class="bad">{{:helper.smoothRound(data.fuel_stored)}}/{{:data.fuel_capacity}} см3</span>
 		{{/if}}
 	</div>
 	<div class="itemLabel">
-		Fuel Usage:
+		Расход топлива
 	</div>
 	<div class="itemContent">
-		<span class="good">{{:helper.smoothRound(data.fuel_usage)}} cm3/s</span>
+		<span class="good">{{:helper.smoothRound(data.fuel_usage)}} см3/с</span>
 	</div>
 	{{if !data.is_ai}}
 		<div class="itemLabel">
-			Control:
+			Управление:
 		</div>
 		<div class="itemContent">
-			{{:helper.link('EJECT FUEL', 'arrow-down', {'action' : "eject"}, data.active ? 'disabled' : null)}}
+			{{:helper.link('ИЗВЛЕЧЬ ТОПЛИВО', 'arrow-down', {'action' : "eject"}, data.active ? 'disabled' : null)}}
 		</div>
 	{{/if}}
 </div>
 <h3>Output</h3>
 <div class='item'>
 	<div class="itemLabel">
-		Power setting:
+		Настройки мощности:
 	</div>
 	<div class="itemContent">
 		{{if data.output_set > data.output_safe}}
-			<span class="bad">{{:data.output_set}} / {{:data.output_max}} ({{:data.output_watts}} W)</span>
+			<span class="bad">{{:data.output_set}} / {{:data.output_max}} ({{:data.output_watts}} Вт)</span>
 		{{else}}
-			<span class="good">{{:data.output_set}} / {{:data.output_max}} ({{:data.output_watts}} W)</span>
+			<span class="good">{{:data.output_set}} / {{:data.output_max}} ({{:data.output_watts}} Вт)</span>
 		{{/if}}
 	</div>
 	<div class="itemLabel">
-		Control:
+		Управление:
 	</div>
 	<div class="itemContent">
 		{{:helper.link('+', null, {'action' : "higher_power"})}}
 		{{:helper.link('-', null, {'action' : "lower_power"})}}
 	</div>
 </div>
-<h3>Temperature</h3>
+<h3>Температура</h3>
 <div class='item'>
 	<div class="itemLabel">
-		Temperature:
+		Температура:
 	</div>
 	<div class="itemContent">
 		{{if data.temperature_current < (data.temperature_max * 0.8)}}
@@ -97,17 +97,17 @@
 		{{/if}}
 	</div>
 	<div class="itemLabel">
-		Generator Status:
+		Статус генератора:
 	</div>
 	<div class="itemContent">
 		{{if data.temperature_overheat > 50}}
-			<span class="bad">DANGER: CRITICAL OVERHEAT! Deactivate generator immediately!</span>
+			<span class="bad">ОПАСНОСТЬ: КРИТИЧЕСКИЙ ПЕРЕГРЕВ! Немедленно отключите генератор!</span>
 		{{else data.temperature_overheat > 20}}
-			<span class="average">WARNING: Overheating!</span>
+			<span class="average">ВНИМАНИЕ: Перегревание!</span>
 		{{else data.temperature_overheat > 1}}
-			<span class="average">Temperature High</span>
+			<span class="average">Высокая температура</span>
 		{{else}}
-			<span class="good">Optimal</span>
+			<span class="good">Оптимальный</span>
 		{{/if}}
 	</div>
 </div>

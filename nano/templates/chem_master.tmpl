@@ -15,11 +15,12 @@
 		{{/for}}
 	</div>
 	<div class='statusDisplay'>
-		<h3>
-			<div class='item'>
-					Перевести в {{:helper.link(data.mode ? 'мензурку' : 'отходы', 'arrows-h', {'toggle': 1})}}
-			</div>
-		</h3>
+		<div class="line">
+			<h3>
+				<div class="statusValue">Перевести в </div>
+				{{:helper.link(data.mode ? 'мензурку' : 'отходы', 'arrows-h', {'toggle': 1})}}
+			</h3>
+		</div>
 		{{for data.buffer_reagents}}
 			<div class='line'>
 				<div class='itemLabel'>{{:value.name}}, {{:value.volume}} юнитов</div>

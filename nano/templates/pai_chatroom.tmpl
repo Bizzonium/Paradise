@@ -4,30 +4,30 @@ code/modules/mob/living/silicon/pai/software_modules.dm
 
 <div class="item">
 	<div class="itemLabel">
-		Receiver:
+		Приёмник:
 	</div>
 	<div class="itemContent">
 		{{if data.receiver_off}}
-			{{:helper.link("On",  '', {"stopic":"chatroom", "toggler":1})}}
-			{{:helper.link("Off", '', {"stopic":"chatroom", "toggler":2}, 'selected')}}
+			{{:helper.link("Вкл",  '', {"stopic":"chatroom", "toggler":1})}}
+			{{:helper.link("Выкл", '', {"stopic":"chatroom", "toggler":2}, 'selected')}}
 		{{else}}
-			{{:helper.link("On",  '', {"stopic":"chatroom", "toggler":1}, 'selected')}}
-			{{:helper.link("Off", '', {"stopic":"chatroom", "toggler":2})}}
+			{{:helper.link("Вкл",  '', {"stopic":"chatroom", "toggler":1}, 'selected')}}
+			{{:helper.link("Выкл", '', {"stopic":"chatroom", "toggler":2})}}
 		{{/if}}
 	</div>
 </div>
 
 <div class="item">
 	<div class="itemLabel">
-		Ringer:
+		Звуки:
 	</div>
 	<div class="itemContent">
 		{{if data.ringer_off}}
-			{{:helper.link("On",  '', {"stopic":"chatroom", "ringer":1})}}
-			{{:helper.link("Off", '', {"stopic":"chatroom", "ringer":2}, 'selected')}}
+			{{:helper.link("Вкл",  '', {"stopic":"chatroom", "ringer":1})}}
+			{{:helper.link("Выкл", '', {"stopic":"chatroom", "ringer":2}, 'selected')}}
 		{{else}}
-			{{:helper.link("On",  '', {"stopic":"chatroom", "ringer":1}, 'selected')}}
-			{{:helper.link("Off", '', {"stopic":"chatroom", "ringer":2})}}
+			{{:helper.link("Вкл",  '', {"stopic":"chatroom", "ringer":1}, 'selected')}}
+			{{:helper.link("Выкл", '', {"stopic":"chatroom", "ringer":2})}}
 		{{/if}}
 	</div>
 </div>
@@ -40,16 +40,16 @@ code/modules/mob/living/silicon/pai/software_modules.dm
 {{/for}}
 <hr>
 {{if data.disconnected}}
-	<h3>Connection Lost</h3>
-	{{:helper.link("Reconnect", 'refresh', {"stopic":"chatroom", "reconnect":1})}}
+	<h3>Соединение потеряно</h3>
+	{{:helper.link("Переподключится", 'refresh', {"stopic":"chatroom", "reconnect":1})}}
 {{else data.current_room}}
 	<h3>#{{:data.current_room_name}}</h3>
 	<div class="item">
-		<dic class="itemLabel">Topic:</div>
+		<dic class="itemLabel">Тема:</div>
 		<div class="itemContent">{{:helper.link(data.current_room_topic, '', {"stopic":"chatroom", "topic":1})}}</div>
 	</div>
 	<div class="item">
-		<div class="itemLabel">Users:</div>
+		<div class="itemLabel">Пользователи:</div>
 		<div class="itemContent">
 			{{var firstUser = true;}}
 			{{for data.users}}
@@ -68,9 +68,9 @@ code/modules/mob/living/silicon/pai/software_modules.dm
 		</div>
 		{{prevName = value.username;}}
 	{{/for}}
-	{{:helper.link("Send Message", '', {"stopic":"chatroom", "target":data.current_room})}}
+	{{:helper.link("Отправить сообщение", '', {"stopic":"chatroom", "target":data.current_room})}}
 {{/if}}
 
 {{if data.current_name}}
-	{{:helper.link("Clear Screen", '', {"stopic":"chatroom", "select":"*NONE*"})}}
+	{{:helper.link("Очистить экран", '', {"stopic":"chatroom", "select":"*NONE*"})}}
 {{/if}}

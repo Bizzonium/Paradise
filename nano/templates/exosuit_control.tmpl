@@ -21,7 +21,7 @@ Used In File(s): \code\game\mecha\mecha_control_console.dm
 				<span class="{{if value.integrity >= 75}}good{{else value.integrity >= 25}}average{{else}}bad{{/if}}">{{:helper.smoothRound(value.integrity)}}%</span>
 			</div>
 			<div class="itemLabel">
-				Локация:
+				Местоположение:
 			</div>
 			<div class="itemContent">
 				{{:value.location}}
@@ -50,7 +50,7 @@ Used In File(s): \code\game\mecha\mecha_control_console.dm
 		<h3>Аккумулятор</h3>
 		{{if value.cell}}
 			<span class="itemLabel">
-				Рейтинг:
+				Ёмкость:
 			</span>
 			<span class="itemContent">
 				{{:value.cell_capacity}}
@@ -70,7 +70,7 @@ Used In File(s): \code\game\mecha\mecha_control_console.dm
 	</div>
 	{{empty}}
 		<div class='item'>
-			<h3>Меха трекеры не найдены</h3>
+			<h3>трекеры экзокостюмов не найдены</h3>
 		</div>
 	{{/for}}
 {{else}}

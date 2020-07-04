@@ -3,21 +3,21 @@
 		<table>
 			<tr>
 				<td>
-					Connection Status:
+					Статус подключения:
 				</td>
 				{{if data.connected}}
 					<td>
-						<span class="good">Connected</span>
+						<span class="good">Подключен</span>
 					</td>
 					<td>
-						{{:helper.link('Disconnect', 'sign-out', {'choice': 'Disconnect'})}}
+						{{:helper.link('Отключиться', 'sign-out', {'choice': 'Disconnect'})}}
 					</td>
 				{{else}}
 					<td>
-						<span class="bad">No Connection</span>
+						<span class="bad">Нет подключения</span>
 					</td>
 					<td>
-						{{:helper.link('Connect', 'sign-in', {'choice': 'Reconnect'})}}
+						{{:helper.link('Подключиться', 'sign-in', {'choice': 'Reconnect'})}}
 					</td>
 				{{/if}}
 			</tr>
@@ -25,67 +25,67 @@
 	</div>
 </div>
 <hr>
-<div class="itemLabel">My Collection:</div>
+<div class="itemLabel">Моя коллекция:</div>
 {{if data.no_collection}}
 	<div class="statusDisplayRecords">
 		<div class="item">
-			<span class="average">Your collection is empty! Go capture some Nano-Mobs!</span>
+			<span class="average">Ваша коллекция пуста! Идите ловить Nano-мобов!</span>
 		</div>
 	</div>
 	<br>
-	Wild mobs captured: {{:data.wild_captures}}
+	Пойманные дикие мобы: {{:data.wild_captures}}
 {{else}}
 	<div class="statusDisplayRecords">
 		<div class="item">
 			<div class="itemContent" style="width: 100%;">
 				{{if data.entry}}
 					{{if data.entry.nickname}}
-						<span class="good">Name: </span> <span class="average"> {{:data.entry.nickname}}</span><br>
+						<span class="good">Имя: </span> <span class="average"> {{:data.entry.nickname}}</span><br>
 					{{/if}}
-					<span class="good">Species: </span> <span class="average">{{:data.entry.real_name}} </span><br>
-					<span class="good">Level: </span>  <span class="average">{{:data.entry.level}} </span><br>
-					<span class="good">Primary Type: </span>  <span class="average">{{:data.entry.type1}} </span><br>
+					<span class="good">Раса: </span> <span class="average">{{:data.entry.real_name}} </span><br>
+					<span class="good">Уровень: </span>  <span class="average">{{:data.entry.level}} </span><br>
+					<span class="good">Основной тип: </span>  <span class="average">{{:data.entry.type1}} </span><br>
 					{{if data.entry.type2}}
-						<span class="good">Secondary Type: </span>  <span class="average">{{:data.entry.type2}} </span><br>
+						<span class="good">Второстепенный тип: </span>  <span class="average">{{:data.entry.type2}} </span><br>
 					{{/if}}
 					{{if data.entry.sprite}}
 						<img src='{{:data.entry.sprite}}'>
 					{{else}}
-						<span class="bad">Mob Image Missing!</span>
+						<span class="bad">Изображение моба отсутствует!</span>
 					{{/if}}
 				{{else}}
 					<span class="bad">
-						Mob Data Missing!<br><br>
+						Данные о мобе отсутствуют!<br><br>
 					</span>
 				{{/if}}
 			</div>
 		</div>
 	</div>
 	<br>
-	Wild mobs captured: {{:data.wild_captures}}
+	Пойманные дикие мобы: {{:data.wild_captures}}
 	<div class="item">
 		<table>
 			<tr>
 				<td>
-					{{:helper.link('Previous Mob', 'arrow-left', {'choice': 'Prev'})}}
+					{{:helper.link('Предыдущий моб', 'arrow-left', {'choice': 'Prev'})}}
 				</td>
 				<td>
-					{{:helper.link('Transfer Mob', 'exchange', {'choice': 'Transfer'})}}
+					{{:helper.link('Перенести моба', 'exchange', {'choice': 'Transfer'})}}
 				</td>
 				<td>
-					{{:helper.link('Rename Mob', 'pencil', {'choice': 'Rename'})}}
+					{{:helper.link('Переименовать моба', 'pencil', {'choice': 'Rename'})}}
 				</td>
 				<td>
-					{{:helper.link('Release Mob', 'tree', {'choice': 'Release'})}}
+					{{:helper.link('Отпустить моба', 'tree', {'choice': 'Release'})}}
 				</td>
 				<td>
-					{{:helper.link('Next Mob', 'arrow-right', {'choice': 'Next'})}}
+					{{:helper.link('Следующий моб', 'arrow-right', {'choice': 'Next'})}}
 				</td>
 			</tr>
 		</table>
 		{{if data.entry.is_hacked}}
 			<br>
-			{{:helper.link('Set Trap', 'bolt', {'choice': 'Set_Trap'})}}
+			{{:helper.link('Установить ловушку', 'bolt', {'choice': 'Set_Trap'})}}
 		{{/if}}
 	</div>
 {{/if}}

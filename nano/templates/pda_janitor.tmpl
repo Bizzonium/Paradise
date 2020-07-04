@@ -1,66 +1,66 @@
 <div class="statusDisplay">
 	<div class="item">
-		<span class="good">Current Location:</span>
+		<span class="good">Текущее местоположение:</span>
 		{{if data.janitor.user_loc.x == 0}}
-			<span class="bad">Unknown</span>
+			<span class="bad">Неизвестно</span>
 		{{else}}
 			<span class="average"> {{:data.janitor.user_loc.x}} / {{:data.janitor.user_loc.y}}</span>
 		{{/if}}
 	</div>
 		<div class="item">
 			{{if data.janitor.mops}}
-				<span class="good">Mop Locations:</span>
+				<span class="good">Местоположение швабер:</span>
 				<ul>
 					{{for data.janitor.mops}}
 						<li>
-							<span class="average">({{:value.x}} / {{:value.y}}) - {{:value.dir}} - Status: {{:value.status}}</span>
+							<span class="average">({{:value.x}} / {{:value.y}}) - {{:value.dir}} - Статус: {{:value.status}}</span>
 						</li>
 					{{/for}}
 				</ul>
 			{{else}}
-				<span class="bad">Unable to locate Mops</span>
+				<span class="bad">Не удаётся определить местоположение швабер</span>
 			{{/if}}
 		</div>
 	<div class="item">
 		{{if data.janitor.buckets}}
-			<span class="good">Mop Bucket Locations:</span>
+			<span class="good">Местоположение вёдер для мытья полов:</span>
 			<ul>
 				{{for data.janitor.buckets}}
 					<li>
-						<span class="average">({{:value.x}} / {{:value.y}}) - {{:value.dir}} - Capacity: {{:value.volume}}/{{:value.max_volume}}</span>
+						<span class="average">({{:value.x}} / {{:value.y}}) - {{:value.dir}} - Ёмкость: {{:value.volume}}/{{:value.max_volume}}</span>
 					</li>
 				{{/for}}
 			</ul>
 		{{else}}
-			<span class="bad">Unable to locate Mop Buckets</span>
+			<span class="bad">Не удаётся определить местоположение вёдер для мытья полов</span>
 		{{/if}}
 	</div>
 	<div class="item">
 		{{if data.janitor.cleanbots}}
-			<span class="good">Cleanbot Locations:</span>
+			<span class="good">Местоположение Cleanbot-во:</span>
 			<ul>
 				{{for data.janitor.cleanbots}}
 					<li>
-						<span class="average">({{:value.x}} / {{:value.y}}) - {{:value.dir}} - Status: {{:value.status}}</span>
+						<span class="average">({{:value.x}} / {{:value.y}}) - {{:value.dir}} - Статус: {{:value.status}}</span>
 					</li>
 				{{/for}}
 			</ul>
 		{{else}}
-			<span class="bad">Unable to locate Cleanbots</span>
+			<span class="bad">Не удаётся определить местоположение Cleanbot-ов</span>
 		{{/if}}
 	</div>
 	<div class="item">
 		{{if data.janitor.carts}}
-			<span class="good">Janitorial Cart Locations:</span>
+			<span class="good">Местоположение тележек уборщика:</span>
 			<ul>
 				{{for data.janitor.carts}}
 					<li>
-						<span class="average">({{:value.x}} / {{:value.y}}) - {{:value.dir}} - Water Level: {{:value.volume}}/{{:value.max_volume}}</span>
+						<span class="average">({{:value.x}} / {{:value.y}}) - {{:value.dir}} - Уровень воды: {{:value.volume}}/{{:value.max_volume}}</span>
 					</li>
 				{{/for}}
 			</ul>
 		{{else}}
-			<span class="bad">Unable to locate Janitorial Carts</span>
+			<span class="bad">Не удаётся определить местоположение тележек уборщика</span>
 		{{/if}}
 	</div>
 </div>
