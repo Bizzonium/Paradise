@@ -69,7 +69,7 @@
 			var/obj/item/card/id/id_card = card_slot.stored_card
 			if(id_card && id_card.assignment)
 				return id_card.assignment
-	return "Unassigned"
+	return "Нераспределённый"
 
 /datum/computer_file/program/card_mod/proc/format_job_slots()
 	var/list/formatted = list()

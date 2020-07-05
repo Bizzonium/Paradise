@@ -3,8 +3,8 @@
 GLOBAL_VAR_INIT(time_last_changed_position, 0)
 
 /obj/machinery/computer/card
-	name = "identification computer"
-	desc = "Terminal for programming Nanotrasen employee ID cards to access parts of the station."
+	name = "Компьютер идентификации"
+	desc = "Темринал для программирования доступа ID карт служащих Nanotrasen к различным частям станции."
 	icon_keyboard = "id_key"
 	icon_screen = "id"
 	req_access = list(ACCESS_CHANGE_IDS)
@@ -65,7 +65,7 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 	return 0
 
 /obj/machinery/computer/card/proc/get_target_rank()
-	return modify && modify.assignment ? modify.assignment : "Unassigned"
+	return modify && modify.assignment ? modify.assignment : "Нераспределенный"
 
 /obj/machinery/computer/card/proc/format_jobs(list/jobs, targetrank, list/jobformats)
 	var/list/formatted = list()
@@ -107,28 +107,28 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 
 /obj/machinery/computer/card/verb/eject_id()
 	set category = null
-	set name = "Eject ID Card"
+	set name = "Извлечь ID карту"
 	set src in oview(1)
 
 	if(usr.incapacitated())
 		return
 
 	if(scan)
-		to_chat(usr, "You remove \the [scan] from \the [src].")
+		to_chat(usr, "Вы извлекли \the [scan] из \the [src].")
 		scan.forceMove(get_turf(src))
 		if(!usr.get_active_hand() && Adjacent(usr))
 			usr.put_in_hands(scan)
 		scan = null
 		playsound(src, 'sound/machines/terminal_insert_disc.ogg', 50, 0)
 	else if(modify)
-		to_chat(usr, "You remove \the [modify] from \the [src].")
+		to_chat(usr, "Вы извлекли \the [modify] из \the [src].")
 		modify.forceMove(get_turf(src))
 		if(!usr.get_active_hand() && Adjacent(usr))
 			usr.put_in_hands(modify)
 		modify = null
 		playsound(src, 'sound/machines/terminal_insert_disc.ogg', 50, 0)
 	else
-		to_chat(usr, "There is nothing to remove from the console.")
+		to_chat(usr, "Нет нечего, что можно извлечь из консоли.")
 
 /obj/machinery/computer/card/attackby(obj/item/card/id/id_card, mob/user, params)
 	if(!istype(id_card))
@@ -382,15 +382,15 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 			if(is_authenticated(usr) && modify)
 				var/t1 = href_list["assign_target"]
 				if(target_dept && modify.assignment == "Demoted")
-					visible_message("<span class='notice'>[src]: Demoted individuals must see the HoP for a new job.</span>")
+					visible_message("<span class='notice'>[src]: Пониженные лица обязаны явится к Главе Персонала для присвоения новой должности.</span>")
 					return 0
 				if(!job_in_department(SSjobs.GetJob(modify.rank), FALSE))
-					visible_message("<span class='notice'>[src]: Cross-department job transfers must be done by the HoP.</span>")
+					visible_message("<span class='notice'>[src]: Переводы между отделами выполняются только через Главу Персонала.</span>")
 					return 0
 				if(!job_in_department(SSjobs.GetJob(t1)))
 					return 0
 				if(t1 == "Custom")
-					var/temp_t = sanitize(copytext_char(input("Enter a custom job assignment.","Assignment"),1,MAX_MESSAGE_LEN))
+					var/temp_t = sanitize(copytext_char(input("Введите название должности.","Assignment"),1,MAX_MESSAGE_LEN))
 					//let custom jobs function as an impromptu alt title, mainly for sechuds
 					if(temp_t && modify)
 						SSjobs.log_job_transfer(modify.registered_name, modify.getRankAndAssignment(), temp_t, scan.registered_name)
@@ -408,7 +408,7 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 								jobdatum = J
 								break
 						if(!jobdatum)
-							to_chat(usr, "<span class='warning'>No log exists for this job: [t1]</span>")
+							to_chat(usr, "<span class='warning'>Не существует логов для этой должности: [t1]</span>")
 							return
 
 						access = jobdatum.get_access()
@@ -440,7 +440,7 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 					if(temp_name)
 						modify.registered_name = temp_name
 					else
-						visible_message("<span class='notice'>[src] buzzes rudely.</span>")
+						visible_message("<span class='notice'>[src] грубо гудит.</span>")
 			SSnanoui.update_uis(src)
 
 		if("account")
@@ -478,21 +478,21 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 
 					var/obj/item/paper/P = new(loc)
 					if(mode == 2)
-						P.name = "crew manifest ([station_time_timestamp()])"
-						P.info = {"<h4>Crew Manifest</h4>
+						P.name = "Манифест экипажа ([station_time_timestamp()])"
+						P.info = {"<h4>Манифест экипажа</h4>
 							<br>
 							[GLOB.data_core ? GLOB.data_core.get_manifest(0) : ""]
 						"}
 					else if(modify && !mode)
-						P.name = "access report"
-						P.info = {"<h4>Access Report</h4>
-							<u>Prepared By:</u> [scan && scan.registered_name ? scan.registered_name : "Unknown"]<br>
-							<u>For:</u> [modify.registered_name ? modify.registered_name : "Unregistered"]<br>
+						P.name = "Отчёт о доступах"
+						P.info = {"<h4>Отчёт о доступах</h4>
+							<u>Подготовлен:</u> [scan && scan.registered_name ? scan.registered_name : "Unknown"]<br>
+							<u>Для:</u> [modify.registered_name ? modify.registered_name : "Unregistered"]<br>
 							<hr>
-							<u>Assignment:</u> [modify.assignment]<br>
-							<u>Account Number:</u> #[modify.associated_account_number]<br>
-							<u>Blood Type:</u> [modify.blood_type]<br><br>
-							<u>Access:</u><div style="margin-left:1em">
+							<u>Назначение:</u> [modify.assignment]<br>
+							<u>Номер аккаунта:</u> #[modify.associated_account_number]<br>
+							<u>Группа крови:</u> [modify.blood_type]<br><br>
+							<u>Доступ:</u><div style="margin-left:1em">
 						"}
 
 						var/first = 1
@@ -513,10 +513,10 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 		if("demote")
 			if(is_authenticated(usr))
 				if(modify.assignment == "Demoted")
-					visible_message("<span class='notice'>[src]: Demoted crew cannot be demoted any further. If further action is warranted, ask the Captain about Termination.</span>")
+					visible_message("<span class='notice'>[src]: Пониженный персонал не может быть понижен ещё раз. Если дальнейшие действия оправданы, спросите капитана об увольнении.</span>")
 					return 0
 				if(!job_in_department(SSjobs.GetJob(modify.rank), FALSE))
-					visible_message("<span class='notice'>[src]: Heads may only demote members of their own department.</span>")
+					visible_message("<span class='notice'>[src]: Главы могут понижать сотрудников толькосвоего отдела.</span>")
 					return 0
 
 				var/list/access = list()

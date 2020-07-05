@@ -43,7 +43,7 @@
 	if(..())
 		return
 	if(is_away_level(z))
-		to_chat(user, "<span class='danger'>Unable to establish a connection</span>: You're too far away from the station!")
+		to_chat(user, "<span class='danger'>Не удаётся установить подключение</span>: Вы слишком далеко от станции!")
 		return
 	add_fingerprint(user)
 	ui_interact(user)
@@ -99,14 +99,14 @@
 				if(istype(active1, /datum/data/record) && GLOB.data_core.general.Find(active1))
 					var/list/fields = list()
 					general["fields"] = fields
-					fields[++fields.len] = list("field" = "Name:", "value" = active1.fields["name"], "edit" = "name")
+					fields[++fields.len] = list("field" = "Имя:", "value" = active1.fields["name"], "edit" = "name")
 					fields[++fields.len] = list("field" = "ID:", "value" = active1.fields["id"], "edit" = "id")
-					fields[++fields.len] = list("field" = "Sex:", "value" = active1.fields["sex"], "edit" = "sex")
-					fields[++fields.len] = list("field" = "Age:", "value" = active1.fields["age"], "edit" = "age")
-					fields[++fields.len] = list("field" = "Rank:", "value" = active1.fields["rank"], "edit" = "rank")
-					fields[++fields.len] = list("field" = "Fingerprint:", "value" = active1.fields["fingerprint"], "edit" = "fingerprint")
-					fields[++fields.len] = list("field" = "Physical Status:", "value" = active1.fields["p_stat"], "edit" = null)
-					fields[++fields.len] = list("field" = "Mental Status:", "value" = active1.fields["m_stat"], "edit" = null)
+					fields[++fields.len] = list("field" = "Пол:", "value" = active1.fields["sex"], "edit" = "sex")
+					fields[++fields.len] = list("field" = "Возраст:", "value" = active1.fields["age"], "edit" = "age")
+					fields[++fields.len] = list("field" = "Ранг:", "value" = active1.fields["rank"], "edit" = "rank")
+					fields[++fields.len] = list("field" = "Отпечаток:", "value" = active1.fields["fingerprint"], "edit" = "fingerprint")
+					fields[++fields.len] = list("field" = "Физический статус:", "value" = active1.fields["p_stat"], "edit" = null)
+					fields[++fields.len] = list("field" = "Ментальный статус:", "value" = active1.fields["m_stat"], "edit" = null)
 					var/list/photos = list()
 					general["photos"] = photos
 					photos[++photos.len] = list("photo" = active1.fields["photo-south"])
@@ -121,12 +121,12 @@
 				if(istype(active2, /datum/data/record) && GLOB.data_core.security.Find(active2))
 					var/list/fields = list()
 					security["fields"] = fields
-					fields[++fields.len] = list("field" = "Criminal Status:", "value" = active2.fields["criminal"], "edit" = "criminal", "line_break" = 1)
-					fields[++fields.len] = list("field" = "Minor Crimes:", "value" = active2.fields["mi_crim"], "edit" = "mi_crim", "line_break" = 0)
-					fields[++fields.len] = list("field" = "Details:", "value" = active2.fields["mi_crim_d"], "edit" = "mi_crim_d", "line_break" = 1)
-					fields[++fields.len] = list("field" = "Major Crimes:", "value" = active2.fields["ma_crim"], "edit" = "ma_crim", "line_break" = 0)
-					fields[++fields.len] = list("field" = "Details:", "value" = active2.fields["ma_crim_d"], "edit" = "ma_crim_d", "line_break" = 1)
-					fields[++fields.len] = list("field" = "Important Notes:", "value" = active2.fields["notes"], "edit" = "notes", "line_break" = 0)
+					fields[++fields.len] = list("field" = "Преступный статусs:", "value" = active2.fields["criminal"], "edit" = "criminal", "line_break" = 1)
+					fields[++fields.len] = list("field" = "Незначительные преступления:", "value" = active2.fields["mi_crim"], "edit" = "mi_crim", "line_break" = 0)
+					fields[++fields.len] = list("field" = "Детали:", "value" = active2.fields["mi_crim_d"], "edit" = "mi_crim_d", "line_break" = 1)
+					fields[++fields.len] = list("field" = "Серъёзные преступления:", "value" = active2.fields["ma_crim"], "edit" = "ma_crim", "line_break" = 0)
+					fields[++fields.len] = list("field" = "Детали:", "value" = active2.fields["ma_crim_d"], "edit" = "ma_crim_d", "line_break" = 1)
+					fields[++fields.len] = list("field" = "Важные замечания:", "value" = active2.fields["notes"], "edit" = "notes", "line_break" = 0)
 					if(!active2.fields["comments"] || !islist(active2.fields["comments"]))
 						active2.fields["comments"] = list()
 					security["comments"] = active2.fields["comments"]
@@ -154,13 +154,13 @@
 				for(var/datum/data/record/R in GLOB.data_core.security)
 					qdel(R)
 				update_all_mob_security_hud()
-				setTemp("<h3>All records deleted.</h3>")
+				setTemp("<h3>Все записи удалены.</h3>")
 			if("del_alllogs2")
 				if(GLOB.cell_logs.len)
-					setTemp("<h3>All cell logs deleted.</h3>")
+					setTemp("<h3>Все логи тюремных камер удалены.</h3>")
 					GLOB.cell_logs.Cut()
 				else
-					to_chat(usr, "<span class='notice'>Error; No cell logs to delete.</span>")
+					to_chat(usr, "<span class='notice'>Ошибка: нет логов для удаления.</span>")
 			if("del_r2")
 				if(active2)
 					qdel(active2)
@@ -178,13 +178,13 @@
 				if(active2)
 					var/t1
 					if(temp_href[2] == "execute")
-						t1 = copytext(trim(sanitize(input("Explain why they are being executed. Include a list of their crimes, and victims.", "EXECUTION ORDER", null, null) as text)), 1, MAX_MESSAGE_LEN)
+						t1 = copytext(trim(sanitize(input("Объясните, причину казни. Включите список преступления и жертв.", "ОРДЕР НА КАЗНЬ", null, null) as text)), 1, MAX_MESSAGE_LEN)
 					else
-						t1 = copytext(trim(sanitize(input("Enter Reason:", "Secure. records", null, null) as text)), 1, MAX_MESSAGE_LEN)
+						t1 = copytext(trim(sanitize(input("Введите причину:", "Secure. records", null, null) as text)), 1, MAX_MESSAGE_LEN)
 					if(!t1)
-						t1 = "(none)"
+						t1 = "(нет)"
 					if(!set_criminal_status(usr, active2, temp_href[2], t1, rank, authcard_access))
-						setTemp("<h3 class='bad'>Error: permission denied.</h3>")
+						setTemp("<h3 class='bad'>Ошибка: доступ запрещён.</h3>")
 						return 1
 			if("rank")
 				if(active1)
@@ -255,7 +255,7 @@
 			var/datum/data/record/R = locate(href_list["d_rec"])
 			var/datum/data/record/M = locate(href_list["d_rec"])
 			if(!GLOB.data_core.general.Find(R))
-				setTemp("<h3 class='bad'>Record not found!</h3>")
+				setTemp("<h3 class='bad'>Запись не найдена!</h3>")
 				return 1
 			for(var/datum/data/record/E in GLOB.data_core.security)
 				if(E.fields["name"] == R.fields["name"] && E.fields["id"] == R.fields["id"])
@@ -266,57 +266,57 @@
 
 		else if(href_list["del_all"])
 			var/list/buttons = list()
-			buttons[++buttons.len] = list("name" = "Yes", "icon" = "check", "href" = "del_all2=1", "status" = null)
-			buttons[++buttons.len] = list("name" = "No", "icon" = "times", "href" = null, "status" = null)
-			setTemp("<h3>Are you sure you wish to delete all records?</h3>", buttons)
+			buttons[++buttons.len] = list("name" = "Да", "icon" = "check", "href" = "del_all2=1", "status" = null)
+			buttons[++buttons.len] = list("name" = "Нет", "icon" = "times", "href" = null, "status" = null)
+			setTemp("<h3>Вы уверены, что хотите удалить ВСЕ записи?</h3>", buttons)
 
 		else if(href_list["del_alllogs"])
 			var/list/buttons = list()
-			buttons[++buttons.len] = list("name" = "Yes", "icon" = "check", "href" = "del_alllogs2=1", "status" = null)
-			buttons[++buttons.len] = list("name" = "No", "icon" = "times", "href" = null, "status" = null)
-			setTemp("<h3>Are you sure you wish to delete all cell logs?</h3>", buttons)
+			buttons[++buttons.len] = list("name" = "Да", "icon" = "check", "href" = "del_alllogs2=1", "status" = null)
+			buttons[++buttons.len] = list("name" = "Нет", "icon" = "times", "href" = null, "status" = null)
+			setTemp("<h3>Вы уверены, что хотите удалить ВЕСЬ лог тюремных камер?</h3>", buttons)
 
 		else if(href_list["del_rg"])
 			if(active1)
 				var/list/buttons = list()
-				buttons[++buttons.len] = list("name" = "Yes", "icon" = "check", "href" = "del_rg2=1", "status" = null)
-				buttons[++buttons.len] = list("name" = "No", "icon" = "times", "href" = null, "status" = null)
-				setTemp("<h3>Are you sure you wish to delete the record (ALL)?</h3>", buttons)
+				buttons[++buttons.len] = list("name" = "Да", "icon" = "check", "href" = "del_rg2=1", "status" = null)
+				buttons[++buttons.len] = list("name" = "Нет", "icon" = "times", "href" = null, "status" = null)
+				setTemp("<h3>Вы уверены, что хотите удалить запись (ВСЁ)?</h3>", buttons)
 
 		else if(href_list["del_r"])
 			if(active1)
 				var/list/buttons = list()
-				buttons[++buttons.len] = list("name" = "Yes", "icon" = "check", "href" = "del_r2=1", "status" = null)
-				buttons[++buttons.len] = list("name" = "No", "icon" = "times", "href" = null, "status" = null)
-				setTemp("<h3>Are you sure you wish to delete the record (Security Portion Only)?</h3>", buttons)
+				buttons[++buttons.len] = list("name" = "Да", "icon" = "check", "href" = "del_r2=1", "status" = null)
+				buttons[++buttons.len] = list("name" = "нет", "icon" = "times", "href" = null, "status" = null)
+				setTemp("<h3>Вы уверены, что хотите удалить запись (Только часть службы безопасности)?</h3>", buttons)
 
 		else if(href_list["new_s"])
 			if(istype(active1, /datum/data/record) && !istype(active2, /datum/data/record))
 				var/datum/data/record/R = new /datum/data/record()
 				R.fields["name"] = active1.fields["name"]
 				R.fields["id"] = active1.fields["id"]
-				R.name = "Security Record #[R.fields["id"]]"
-				R.fields["criminal"] = "None"
-				R.fields["mi_crim"] = "None"
-				R.fields["mi_crim_d"] = "No minor crime convictions."
-				R.fields["ma_crim"] = "None"
-				R.fields["ma_crim_d"] = "No major crime convictions."
-				R.fields["notes"] = "No notes."
+				R.name = "Запись службы безопасности #[R.fields["id"]]"
+				R.fields["criminal"] = "Нет"
+				R.fields["mi_crim"] = "Нет"
+				R.fields["mi_crim_d"] = "Нет незначительных обвинительных приговоров."
+				R.fields["ma_crim"] = "Нет"
+				R.fields["ma_crim_d"] = "Нет серьезных обвинительных приговоров."
+				R.fields["notes"] = "Замечания не найдены."
 				GLOB.data_core.security += R
 				active2 = R
 				screen = SEC_DATA_RECORD
 
 		else if(href_list["new_g"])
 			var/datum/data/record/G = new /datum/data/record()
-			G.fields["name"] = "New Record"
+			G.fields["name"] = "Новая запись"
 			G.fields["id"] = "[add_zero(num2hex(rand(1, 1.6777215E7)), 6)]"
-			G.fields["rank"] = "Unassigned"
-			G.fields["real_rank"] = "Unassigned"
+			G.fields["rank"] = "Нераспределённый"
+			G.fields["real_rank"] = "Нераспределённый"
 			G.fields["sex"] = "Male"
-			G.fields["age"] = "Unknown"
-			G.fields["fingerprint"] = "Unknown"
-			G.fields["p_stat"] = "Active"
-			G.fields["m_stat"] = "Stable"
+			G.fields["age"] = "Неизвестно"
+			G.fields["fingerprint"] = "Неизвестно"
+			G.fields["p_stat"] = "Активный"
+			G.fields["m_stat"] = "Стабильный"
 			G.fields["species"] = "Human"
 			GLOB.data_core.general += G
 			active1 = G
@@ -328,31 +328,31 @@
 				playsound(loc, "sound/goonstation/machines/printer_dotmatrix.ogg", 50, 1)
 				sleep(50)
 				var/obj/item/paper/P = new /obj/item/paper(loc)
-				P.info = "<CENTER><B>Security Record</B></CENTER><BR>"
+				P.info = "<CENTER><B>Запись Службы Безопасности</B></CENTER><BR>"
 				if(istype(active1, /datum/data/record) && GLOB.data_core.general.Find(active1))
-					P.info += {"Name: [active1.fields["name"]] ID: [active1.fields["id"]]
-							<BR>\nSex: [active1.fields["sex"]]
-							<BR>\nAge: [active1.fields["age"]]
-							<BR>\nFingerprint: [active1.fields["fingerprint"]]
-							<BR>\nPhysical Status: [active1.fields["p_stat"]]
-							<BR>\nMental Status: [active1.fields["m_stat"]]<BR>"}
+					P.info += {"Имя: [active1.fields["name"]] ID: [active1.fields["id"]]
+							<BR>\nПол: [active1.fields["sex"]]
+							<BR>\nВозраст: [active1.fields["age"]]
+							<BR>\nОтпечаток: [active1.fields["fingerprint"]]
+							<BR>\nФизический статус: [active1.fields["p_stat"]]
+							<BR>\nМентальный статус: [active1.fields["m_stat"]]<BR>"}
 				else
-					P.info += "<B>General Record Lost!</B><BR>"
+					P.info += "<B>Общая запись потеряна!</B><BR>"
 				if(istype(active2, /datum/data/record) && GLOB.data_core.security.Find(active2))
-					P.info += {"<BR>\n<CENTER><B>Security Data</B></CENTER>
-					<BR>\nCriminal Status: [active2.fields["criminal"]]<BR>\n
-					<BR>\nMinor Crimes: [active2.fields["mi_crim"]]
-					<BR>\nDetails: [active2.fields["mi_crim_d"]]<BR>\n
-					<BR>\nMajor Crimes: [active2.fields["ma_crim"]]
-					<BR>\nDetails: [active2.fields["ma_crim_d"]]<BR>\n
-					<BR>\nImportant Notes:
-					<BR>\n\t[active2.fields["notes"]]<BR>\n<BR>\n<CENTER><B>Comments/Log</B></CENTER><BR>"}
+					P.info += {"<BR>\n<CENTER><B>Данные Службы Безопасности</B></CENTER>
+					<BR>\nПреступный статусs: [active2.fields["criminal"]]<BR>\n
+					<BR>\nНезначительные преступления: [active2.fields["mi_crim"]]
+					<BR>\nДетали: [active2.fields["mi_crim_d"]]<BR>\n
+					<BR>\nСеръёзные преступления: [active2.fields["ma_crim"]]
+					<BR>\nДетали: [active2.fields["ma_crim_d"]]<BR>\n
+					<BR>\nВажные замечания:
+					<BR>\n\t[active2.fields["notes"]]<BR>\n<BR>\n<CENTER><B>Комментарии/Лог</B></CENTER><BR>"}
 					for(var/c in active2.fields["comments"])
 						P.info += "[c]<BR>"
 				else
-					P.info += "<B>Security Record Lost!</B><BR>"
+					P.info += "<B>Данные службы безопасности потеряны</B><BR>"
 				P.info += "</TT>"
-				P.name = "paper - 'Security Record: [active1.fields["name"]]'"
+				P.name = "лист - 'Запись Службы Безопасности: [active1.fields["name"]]'"
 				printing = 0
 
 /* Removed due to BYOND issue
@@ -368,12 +368,12 @@
 
 		else if(href_list["printlogs"])
 			if(GLOB.cell_logs.len && !printing)
-				var/obj/item/paper/P = input(usr, "Select log to print", "Available Cell Logs") as null|anything in GLOB.cell_logs
+				var/obj/item/paper/P = input(usr, "Выберите лог для печати", "Доступные логи камер") as null|anything in GLOB.cell_logs
 				if(!P)
 					return 0
 				printing = 1
 				playsound(loc, "sound/goonstation/machines/printer_dotmatrix.ogg", 50, 1)
-				to_chat(usr, "<span class='notice'>Printing file [P.name].</span>")
+				to_chat(usr, "<span class='notice'>Печать файла [P.name].</span>")
 				sleep(50)
 				var/obj/item/paper/log = new /obj/item/paper(loc)
 				log.name = P.name
@@ -381,16 +381,16 @@
 				printing = 0
 				return 1
 			else
-				to_chat(usr, "<span class='notice'>[src] has no logs stored or is already printing.</span>")
+				to_chat(usr, "<span class='notice'>[src] не имеет логов или они уже печатаются.</span>")
 
 
 		else if(href_list["add_c"])
 			if(istype(active2, /datum/data/record))
 				var/a2 = active2
-				var/t1 = copytext(trim(sanitize(input("Add Comment:", "Secure. records", null, null) as message)), 1, MAX_MESSAGE_LEN)
+				var/t1 = copytext(trim(sanitize(input("Добавить комментарий:", "Secure. records", null, null) as message)), 1, MAX_MESSAGE_LEN)
 				if(!t1 || ..() || active2 != a2)
 					return 1
-				active2.fields["comments"] += "Made by [authenticated] ([rank]) on [GLOB.current_date_string] [station_time_timestamp()]<BR>[t1]"
+				active2.fields["comments"] += "Сделал [authenticated] ([rank]) в [GLOB.current_date_string] [station_time_timestamp()]<BR>[t1]"
 
 		else if(href_list["del_c"])
 			var/index = min(max(text2num(href_list["del_c"]) + 1, 1), length(active2.fields["comments"]))
@@ -405,7 +405,7 @@
 			switch(href_list["field"])
 				if("name")
 					if(istype(active1, /datum/data/record))
-						var/t1 = reject_bad_name(clean_input("Please input name:", "Secure. records", active1.fields["name"], null))
+						var/t1 = reject_bad_name(clean_input("Пожалуйста, введите имя:", "Secure. records", active1.fields["name"], null))
 						if(!t1 || !length(trim(t1)) || ..() || active1 != a1)
 							return 1
 						active1.fields["name"] = t1
@@ -413,7 +413,7 @@
 							active2.fields["name"] = t1
 				if("id")
 					if(istype(active1, /datum/data/record))
-						var/t1 = copytext(trim(sanitize(input("Please input id:", "Secure. records", active1.fields["id"], null) as text)), 1, MAX_MESSAGE_LEN)
+						var/t1 = copytext(trim(sanitize(input("Пожалуйста, введите id:", "Secure. records", active1.fields["id"], null) as text)), 1, MAX_MESSAGE_LEN)
 						if(!t1 || ..() || active1 != a1)
 							return 1
 						active1.fields["id"] = t1
@@ -421,7 +421,7 @@
 							active2.fields["id"] = t1
 				if("fingerprint")
 					if(istype(active1, /datum/data/record))
-						var/t1 = copytext(trim(sanitize(input("Please input fingerprint hash:", "Secure. records", active1.fields["fingerprint"], null) as text)), 1, MAX_MESSAGE_LEN)
+						var/t1 = copytext(trim(sanitize(input("Пожалуйста, введите хеш отпечатка:", "Secure. records", active1.fields["fingerprint"], null) as text)), 1, MAX_MESSAGE_LEN)
 						if(!t1 || ..() || active1 != a1)
 							return 1
 						active1.fields["fingerprint"] = t1
@@ -433,53 +433,53 @@
 							active1.fields["sex"] = "Male"
 				if("age")
 					if(istype(active1, /datum/data/record))
-						var/t1 = input("Please input age:", "Secure. records", active1.fields["age"], null) as num
+						var/t1 = input("Пожалуйста, введите возраст:", "Secure. records", active1.fields["age"], null) as num
 						if(!t1 || ..() || active1 != a1)
 							return 1
 						active1.fields["age"] = t1
 				if("mi_crim")
 					if(istype(active2, /datum/data/record))
-						var/t1 = copytext(trim(sanitize(input("Please input minor crimes list:", "Secure. records", active2.fields["mi_crim"], null) as text)), 1, MAX_MESSAGE_LEN)
+						var/t1 = copytext(trim(sanitize(input("Пожалуйста, введите список незначительных преступлений:", "Secure. records", active2.fields["mi_crim"], null) as text)), 1, MAX_MESSAGE_LEN)
 						if(!t1 || ..() || active2 != a2)
 							return 1
 						active2.fields["mi_crim"] = t1
 				if("mi_crim_d")
 					if(istype(active2, /datum/data/record))
-						var/t1 = copytext(trim(sanitize(input("Please summarize minor crimes:", "Secure. records", active2.fields["mi_crim_d"], null) as message)), 1, MAX_MESSAGE_LEN)
+						var/t1 = copytext(trim(sanitize(input("Пожалуйста, обобщите незначительные преступления:", "Secure. records", active2.fields["mi_crim_d"], null) as message)), 1, MAX_MESSAGE_LEN)
 						if(!t1 || ..() || active2 != a2)
 							return 1
 						active2.fields["mi_crim_d"] = t1
 				if("ma_crim")
 					if(istype(active2, /datum/data/record))
-						var/t1 = copytext(trim(sanitize(input("Please input major crimes list:", "Secure. records", active2.fields["ma_crim"], null) as text)), 1, MAX_MESSAGE_LEN)
+						var/t1 = copytext(trim(sanitize(input("Пожалуйста, введите список серъёзных преступлений:", "Secure. records", active2.fields["ma_crim"], null) as text)), 1, MAX_MESSAGE_LEN)
 						if(!t1 || ..() || active2 != a2)
 							return 1
 						active2.fields["ma_crim"] = t1
 				if("ma_crim_d")
 					if(istype(active2, /datum/data/record))
-						var/t1 = copytext(trim(sanitize(input("Please summarize major crimes:", "Secure. records", active2.fields["ma_crim_d"], null) as message)), 1, MAX_MESSAGE_LEN)
+						var/t1 = copytext(trim(sanitize(input("Пожалуйста, обобщите серъёзные преступления:", "Secure. records", active2.fields["ma_crim_d"], null) as message)), 1, MAX_MESSAGE_LEN)
 						if(!t1 || ..() || active2 != a2)
 							return 1
 						active2.fields["ma_crim_d"] = t1
 				if("notes")
 					if(istype(active2, /datum/data/record))
-						var/t1 = copytext(html_encode(trim(input("Please summarize notes:", "Secure. records", html_decode(active2.fields["notes"]), null) as message)), 1, MAX_MESSAGE_LEN)
+						var/t1 = copytext(html_encode(trim(input("Пожалуйста, обобщите замечания:", "Secure. records", html_decode(active2.fields["notes"]), null) as message)), 1, MAX_MESSAGE_LEN)
 						if(!t1 || ..() || active2 != a2)
 							return 1
 						active2.fields["notes"] = t1
 				if("criminal")
 					if(istype(active2, /datum/data/record))
 						var/list/buttons = list()
-						buttons[++buttons.len] = list("name" = "None", "icon" = "unlock", "href" = "criminal=none", "status" = (active2.fields["criminal"] == SEC_RECORD_STATUS_NONE ? "selected" : null))
-						buttons[++buttons.len] = list("name" = "*Arrest*", "icon" = "lock", "href" = "criminal=arrest", "status" = (active2.fields["criminal"] == SEC_RECORD_STATUS_ARREST ? "selected" : null))
-						buttons[++buttons.len] = list("name" = "Search", "icon" = "lock", "href" = "criminal=search", "status" = (active2.fields["criminal"] == SEC_RECORD_STATUS_SEARCH ? "selected" : null))
-						buttons[++buttons.len] = list("name" = "Monitor", "icon" = "unlock", "href" = "criminal=monitor", "status" = (active2.fields["criminal"] == SEC_RECORD_STATUS_MONITOR ? "selected" : null))
-						buttons[++buttons.len] = list("name" = "Demote", "icon" = "lock", "href" = "criminal=demote", "status" = (active2.fields["criminal"] == SEC_RECORD_STATUS_DEMOTE ? "selected" : null))
-						buttons[++buttons.len] = list("name" = "Incarcerated", "icon" = "lock", "href" = "criminal=incarcerated", "status" = (active2.fields["criminal"] == SEC_RECORD_STATUS_INCARCERATED ? "selected" : null))
-						buttons[++buttons.len] = list("name" = "*Execute*", "icon" = "lock", "href" = "criminal=execute", "status" = (active2.fields["criminal"] == SEC_RECORD_STATUS_EXECUTE ? "selected" : null))
-						buttons[++buttons.len] = list("name" = "Parolled", "icon" = "unlock-alt", "href" = "criminal=parolled", "status" = (active2.fields["criminal"] == SEC_RECORD_STATUS_PAROLLED ? "selected" : null))
-						buttons[++buttons.len] = list("name" = "Released", "icon" = "unlock", "href" = "criminal=released", "status" = (active2.fields["criminal"] == SEC_RECORD_STATUS_RELEASED ? "selected" : null))
-						setTemp("<h3>Criminal Status</h3>", buttons)
+						buttons[++buttons.len] = list("name" = "Нет", "icon" = "unlock", "href" = "criminal=none", "status" = (active2.fields["criminal"] == SEC_RECORD_STATUS_NONE ? "selected" : null))
+						buttons[++buttons.len] = list("name" = "*Арест*", "icon" = "lock", "href" = "criminal=arrest", "status" = (active2.fields["criminal"] == SEC_RECORD_STATUS_ARREST ? "selected" : null))
+						buttons[++buttons.len] = list("name" = "Обыск", "icon" = "lock", "href" = "criminal=search", "status" = (active2.fields["criminal"] == SEC_RECORD_STATUS_SEARCH ? "selected" : null))
+						buttons[++buttons.len] = list("name" = "Наблюдение", "icon" = "unlock", "href" = "criminal=monitor", "status" = (active2.fields["criminal"] == SEC_RECORD_STATUS_MONITOR ? "selected" : null))
+						buttons[++buttons.len] = list("name" = "Понизить", "icon" = "lock", "href" = "criminal=demote", "status" = (active2.fields["criminal"] == SEC_RECORD_STATUS_DEMOTE ? "selected" : null))
+						buttons[++buttons.len] = list("name" = "Заключенный", "icon" = "lock", "href" = "criminal=incarcerated", "status" = (active2.fields["criminal"] == SEC_RECORD_STATUS_INCARCERATED ? "selected" : null))
+						buttons[++buttons.len] = list("name" = "*Казнить*", "icon" = "lock", "href" = "criminal=execute", "status" = (active2.fields["criminal"] == SEC_RECORD_STATUS_EXECUTE ? "selected" : null))
+						buttons[++buttons.len] = list("name" = "УДО", "icon" = "unlock-alt", "href" = "criminal=parolled", "status" = (active2.fields["criminal"] == SEC_RECORD_STATUS_PAROLLED ? "selected" : null))
+						buttons[++buttons.len] = list("name" = "Освобожденный", "icon" = "unlock", "href" = "criminal=released", "status" = (active2.fields["criminal"] == SEC_RECORD_STATUS_RELEASED ? "selected" : null))
+						setTemp("<h3>Преступный статус</h3>", buttons)
 				if("rank")
 					var/list/L = list("Head of Personnel", "Captain", "AI")
 					//This was so silly before the change. Now it actually works without beating your head against the keyboard. /N
@@ -489,10 +489,10 @@
 							buttons[++buttons.len] = list("name" = rank, "icon" = null, "href" = "rank=[rank]", "status" = (active1.fields["rank"] == rank ? "selected" : null))
 						setTemp("<h3>Rank</h3>", buttons)
 					else
-						setTemp("<h3 class='bad'>You do not have the required rank to do this!</h3>")
+						setTemp("<h3 class='bad'>Для выполнения этого вы не имеете требуемого ранга!</h3>")
 				if("species")
 					if(istype(active1, /datum/data/record))
-						var/t1 = copytext(trim(sanitize(input("Please enter race:", "General records", active1.fields["species"], null) as message)), 1, MAX_MESSAGE_LEN)
+						var/t1 = copytext(trim(sanitize(input("Пожалуйста, введите расу:", "General records", active1.fields["species"], null) as message)), 1, MAX_MESSAGE_LEN)
 						if(!t1 || ..() || active1 != a1)
 							return 1
 						active1.fields["species"] = t1
@@ -559,9 +559,9 @@
 				if(4)
 					R.fields["criminal"] = pick(SEC_RECORD_STATUS_NONE, SEC_RECORD_STATUS_ARREST, SEC_RECORD_STATUS_SEARCH, SEC_RECORD_STATUS_MONITOR, SEC_RECORD_STATUS_DEMOTE, SEC_RECORD_STATUS_INCARCERATED, SEC_RECORD_STATUS_PAROLLED, SEC_RECORD_STATUS_RELEASED)
 				if(5)
-					R.fields["p_stat"] = pick("*Unconcious*", "Active", "Physically Unfit")
+					R.fields["p_stat"] = pick("*КРС*", "Активный", "Физически непригодный")
 				if(6)
-					R.fields["m_stat"] = pick("*Insane*", "*Unstable*", "*Watch*", "Stable")
+					R.fields["m_stat"] = pick("*Душевнобольной*", "*Неуравновешенный*", "*Наблюдение*", "Стабильный")
 			continue
 
 		else if(prob(1))
