@@ -9,20 +9,20 @@
 /datum/wires/autolathe/GetWireName(index)
 	switch(index)
 		if(AUTOLATHE_HACK_WIRE)
-			return "Hack"
+			return "Взломать"
 
 		if(AUTOLATHE_SHOCK_WIRE)
-			return "Shock"
+			return "Шокировать"
 
 		if(AUTOLATHE_DISABLE_WIRE)
-			return "Disable"
+			return "Отключить"
 
 /datum/wires/autolathe/get_status()
 	. = ..()
 	var/obj/machinery/autolathe/A = holder
-	. += "The red light is [A.disabled ? "off" : "on"]."
-	. += "The green light is [A.shocked ? "off" : "on"]."
-	. += "The blue light is [A.hacked ? "off" : "on"]."
+	. += "Красный индикатор [A.disabled ? "отключен" : "включен"]."
+	. += "Зелёный индикатор [A.shocked ? "отключен" : "включен"]."
+	. += "Синий индикатор  [A.hacked ? "отключен" : "включен"]."
 
 /datum/wires/autolathe/CanUse()
 	var/obj/machinery/autolathe/A = holder

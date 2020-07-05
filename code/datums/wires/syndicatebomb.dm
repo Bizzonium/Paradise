@@ -12,19 +12,19 @@
 /datum/wires/syndicatebomb/GetWireName(index)
 	switch(index)
 		if(BOMB_WIRE_BOOM)
-			return "Explode"
+			return "Взорвать"
 
 		if(BOMB_WIRE_UNBOLT)
-			return "Unbolt"
+			return "Разболтировать"
 
 		if(BOMB_WIRE_DELAY)
-			return "Delay"
+			return "Отложить"
 
 		if(BOMB_WIRE_PROCEED)
-			return "Proceed"
+			return "Преступить"
 
 		if(BOMB_WIRE_ACTIVATE)
-			return "Activate"
+			return "Активировать"
 
 /datum/wires/syndicatebomb/CanUse(mob/living/L)
 	var/obj/machinery/syndicatebomb/P = holder
@@ -37,20 +37,20 @@
 	switch(index)
 		if(BOMB_WIRE_BOOM)
 			if(B.active)
-				holder.visible_message("<span class='danger'>[bicon(B)] An alarm sounds! It's go-</span>")
+				holder.visible_message("<span class='danger'>[bicon(B)] Звучит тревога! Она начала-</span>")
 				B.explode_now = TRUE
 		if(BOMB_WIRE_UNBOLT)
-			holder.visible_message("<span class='notice'>[bicon(holder)] The bolts spin in place for a moment.</span>")
+			holder.visible_message("<span class='notice'>[bicon(holder)] Болты вращаются на месте на мгновение.</span>")
 		if(BOMB_WIRE_DELAY)
 			if(B.delayedbig)
-				holder.visible_message("<span class='notice'>[bicon(B)] The bomb has already been delayed.</span>")
+				holder.visible_message("<span class='notice'>[bicon(B)] Бомба уже отложена.</span>")
 			else
-				holder.visible_message("<span class='notice'>[bicon(B)] The bomb chirps.</span>")
+				holder.visible_message("<span class='notice'>[bicon(B)] Бомба чирикает.</span>")
 				playsound(B, 'sound/machines/chime.ogg', 30, 1)
 				B.detonation_timer += 300
 				B.delayedbig = TRUE
 		if(BOMB_WIRE_PROCEED)
-			holder.visible_message("<span class='danger'>[bicon(B)] The bomb buzzes ominously!</span>")
+			holder.visible_message("<span class='danger'>[bicon(B)] Бомба зловеще гудит!</span>")
 			playsound(B, 'sound/machines/buzz-sigh.ogg', 30, 1)
 			var/seconds = B.seconds_remaining()
 			if(seconds >= 61) // Long fuse bombs can suddenly become more dangerous if you tinker with them.
@@ -61,13 +61,13 @@
 				B.detonation_timer = world.time + 100
 		if(BOMB_WIRE_ACTIVATE)
 			if(!B.active && !B.defused)
-				holder.visible_message("<span class='danger'>[bicon(B)] You hear the bomb start ticking!</span>")
+				holder.visible_message("<span class='danger'>[bicon(B)] Вы слышите, как бомба начинает тикать!</span>")
 				B.activate()
 				B.update_icon()
 			else if(B.delayedlittle)
-				holder.visible_message("<span class='notice'>[bicon(B)] Nothing happens.</span>")
+				holder.visible_message("<span class='notice'>[bicon(B)] Ничего не произошло.</span>")
 			else
-				holder.visible_message("<span class='notice'>[bicon(B)] The bomb seems to hesitate for a moment.</span>")
+				holder.visible_message("<span class='notice'>[bicon(B)] Бомба, кажется, колеблется на мгновение.</span>")
 				B.detonation_timer += 100
 				B.delayedlittle = TRUE
 	..()
@@ -80,22 +80,22 @@
 				B.defused = FALSE // Cutting and mending all the wires of an inactive bomb will thus cure any sabotage.
 			else
 				if(B.active)
-					holder.visible_message("<span class='danger'>[bicon(B)] An alarm sounds! It's go-</span>")
+					holder.visible_message("<span class='danger'>[bicon(B)] Звучит тревога! Она начала-</span>")
 					B.explode_now = TRUE
 				else
 					B.defused = TRUE
 		if(BOMB_WIRE_UNBOLT)
 			if(!mended && B.anchored)
-				holder.visible_message("<span class='notice'>[bicon(B)] The bolts lift out of the ground!</span>")
+				holder.visible_message("<span class='notice'>[bicon(B)] Болты поднимаются из земли!</span>")
 				playsound(B, 'sound/effects/stealthoff.ogg', 30, 1)
 				B.anchored = FALSE
 		if(BOMB_WIRE_PROCEED)
 			if(!mended && B.active)
-				holder.visible_message("<span class='danger'>[bicon(B)] An alarm sounds! It's go-</span>")
+				holder.visible_message("<span class='danger'>[bicon(B)] Звучит тревога! Она начала-</span>")
 				B.explode_now = TRUE
 		if(BOMB_WIRE_ACTIVATE)
 			if(!mended && B.active)
-				holder.visible_message("<span class='notice'>[bicon(B)] The timer stops! The bomb has been defused!</span>")
+				holder.visible_message("<span class='notice'>[bicon(B)] Таймер остановился! Бомба была обезврежена!</span>")
 				B.active = FALSE
 				B.defused = TRUE
 				B.update_icon()

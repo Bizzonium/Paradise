@@ -10,16 +10,16 @@
 /datum/wires/particle_acc/control_box/GetWireName(index)
 	switch(index)
 		if(PARTICLE_TOGGLE_WIRE)
-			return "Power Toggle"
-		
+			return "Переключатель питания"
+
 		if(PARTICLE_STRENGTH_WIRE)
-			return "Strength"
-		
+			return "Мощность"
+
 		if(PARTICLE_INTERFACE_WIRE)
-			return "Interface"
-			
+			return "Интерфейс"
+
 		if(PARTICLE_LIMIT_POWER_WIRE)
-			return "Maximum Power"
+			return "Максимальная мощность"
 
 /datum/wires/particle_acc/control_box/CanUse(mob/living/L)
 	var/obj/machinery/particle_accelerator/control_box/C = holder
@@ -41,7 +41,7 @@
 			C.interface_control = !C.interface_control
 
 		if(PARTICLE_LIMIT_POWER_WIRE)
-			C.visible_message("[bicon(C)]<b>[C]</b> makes a large whirring noise.")
+			C.visible_message("[bicon(C)]<b>[C]</b> производит сильный жужжащий шум.")
 	..()
 
 /datum/wires/particle_acc/control_box/UpdateCut(index, mended)

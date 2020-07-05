@@ -8,8 +8,8 @@
 /datum/wires/camera/get_status()
 	. = ..()
 	var/obj/machinery/camera/C = holder
-	. += "The focus light is [(C.view_range == initial(C.view_range)) ? "on" : "off"]."
-	. += "The power link light is [C.can_use() ? "on" : "off"]."
+	. += "Индикатор фокуса [(C.view_range == initial(C.view_range)) ? "включен" : "отключен"]."
+	. += "Индикатор подключённого питания [C.can_use() ? "включен" : "отключен"]."
 
 /datum/wires/camera/CanUse(mob/living/L)
 	var/obj/machinery/camera/C = holder
@@ -23,10 +23,10 @@
 /datum/wires/camera/GetWireName(index)
 	switch(index)
 		if(CAMERA_WIRE_FOCUS)
-			return "Focus"
+			return "Фокус"
 
 		if(CAMERA_WIRE_POWER)
-			return "Power"
+			return "Питание"
 
 /datum/wires/camera/UpdateCut(index, mended)
 	var/obj/machinery/camera/C = holder

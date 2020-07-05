@@ -17,31 +17,31 @@
 /datum/wires/mulebot/GetWireName(index)
 	switch(index)
 		if(MULEBOT_WIRE_POWER1)
-			return "Primary Power"
-		
+			return "Основное питание"
+
 		if(MULEBOT_WIRE_POWER2)
-			return "Secondary Power"
-		
+			return "Резервное питание"
+
 		if(MULEBOT_WIRE_AVOIDANCE)
-			return "Mob Avoidance"
-			
+			return "Уклонение от мобов"
+
 		if(MULEBOT_WIRE_LOADCHECK)
-			return "Load Checking"
-		
+			return "Проверка груза"
+
 		if(MULEBOT_WIRE_MOTOR1)
-			return "Primary Motor"
-		
+			return "Основной двигатель"
+
 		if(MULEBOT_WIRE_MOTOR2)
-			return "Secondary Motor"
-			
+			return "Резервный Двигатель"
+
 		if(MULEBOT_WIRE_REMOTE_RX)
-			return "Remote Signal Receiver"
+			return "Приёмник сигналов"
 
 		if(MULEBOT_WIRE_REMOTE_TX)
-			return "Remote Signal Sender"
+			return "Отправитель сигналов"
 
 		if(MULEBOT_WIRE_BEACON_RX)
-			return "Navigation Beacon Receiver"		
+			return "Приёмник навигационного маяка"
 
 /datum/wires/mulebot/CanUse(mob/living/L)
 	var/mob/living/simple_animal/bot/mulebot/M = holder
@@ -52,15 +52,15 @@
 /datum/wires/mulebot/UpdatePulsed(index)
 	switch(index)
 		if(MULEBOT_WIRE_POWER1, MULEBOT_WIRE_POWER2)
-			holder.visible_message("<span class='notice'>[bicon(holder)] The charge light flickers.</span>")
+			holder.visible_message("<span class='notice'>[bicon(holder)] Индикатор зарядки мигает.</span>")
 		if(MULEBOT_WIRE_AVOIDANCE)
-			holder.visible_message("<span class='notice'>[bicon(holder)] The external warning lights flash briefly.</span>")
+			holder.visible_message("<span class='notice'>[bicon(holder)] Внешние предостерегающие индикаторы кратковременно мигают.</span>")
 		if(MULEBOT_WIRE_LOADCHECK)
-			holder.visible_message("<span class='notice'>[bicon(holder)] The load platform clunks.</span>")
+			holder.visible_message("<span class='notice'>[bicon(holder)] Грузовая платформа гремит.</span>")
 		if(MULEBOT_WIRE_MOTOR1, MULEBOT_WIRE_MOTOR2)
-			holder.visible_message("<span class='notice'>[bicon(holder)] The drive motor whines briefly.</span>")
+			holder.visible_message("<span class='notice'>[bicon(holder)] Двигатель привода кратковременно завывает.</span>")
 		else
-			holder.visible_message("<span class='notice'>[bicon(holder)] You hear a radio crackle.</span>")
+			holder.visible_message("<span class='notice'>[bicon(holder)] Вы слышите треск радио.</span>")
 	..()
 
 // HELPER PROCS

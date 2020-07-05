@@ -3,23 +3,23 @@
 	wire_count = 4
 
 #define VENDING_WIRE_THROW 1
-#define VENDING_WIRE_CONTRABAND 2 
+#define VENDING_WIRE_CONTRABAND 2
 #define VENDING_WIRE_ELECTRIFY 4
 #define VENDING_WIRE_IDSCAN 8
 
 /datum/wires/vending/GetWireName(index)
 	switch(index)
 		if(VENDING_WIRE_THROW)
-			return "Item Throw"
+			return "Бросание предметов"
 
 		if(VENDING_WIRE_CONTRABAND)
-			return "Contraband"
+			return "Контрабанда"
 
 		if(VENDING_WIRE_ELECTRIFY)
-			return "Electrification"
+			return "Электрификация"
 
 		if(VENDING_WIRE_IDSCAN)
-			return "ID Scan"
+			return "Проверка ID"
 
 /datum/wires/vending/CanUse(mob/living/L)
 	var/obj/machinery/vending/V = holder
@@ -34,10 +34,10 @@
 /datum/wires/vending/get_status()
 	. = ..()
 	var/obj/machinery/vending/V = holder
-	. += "The orange light is [V.seconds_electrified ? "on" : "off"]."
-	. += "The red light is [V.shoot_inventory ? "off" : "blinking"]."
-	. += "The green light is [V.extended_inventory ? "on" : "off"]."
-	. += "A [V.scan_id ? "purple" : "yellow"] light is on."
+	. += "Оранжевый индикатор [V.seconds_electrified ? "включен" : "отключен"]."
+	. += "Красный индикатор [V.shoot_inventory ? "отключен" : "мигает"]."
+	. += "Зелёный индикатор [V.extended_inventory ? "включен" : "отключен"]."
+	. += "[V.scan_id ? "Пурпурный" : "Жёлтый"] индикатор включен."
 
 /datum/wires/vending/UpdatePulsed(index)
 	var/obj/machinery/vending/V = holder

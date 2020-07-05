@@ -9,13 +9,13 @@
 /datum/wires/radio/GetWireName(index)
 	switch(index)
 		if(RADIO_WIRE_SIGNAL)
-			return "Signal"
-		
+			return "Сигнал"
+
 		if(RADIO_WIRE_RECEIVE)
-			return "Receiver"
-		
+			return "Приёмник"
+
 		if(RADIO_WIRE_TRANSMIT)
-			return "Transmitter"
+			return "Передатчик"
 
 /datum/wires/radio/CanUse(mob/living/L)
 	var/obj/item/radio/R = holder

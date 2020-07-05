@@ -8,6 +8,20 @@
 GLOBAL_LIST_EMPTY(same_wires)
 // 12 colours, if you're adding more than 12 wires then add more colours here
 GLOBAL_LIST_INIT(wireColours, list("red", "blue", "green", "black", "orange", "brown", "gold", "gray", "cyan", "navy", "purple", "pink"))
+GLOBAL_LIST_INIT(wireColoursRU, list(\
+		"red"	= "красный",\
+		"blue"	= "синий",\
+		"green"	= "зелёный",\
+		"black"	= "чёрный",\
+		"orange"= "оранжевый",\
+		"brown"	= "коричневый",\
+		"gold"	= "золотой",\
+		"gray"	= "серый",\
+		"cyan"	= "бирюзовый",\
+		"navy"	= "индиго",\
+		"purple"= "пурпурный",\
+		"pink"	= "розовый"\
+	))
 
 /datum/wires
 
@@ -89,8 +103,25 @@ GLOBAL_LIST_INIT(wireColours, list("red", "blue", "green", "black", "orange", "b
 		if(eyes && (COLOURBLIND in H.mutations))
 			replace_colours = eyes.replace_colours
 
+	// var/list/wireColoursRU = list()
+	// wireColoursRU["red"]	= "красный"
+	// wireColoursRU["blue"]	= "синий"
+	// wireColoursRU["green"]	= "зелёный"
+	// wireColoursRU["black"]	= "чёрный"
+	// wireColoursRU["orange"]	= "оранжевый"
+	// wireColoursRU["brown"]	= "коричневый"
+	// wireColoursRU["gold"]	= "золотой"
+	// wireColoursRU["gray"]	= "серый"
+	// wireColoursRU["cyan"]	= "бирюзовый"
+	// wireColoursRU["navy"]	= "индиго"
+	// wireColoursRU["purple"]	= "пурпурный"
+	// wireColoursRU["pink"]	= "розовый"
 
-	var/list/W[0]
+	var/list/numbers = list()
+	for(var/i=1, i<=wires.len, i++)
+		numbers.Add(i);
+
+	var/list/W[wires.len]
 	for(var/colour in wires)
 		var/new_colour = colour
 		var/colour_name = colour
@@ -103,10 +134,14 @@ GLOBAL_LIST_INIT(wireColours, list("red", "blue", "green", "black", "orange", "b
 		else
 			new_colour = colour
 			colour_name = new_colour
-		W[++W.len] = list("colour_name" = capitalize(colour_name), "seen_colour" = capitalize(new_colour),"colour" = capitalize(colour), "cut" = IsColourCut(colour), "index" = can_see_wire_index(user) ? GetWireName(GetIndex(colour)) : null, "attached" = IsAttached(colour))
+		W[pick_n_take(numbers)] = list("colour_name" = capitalize(colour_name), "colour_name_ru" = capitalize(GLOB.wireColoursRU[colour_name]), "seen_colour" = capitalize(new_colour), "colour" = capitalize(colour), "cut" = IsColourCut(colour), "index" = can_see_wire_index(user) ? GetWireName(GetIndex(colour)) : null, "attached" = IsAttached(colour))
 
+	//var/list/shuffleList = list()
 	if(W.len > 0)
-		data["wires"] = W
+	//	while(W.len)
+	//		shuffleList.Add(pick_n_take(W))
+
+		data["wires"] = W//shuffleList
 
 	var/list/status = get_status()
 	if(replace_colours)
@@ -152,13 +187,13 @@ GLOBAL_LIST_INIT(wireColours, list("red", "blue", "green", "black", "orange", "b
 						playsound(holder, I.usesound, 20, 1)
 					CutWireColour(colour)
 				else
-					to_chat(L, "<span class='error'>You need wirecutters!</span>")
+					to_chat(L, "<span class='error'>Вам нужны кусачки!</span>")
 			if("pulse")
 				if(istype(I, /obj/item/multitool) || L.can_admin_interact())
 					playsound(holder, 'sound/weapons/empty.ogg', 20, 1)
 					PulseColour(colour)
 				else
-					to_chat(L, "<span class='error'>You need a multitool!</span>")
+					to_chat(L, "<span class='error'>Вам нужен мультитул!</span>")
 			if("attach")
 				if(IsAttached(colour))
 					var/obj/item/O = Detach(colour)
@@ -171,7 +206,7 @@ GLOBAL_LIST_INIT(wireColours, list("red", "blue", "green", "black", "orange", "b
 						else
 							to_chat(L, "<span class='warning'>[L.get_active_hand()] is stuck to your hand!</span>")
 					else
-						to_chat(L, "<span class='error'>You need a remote signaller!</span>")
+						to_chat(L, "<span class='error'>Вам нужен удаленный сигнализатор!</span>")
 
 	SSnanoui.update_uis(src)
 	return 1

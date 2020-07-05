@@ -6,7 +6,7 @@
 /datum/wires/explosive/GetWireName(index)
 	switch(index)
 		if(WIRE_EXPLODE)
-			return "Explode"
+			return "Взорвать"
 
 /datum/wires/explosive/proc/explode()
 	return
