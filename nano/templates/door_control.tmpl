@@ -51,7 +51,7 @@
 	</div>
     <div class="itemContentWidest">
 		{{:helper.link('Оффлайн'  , null, {'command' : 'electrify_permanently', 'activate' : "0" }, data.electrified == 0 ? 'selected' : null)}}
-        {{:helper.link(data.electrified <= 0 ? 'Temporary (30s)' : 'Temporary (' + data.electrified +'s)', null, {'command' : 'electrify_temporary',   'activate' : "1"}, null, data.electrified > 0 ? 'redButton' : null)}}
+        {{:helper.link(data.electrified <= 0 ? 'Временно (30с)' : 'Временно (' + data.electrified +'с)', null, {'command' : 'electrify_temporary',   'activate' : "1"}, null, data.electrified > 0 ? 'redButton' : null)}}
         {{:helper.link('Постоянный', null, {'command' : 'electrify_permanently', 'activate' : "1"}, data.electrified == -1 ? 'redButton' : null)}}
 	</div>
 </div>

@@ -172,13 +172,13 @@
 
         <div class='item'>
           <div class='itemLabel'>
-            Уничтожение:
+            Увольнение:
           </div>
           <div class='itemContent'>
 			{{if data.target_rank == "Terminated"}}
-				<span class='bad'>{{:data.target_owner}} уже уничтожен!</span>
+				<span class='bad'>{{:data.target_owner}} уже уволен!</span>
 			{{else}}
-				{{:helper.link('Уничтожить ' + data.target_owner, 'gear', {'action' : 'PRG_terminate'}, data.target_rank == "Terminated" ? 'disabled' : null, data.target_rank == "Terminated" ? 'disabled' : 'linkDanger')}}
+				{{:helper.link('Уволить ' + data.target_owner, 'gear', {'action' : 'PRG_terminate'}, data.target_rank == "Terminated" ? 'disabled' : null, data.target_rank == "Terminated" ? 'disabled' : 'linkDanger')}}
 			{{/if}}
           </div>
         </div>
