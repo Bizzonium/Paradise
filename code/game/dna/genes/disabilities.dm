@@ -114,7 +114,7 @@
 			if(1)
 				H.emote("twitch")
 			if(2 to 3)
-				H.say("[prob(50) ? ";" : ""][pick("SHIT", "PISS", "FUCK", "CUNT", "COCKSUCKER", "MOTHERFUCKER", "TITS")]")
+				H.say("[prob(50) ? ";" : ""][pick("ЧЁРТ", "БЛЯДЬ", "СУКА", "ПИЗДА", "ПИЗДЯЧИНА ХУЕРЫЛЬНАЯ", "ХУИЛО ГЛЫБОЕБЛИВОЕ", "МРАЗЬ")]")
 		var/x_offset_old = H.pixel_x
 		var/y_offset_old = H.pixel_y
 		var/x_offset = H.pixel_x + rand(-2, 2)
