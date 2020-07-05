@@ -48,7 +48,7 @@
 	if(istype(used_atom, /obj/item/stack/cable_coil))
 		var/obj/item/stack/cable_coil/C = used_atom
 		if(C.get_amount() < 4)
-			to_chat(user, ("<span class='warning'>There's not enough cable to finish the task.</span>"))
+			to_chat(user, ("<span class='warning'>Недостаточно кабеля для завершения задачи.</span>"))
 			return 0
 		else
 			C.use(4)
@@ -56,7 +56,7 @@
 	else if(istype(used_atom, /obj/item/stack))
 		var/obj/item/stack/S = used_atom
 		if(S.get_amount() < 5)
-			to_chat(user, ("<span class='warning'>There's not enough material in this stack.</span>"))
+			to_chat(user, ("<span class='warning'>Недостаточно материалов в этом стеке.</span>"))
 			return 0
 		else
 			S.use(5)
@@ -102,7 +102,7 @@
 		if(istype(used_atom,/obj/item/stack/cable_coil))
 			var/obj/item/stack/cable_coil/coil=used_atom
 			if(!coil.use(amount))
-				to_chat(user, "<span class='warning'>You don't have enough cable! You need at least [amount] coils.</span>")
+				to_chat(user, "<span class='warning'>У вас недостаточно кабеля! Вам нужно как минимум [amount] обмоток.</span>")
 				return 0
 		// TOOLS
 		if(isitem(used_atom))
@@ -114,7 +114,7 @@
 		if(istype(used_atom,/obj/item/stack))
 			var/obj/item/stack/stack=used_atom
 			if(stack.get_amount() < amount)
-				to_chat(user, "<span class='warning'>You don't have enough [stack]! You need at least [amount].</span>")
+				to_chat(user, "<span class='warning'>У вас недостаточно [stack]! Вам нужно как минимум [amount].</span>")
 				return 0
 			stack.use(amount)
 	return 1

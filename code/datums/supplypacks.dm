@@ -21,23 +21,23 @@ GLOBAL_LIST_INIT(all_supply_groups, list(SUPPLY_EMERGENCY,SUPPLY_SECURITY,SUPPLY
 /proc/get_supply_group_name(var/cat)
 	switch(cat)
 		if(SUPPLY_EMERGENCY)
-			return "Emergency"
+			return "Аварийный"
 		if(SUPPLY_SECURITY)
-			return "Security"
+			return "Служба безопасности"
 		if(SUPPLY_ENGINEER)
-			return "Engineering"
+			return "Инженерный"
 		if(SUPPLY_MEDICAL)
-			return "Medical"
+			return "Медицинский"
 		if(SUPPLY_SCIENCE)
-			return "Science"
+			return "Научный"
 		if(SUPPLY_ORGANIC)
-			return "Food and Livestock"
+			return "Продовольствие и скот"
 		if(SUPPLY_MATERIALS)
-			return "Raw Materials"
+			return "Сырые материалы"
 		if(SUPPLY_MISC)
-			return "Miscellaneous"
+			return "Разное"
 		if(SUPPLY_VEND)
-			return "Vending"
+			return "Торговый"
 
 
 /datum/supply_packs

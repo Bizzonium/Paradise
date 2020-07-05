@@ -55,7 +55,7 @@
 			var/datum/material/M = materials[I]
 			var/amt = amount(M.id)
 			if(amt)
-				examine_list += "<span class='notice'>It has [amt] units of [lowertext(M.name)] stored.</span>"
+				examine_list += "<span class='notice'>Содержит [amt] юнитов [lowertext(M.name)].</span>"
 
 /datum/component/material_container/proc/OnAttackBy(datum/source, obj/item/I, mob/living/user)
 	var/list/tc = allowed_typecache
@@ -66,7 +66,7 @@
 	if(I.flags & ABSTRACT)
 		return
 	if((I.flags_2 & (HOLOGRAM_2 | NO_MAT_REDEMPTION_2)) || (tc && !is_type_in_typecache(I, tc)))
-		to_chat(user, "<span class='warning'>[parent] won't accept [I]!</span>")
+		to_chat(user, "<span class='warning'>[parent] не принимает [I]!</span>")
 		return
 	. = COMPONENT_NO_AFTERATTACK
 	var/datum/callback/pc = precondition
@@ -74,10 +74,10 @@
 		return
 	var/material_amount = get_item_material_amount(I)
 	if(!material_amount)
-		to_chat(user, "<span class='warning'>[I] does not contain sufficient amounts of metal or glass to be accepted by [parent].</span>")
+		to_chat(user, "<span class='warning'>[I] не содержит достаточное количество металла или стекла для [parent].</span>")
 		return
 	if(!has_space(material_amount))
-		to_chat(user, "<span class='warning'>[parent] is full. Please remove metal or glass from [parent] in order to insert more.</span>")
+		to_chat(user, "<span class='warning'>[parent] полон. Пожалуйста, извлеките металл или стекло из [parent] чтобы вставить больше.</span>")
 		return
 	user_insert(I, user)
 
@@ -87,7 +87,7 @@
 	if(istype(I, /obj/item/stack) && precise_insertion)
 		var/atom/current_parent = parent
 		var/obj/item/stack/S = I
-		requested_amount = input(user, "How much do you want to insert?", "Inserting [S.singular_name]s") as num|null
+		requested_amount = input(user, "Какое количество вы хотите вставить?", "Вставка [S.singular_name]s") as num|null
 		if(isnull(requested_amount) || (requested_amount <= 0))
 			return
 		if(QDELETED(I) || QDELETED(user) || QDELETED(src) || parent != current_parent || user.incapacitated() || !in_range(current_parent, user) || user.l_hand != I && user.r_hand != I)
@@ -99,12 +99,12 @@
 	if(inserted)
 		if(istype(I, /obj/item/stack))
 			var/obj/item/stack/S = I
-			to_chat(user, "<span class='notice'>You insert [inserted] [S.singular_name][inserted>1 ? "s" : ""] into [parent].</span>")
+			to_chat(user, "<span class='notice'>Вы вставили [inserted] [S.singular_name][inserted>1 ? "s" : ""] в [parent].</span>")
 			if(!QDELETED(I) && !user.put_in_hands(I))
 				stack_trace("Warning: User could not put object back in hand during material container insertion, line [__LINE__]! This can lead to issues.")
 				I.forceMove(user.drop_location())
 		else
-			to_chat(user, "<span class='notice'>You insert a material total of [inserted] into [parent].</span>")
+			to_chat(user, "<span class='notice'>Вы вставили материала суммарно [inserted] в [parent].</span>")
 			qdel(I)
 		if(after_insert)
 			after_insert.Invoke(I.type, last_inserted_id, inserted)
