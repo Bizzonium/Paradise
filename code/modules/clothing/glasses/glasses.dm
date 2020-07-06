@@ -296,6 +296,26 @@
 	color_view = color_view ? null : MATRIX_GREYSCALE //Toggles between null and grayscale, with null being the default option.
 	user.update_client_colour()
 
+/obj/item/clothing/glasses/sunglasses/noir_thermal
+	name = "noir thermal sunglasses"
+	desc = "High Tech Low Life'ish style sunglasses."
+	origin_tech = "magnets=3"
+	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
+	actions_types = list(/datum/action/item_action/noir)
+
+/obj/item/clothing/glasses/sunglasses/noir_thermal/attack_self(mob/user)
+	toggle_noir_thermal(user)
+
+/obj/item/clothing/glasses/sunglasses/noir_thermal/item_action_slot_check(slot)
+	if(slot == slot_glasses)
+		return 1
+
+/obj/item/clothing/glasses/sunglasses/noir_thermal/proc/toggle_noir_thermal(mob/user)
+	vision_flags = vision_flags ? 0 : SEE_MOBS
+	user.update_sight()
+	color_view = color_view ? null : MATRIX_GREYSCALE //Toggles between null and grayscale, with null being the default option.
+	user.update_client_colour()
+
 /obj/item/clothing/glasses/sunglasses/yeah
 	name = "agreeable glasses"
 	desc = "H.C Limited edition."
