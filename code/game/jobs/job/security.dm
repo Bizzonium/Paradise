@@ -138,6 +138,9 @@
 
 /datum/outfit/job/detective/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	. = ..()
+	var/obj/item/organ/internal/cyberimp/eyes/thermals/augmentation = new /obj/item/organ/internal/cyberimp/eyes/thermals
+	augmentation.insert(H)
+
 	if(H.mind && H.mind.role_alt_title)
 		switch(H.mind.role_alt_title)
 			if("Forensic Technician")
