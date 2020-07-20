@@ -64,6 +64,7 @@
 	hard_drive.store_file(new/datum/computer_file/program/chatclient())
 	hard_drive.store_file(new/datum/computer_file/program/card_mod())
 	hard_drive.store_file(new/datum/computer_file/program/comm())
+	hard_drive.store_file(new/datum/computer_file/program/sibyl_system())
 
 // ===== CIVILIAN CONSOLE =====
 /obj/machinery/modular_computer/console/preset/civilian
