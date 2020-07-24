@@ -81,6 +81,8 @@
 
 	var/datum/action/innate/change_monitor/monitor
 
+	speciesbox = /obj/item/storage/box/survival_machine
+
 /datum/species/machine/on_species_gain(mob/living/carbon/human/H)
 	..()
 	monitor = new()
