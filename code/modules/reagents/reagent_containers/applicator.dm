@@ -38,10 +38,12 @@
 /obj/item/reagent_containers/applicator/update_icon()
 	cut_overlays()
 
+	var/mutable_appearance/filling = mutable_appearance('icons/goonstation/objects/objects.dmi', "mender-fluid")
 	if(reagents.total_volume)
-		var/mutable_appearance/filling = mutable_appearance('icons/goonstation/objects/objects.dmi', "mender-fluid")
 		filling.color = mix_color_from_reagents(reagents.reagent_list)
-		add_overlay(filling)
+	else
+		filling.color = COLOR_GRAY40
+	add_overlay(filling)
 
 /obj/item/reagent_containers/applicator/attack(mob/living/M, mob/user)
 	if(!reagents.total_volume)
