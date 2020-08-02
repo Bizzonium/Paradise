@@ -74,6 +74,10 @@
   * * italics - Just copy and paste, sir
   */
 /datum/chatmessage/proc/generate_image(text, atom/target, mob/owner, radio_speech, lifespan, italics)
+	if(!owner && !owner.client)
+		qdel(src)
+		return
+
 	// Register client who owns this message
 	owned_by = owner.client
 	RegisterSignal(owned_by, COMSIG_PARENT_QDELETING, .proc/on_parent_qdel)
