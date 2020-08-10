@@ -7,6 +7,8 @@
  *			Text modification
  *			Misc
  */
+#define CYRILLIC "cyrillic"
+#define LATIN 	 "latin"
 
 
 /*
@@ -136,23 +138,36 @@
 
 	var/number_of_alphanumeric	= 0
 	var/last_char_group			= 0
+	var/last_script_type		= null
 	var/t_out = ""
 
 	for(var/i=1, i<=length_char(t_in), i++)
 		var/ascii_char = text2ascii_char(t_in,i)
+		var/cur_script_type = get_script_type(ascii_char)
+
+		if(!last_script_type)
+			last_script_type = get_script_type(ascii_char)
+
 		switch(ascii_char)
 			// A  .. Z, А .. Я, Ё
 			if(65 to 90, 1040 to 1071, 1025)			//Uppercase Letters
+				if(cur_script_type != last_script_type)
+					continue
 				t_out += ascii2text(ascii_char)
 				number_of_alphanumeric++
 				last_char_group = 4
+				last_script_type = cur_script_type
+
 
 			// a  .. z, а .. я, ё
 			if(97 to 122, 1072 to 1103, 1105)			//Lowercase Letters
+				if(cur_script_type != last_script_type)
+					continue
 				if(last_char_group<2)		t_out += uppertext(ascii2text(ascii_char))	//Force uppercase first character
 				else						t_out += ascii2text(ascii_char)
 				number_of_alphanumeric++
 				last_char_group = 4
+				last_script_type = cur_script_type
 
 			// 0  .. 9
 			if(48 to 57)			//Numbers
@@ -192,6 +207,18 @@
 		if(cmptext(t_out,bad_name))	return	//(not case sensitive)
 
 	return t_out
+
+// Return script type: Cyrillic or Latin.
+/proc/get_script_type(ascii_char)
+	switch(ascii_char)
+		//A  .. Z, a .. z
+		if(65 to 90, 97 to 122)
+			return LATIN
+
+		//А .. Я, Ё, а .. я, ё
+		if(1040 to 1071, 1025, 1072 to 1103, 1105)
+			return CYRILLIC
+	return null
 
 //checks text for html tags
 //if tag is not in whitelist (var/list/paper_tag_whitelist in global.dm)
@@ -617,3 +644,6 @@ proc/checkhtml(var/t)
 	return text
 
 #define string2charlist(string) (splittext(string, regex("(\\x0A|.)")) - splittext(string, ""))
+
+#undef CYRILLIC
+#undef LATIN
